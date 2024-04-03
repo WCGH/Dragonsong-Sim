@@ -7,11 +7,8 @@ extends OptionButton
 
 
 func _ready() -> void:
-	#var saved_index: int = SavedVariables.save_data["p3"]["nidhogg"]
-	#if saved_index == SavedVariables.nidhogg.DEFAULT:
-		#saved_index = SavedVariables.get_default("p3", "nidhogg")
-	selected = SavedVariables.get_data("p3", "nidhogg")
+	selected = SavedVariables.get_data("p6", "t_markers")
 
 
 func _on_item_selected(index : int) -> void:
-	GameEvents.emit_variable_saved("p3", "nidhogg", index)
+	GameEvents.emit_variable_saved("p6", "t_markers", index)

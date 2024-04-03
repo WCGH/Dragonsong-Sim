@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://v1hpgw55s4bk"]
+[gd_scene load_steps=91 format=3 uid="uid://v1hpgw55s4bk"]
 
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/p6_wyrm.gd" id="1_i51uh"]
 [ext_resource type="PackedScene" uid="uid://btigj53q7q4oi" path="res://scenes/ui/cast_bars/target_cast_bar.tscn" id="2_ycnju"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wb1_button.gd" id="10_r6fdw"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wb2_button.gd" id="11_na20n"]
 [ext_resource type="PackedScene" uid="uid://dktirpxqry1m1" path="res://scenes/controllers/target_marker_controller.tscn" id="11_nw8ca"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/am_button.gd" id="12_afogn"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wroth_flame_controller.gd" id="12_gctdh"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/p6_sequence.gd" id="13_1hls7"]
 [ext_resource type="PackedScene" uid="uid://l44kfd8rk857" path="res://scenes/markers/ground/wroth_line.tscn" id="13_w17me"]
@@ -801,10 +802,10 @@ custom_minimum_size = Vector2(168, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -188.0
-offset_top = 17.0
-offset_right = -20.0
-offset_bottom = 48.0
+offset_left = -191.0
+offset_top = 29.0
+offset_right = -23.0
+offset_bottom = 60.0
 grow_horizontal = 0
 focus_mode = 0
 action_mode = 1
@@ -821,10 +822,10 @@ script = ExtResource("10_r6fdw")
 
 [node name="Label" type="Label" parent="OnScreenButtons/WB1Button"]
 layout_mode = 0
-offset_left = -49.0
-offset_top = 3.0
-offset_right = 63.0
-offset_bottom = 29.0
+offset_left = 2.0
+offset_top = -24.0
+offset_right = 114.0
+offset_bottom = 2.0
 text = "WB 1"
 label_settings = SubResource("LabelSettings_dcu0j")
 
@@ -833,10 +834,10 @@ custom_minimum_size = Vector2(168, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -188.0
-offset_top = 61.0
-offset_right = -20.0
-offset_bottom = 92.0
+offset_left = -191.0
+offset_top = 90.0
+offset_right = -23.0
+offset_bottom = 121.0
 grow_horizontal = 0
 focus_mode = 0
 action_mode = 1
@@ -851,11 +852,43 @@ script = ExtResource("11_na20n")
 
 [node name="Label" type="Label" parent="OnScreenButtons/WB2Button"]
 layout_mode = 0
-offset_left = -49.0
-offset_top = 3.0
-offset_right = 63.0
-offset_bottom = 29.0
+offset_left = 3.0
+offset_top = -24.0
+offset_right = 115.0
+offset_bottom = 2.0
 text = "WB 2"
+label_settings = SubResource("LabelSettings_dcu0j")
+
+[node name="AMButton" type="OptionButton" parent="OnScreenButtons"]
+custom_minimum_size = Vector2(168, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -189.0
+offset_top = 154.0
+offset_right = -21.0
+offset_bottom = 185.0
+grow_horizontal = 0
+focus_mode = 0
+action_mode = 1
+item_count = 3
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Auto Markers"
+popup/item_0/id = 0
+popup/item_1/text = "Manual"
+popup/item_1/id = 1
+popup/item_2/text = "None"
+popup/item_2/id = 2
+script = ExtResource("12_afogn")
+
+[node name="Label" type="Label" parent="OnScreenButtons/AMButton"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -24.0
+offset_right = 134.0
+offset_bottom = 2.0
+text = "Wroth markers"
 label_settings = SubResource("LabelSettings_dcu0j")
 
 [node name="MainMenuButton" type="Button" parent="OnScreenButtons"]
@@ -1830,6 +1863,7 @@ light_energy = 0.44
 [connection signal="item_selected" from="OnScreenButtons/SequenceSelectButton" to="OnScreenButtons/SequenceSelectButton" method="_on_item_selected"]
 [connection signal="item_selected" from="OnScreenButtons/WB1Button" to="OnScreenButtons/WB1Button" method="_on_item_selected"]
 [connection signal="item_selected" from="OnScreenButtons/WB2Button" to="OnScreenButtons/WB2Button" method="_on_item_selected"]
+[connection signal="item_selected" from="OnScreenButtons/AMButton" to="OnScreenButtons/AMButton" method="_on_item_selected"]
 [connection signal="pressed" from="OnScreenButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="body_exited" from="Arena/DeathWallSquare/DeathwallTrigger" to="Arena/DeathWallSquare" method="_on_deathwall_trigger_body_exited"]
 [connection signal="body_entered" from="GroundMarkers/ConeAoE" to="GroundMarkers/ConeAoE" method="_on_body_entered"]

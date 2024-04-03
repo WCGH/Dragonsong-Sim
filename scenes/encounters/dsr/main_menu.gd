@@ -11,7 +11,7 @@ extends CanvasLayer
 
 # Release version is for standalone distribution only.
 # It will force a first-time download everytime it's launched.
-const LAUNCHER_VERSION = 1.03
+const LAUNCHER_VERSION = 1.04
 #const RELEASE_VERSION = false
 const WINDOW_SIZE = Vector2(1600, 900)
 #const EXE_SIZE = 45587433

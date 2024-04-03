@@ -83,9 +83,9 @@ func initialize_party(new_party: Dictionary) -> void:
 
 
 func load_player_positions() -> void:
-	strat = SavedVariables.save_data["p3"]["nidhogg"]
-	if strat == SavedVariables.nidhogg.DEFAULT:
-		strat = SavedVariables.get_default("p3", "nidhogg")
+	strat = SavedVariables.get_data("p3", "nidhogg")
+	#if strat == SavedVariables.nidhogg.DEFAULT:
+		#strat = SavedVariables.get_default("p3", "nidhogg")
 	match strat:
 		SavedVariables.nidhogg.WEST:
 			positions = P3S1_Positions.positions_db

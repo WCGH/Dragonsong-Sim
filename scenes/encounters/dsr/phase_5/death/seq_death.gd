@@ -82,9 +82,9 @@ func start_sequence(new_party: Dictionary) -> void:
 	lockon_controller.pre_load([LockonController.PS_SQUARE, LockonController.PS_CIRCLE,
 		LockonController.PS_CROSS, LockonController.PS_TRIANGLE, LockonController.DOOM])
 	# Get strat variables
-	var saved_index: int = SavedVariables.save_data["p5"]["dooms"]
-	if saved_index == SavedVariables.dooms.DEFAULT:
-		saved_index = SavedVariables.get_default("p5", "dooms")
+	var saved_index: int = SavedVariables.get_data("p5", "dooms")
+	#if saved_index == SavedVariables.dooms.DEFAULT:
+		#saved_index = SavedVariables.get_default("p5", "dooms")
 	doom_anchor = saved_index == SavedVariables.dooms.ANCHOR
 	# Start timed sequence.
 	death_anim_seq.play("death_sequence")
