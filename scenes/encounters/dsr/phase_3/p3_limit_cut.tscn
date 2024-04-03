@@ -1,0 +1,353 @@
+[gd_scene load_steps=35 format=3 uid="uid://cybs5n4035ehd"]
+
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/p3_limit_cut.gd" id="1_g37t4"]
+[ext_resource type="PackedScene" uid="uid://bayxk6ajn7khf" path="res://scenes/controllers/party_controller.tscn" id="1_wya2w"]
+[ext_resource type="PackedScene" uid="uid://chasoddjwqblg" path="res://scenes/ui/cast_bars/cast_bar.tscn" id="2_ktx7i"]
+[ext_resource type="PackedScene" uid="uid://crewso7ys1t5t" path="res://scenes/controllers/encounter_controller.tscn" id="3_7fogf"]
+[ext_resource type="PackedScene" uid="uid://d0c27klcaisbj" path="res://scenes/ui/cast_bars/clone_cast_bar.tscn" id="3_ql4tv"]
+[ext_resource type="PackedScene" uid="uid://cg0h4uysscvtc" path="res://scenes/ui/action_bar.tscn" id="4_35hbf"]
+[ext_resource type="PackedScene" uid="uid://02ckwb1trdp4" path="res://scenes/ui/party_list.tscn" id="4_nm4c5"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/seq1_limit_cut.gd" id="4_npi7b"]
+[ext_resource type="PackedScene" uid="uid://cidk1e7u3l0ya" path="res://scenes/ui/fail_list.tscn" id="5_hx0ky"]
+[ext_resource type="PackedScene" uid="uid://du22vkqa83osn" path="res://scenes/ui/debuff_icons/p3/up_icon.tscn" id="6_4dvdg"]
+[ext_resource type="PackedScene" uid="uid://bauk161giibov" path="res://scenes/controllers/ground_aoe_controller.tscn" id="6_ar3ab"]
+[ext_resource type="PackedScene" uid="uid://co0wrm3wjsxb2" path="res://assets/objects/p3_arena/Steppes Platform.glb" id="7_4a3vc"]
+[ext_resource type="PackedScene" uid="uid://dux4x2djii8wt" path="res://scenes/ui/debuff_icons/p3/circle_icon.tscn" id="7_pyysr"]
+[ext_resource type="PackedScene" uid="uid://dtncsyjt1kiyy" path="res://scenes/ui/debuff_icons/p3/down_icon.tscn" id="8_r8es1"]
+[ext_resource type="PackedScene" uid="uid://wdaa7tvsg1oy" path="res://scenes/controllers/lockon_controller.tscn" id="8_rudf4"]
+[ext_resource type="PackedScene" uid="uid://bwd1v6kvgas8d" path="res://scenes/controllers/waymark_controller.tscn" id="8_ur353"]
+[ext_resource type="PackedScene" uid="uid://dryfwy8vvtst0" path="res://scenes/ui/debuff_icons/p3/lc1_icon.tscn" id="9_b77gb"]
+[ext_resource type="PackedScene" uid="uid://wya5hvcgyeyb" path="res://assets/objects/nidhogg_anim/nidhogg_anim_inh.tscn" id="9_rq3mc"]
+[ext_resource type="PackedScene" uid="uid://du2fr4o3nsww0" path="res://scenes/ui/player_debuffs.tscn" id="10_1ju27"]
+[ext_resource type="PackedScene" uid="uid://cmm3xwp3b30xh" path="res://scenes/ui/debuff_icons/p3/lc2_icon.tscn" id="10_4njl4"]
+[ext_resource type="PackedScene" uid="uid://c66bvq5c4scl0" path="res://scenes/ui/debuff_icons/p3/lc3_icon.tscn" id="11_dhgfi"]
+[ext_resource type="Texture2D" uid="uid://ig2b2e4smtei" path="res://assets/png/misc/target_ring_w_trans.png" id="18_7uife"]
+[ext_resource type="PackedScene" uid="uid://b0wxaorlbce3d" path="res://scenes/enemies/p3/clone.tscn" id="22_r54t0"]
+[ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="23_rk80t"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/westhogg_select_button.gd" id="24_wjgce"]
+
+[sub_resource type="Animation" id="Animation_pevb2"]
+resource_name = "limit_cut_sequence"
+length = 60.0
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LimitCut")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6, 11, 13.5, 21, 25, 27, 28, 29.5, 31, 33.5, 35, 37, 39.5, 42, 43.5, 46, 48, 49, 50.5, 54.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"assign_lc"
+}, {
+"args": [],
+"method": &"assign_arrows"
+}, {
+"args": [],
+"method": &"cast_lg"
+}, {
+"args": [],
+"method": &"tower1_hit"
+}, {
+"args": [],
+"method": &"tower1_lg1_hit"
+}, {
+"args": [],
+"method": &"tower1_soak_hit"
+}, {
+"args": [],
+"method": &"tower1_lg2_hit"
+}, {
+"args": [],
+"method": &"tower1_geir_cast"
+}, {
+"args": [],
+"method": &"tower2_tower_hit"
+}, {
+"args": [],
+"method": &"tower1_geir_hit"
+}, {
+"args": [],
+"method": &"tower2_soak_spawn"
+}, {
+"args": [],
+"method": &"tower2_soak_hit"
+}, {
+"args": [],
+"method": &"tower2_geir_cast"
+}, {
+"args": [],
+"method": &"tower3_tower_hit"
+}, {
+"args": [],
+"method": &"tower2_geir_hit"
+}, {
+"args": [],
+"method": &"tower3_lg1_hit"
+}, {
+"args": [],
+"method": &"tower3_soak_hit"
+}, {
+"args": [],
+"method": &"tower3_lg2_hit"
+}, {
+"args": [],
+"method": &"tower3_geir_cast"
+}, {
+"args": [],
+"method": &"tower3_geir_hit"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LimitCut")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 7, 14, 21.5, 25.5, 28.5, 31.5, 38, 40, 42.5, 46.5, 49.5, 51),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"pre_spread_pos"
+}, {
+"args": [],
+"method": &"lc_pre_pos"
+}, {
+"args": [],
+"method": &"tower1_pos1"
+}, {
+"args": [],
+"method": &"tower1_pos2"
+}, {
+"args": [],
+"method": &"tower1_pos3"
+}, {
+"args": [],
+"method": &"tower2_pos1"
+}, {
+"args": [],
+"method": &"tower2_pos2"
+}, {
+"args": [],
+"method": &"tower2_pos3"
+}, {
+"args": [],
+"method": &"tower3_pos1"
+}, {
+"args": [],
+"method": &"tower3_pos2"
+}, {
+"args": [],
+"method": &"tower3_pos3"
+}, {
+"args": [],
+"method": &"tower3_pos4"
+}, {
+"args": [],
+"method": &"tower3_final_pos"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_svxln"]
+_data = {
+"limit_cut_sequence": SubResource("Animation_pevb2")
+}
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_23fhv"]
+data = PackedVector3Array(150, 0, 150, -150, 0, 150, 150, 0, -150, -150, 0, 150, -150, 0, -150, 150, 0, -150)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ca2tf"]
+transparency = 1
+albedo_color = Color(1, 0.658824, 0.627451, 1)
+albedo_texture = ExtResource("18_7uife")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_re8vo"]
+material = SubResource("StandardMaterial3D_ca2tf")
+size = Vector2(6, 5.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n540m"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kideh"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5e3hv"]
+sky_material = SubResource("ProceduralSkyMaterial_kideh")
+
+[sub_resource type="Environment" id="Environment_ncsmy"]
+background_mode = 2
+sky = SubResource("Sky_5e3hv")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="P3LimitCut" type="Node3D"]
+script = ExtResource("1_g37t4")
+
+[node name="CastBar" parent="." instance=ExtResource("2_ktx7i")]
+visible = false
+
+[node name="CloneCastBar" parent="." instance=ExtResource("3_ql4tv")]
+
+[node name="ActionBar" parent="." instance=ExtResource("4_35hbf")]
+
+[node name="FailList" parent="." instance=ExtResource("5_hx0ky")]
+
+[node name="PartyList" parent="." instance=ExtResource("4_nm4c5")]
+
+[node name="PlayerDebuffs" parent="." instance=ExtResource("10_1ju27")]
+
+[node name="WaymarkController" parent="." node_paths=PackedStringArray("arena_node") instance=ExtResource("8_ur353")]
+arena_node = NodePath("../Waymarks")
+
+[node name="PartyController" parent="." instance=ExtResource("1_wya2w")]
+unique_name_in_owner = true
+
+[node name="LockonController" parent="." instance=ExtResource("8_rudf4")]
+unique_name_in_owner = true
+
+[node name="GroundAoEController" parent="." instance=ExtResource("6_ar3ab")]
+unique_name_in_owner = true
+
+[node name="EncounterController" parent="." instance=ExtResource("3_7fogf")]
+unique_name_in_owner = true
+
+[node name="LimitCut" type="Node" parent="EncounterController"]
+script = ExtResource("4_npi7b")
+icon_scenes = Array[PackedScene]([ExtResource("6_4dvdg"), ExtResource("7_pyysr"), ExtResource("8_r8es1"), ExtResource("9_b77gb"), ExtResource("10_4njl4"), ExtResource("11_dhgfi")])
+clone_scene = ExtResource("22_r54t0")
+
+[node name="LimitCutSeq" type="AnimationPlayer" parent="EncounterController/LimitCut"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_svxln")
+}
+
+[node name="Arena" type="Node3D" parent="."]
+
+[node name="Visual" type="Node3D" parent="Arena"]
+
+[node name="Steppes Platform" parent="Arena/Visual" instance=ExtResource("7_4a3vc")]
+transform = Transform3D(2.381, 0, 0, 0, 2.381, 0, 0, 0, 2.381, 0, -0.32, 0)
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/FloorMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/FloorMesh/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_23fhv")
+
+[node name="Waymarks" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Characters" type="Node3D" parent="." groups=["characters_layer"]]
+
+[node name="Enemies" type="Node3D" parent="." groups=["enemies_layer"]]
+
+[node name="Boss" type="Node3D" parent="Enemies"]
+transform = Transform3D(5.539, 0, 0, 0, 5.539, 0, 0, 0, 5.539, 0, 0, 0)
+
+[node name="NidhoggAnim" parent="Enemies/Boss" instance=ExtResource("9_rq3mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="HitboxRing" type="MeshInstance3D" parent="Enemies/Boss"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.5)
+mesh = SubResource("PlaneMesh_re8vo")
+
+[node name="GroundMarkers" type="Node3D" parent="." groups=["ground_marker_layer"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.046, 0, 16.8221)
+
+[node name="Dev" type="Node3D" parent="."]
+
+[node name="Coords" type="Label" parent="Dev" groups=["coords_label"]]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_top = 17.0
+offset_right = -15.0
+offset_bottom = 62.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "0,12"
+label_settings = SubResource("LabelSettings_n540m")
+
+[node name="ResetButton" type="Button" parent="Dev"]
+offset_left = 28.0
+offset_top = 18.0
+offset_right = 128.0
+offset_bottom = 58.0
+text = "Reset"
+
+[node name="MainMenuButton" type="Button" parent="Dev"]
+offset_left = 28.0
+offset_top = 73.0
+offset_right = 128.0
+offset_bottom = 113.0
+text = "Main Menu"
+
+[node name="RoleSelectButton" type="OptionButton" parent="Dev"]
+offset_left = 160.0
+offset_top = 21.0
+offset_right = 304.0
+offset_bottom = 52.0
+focus_mode = 0
+action_mode = 1
+item_count = 8
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "Tank 1"
+popup/item_0/id = 0
+popup/item_1/text = "Tank 2"
+popup/item_1/id = 1
+popup/item_2/text = "Healer 1"
+popup/item_2/id = 2
+popup/item_3/text = "Healer 2"
+popup/item_3/id = 3
+popup/item_4/text = "Melee 1"
+popup/item_4/id = 4
+popup/item_5/text = "Melee 2"
+popup/item_5/id = 5
+popup/item_6/text = "Phys Ranged"
+popup/item_6/id = 6
+popup/item_7/text = "Caster"
+popup/item_7/id = 7
+script = ExtResource("23_rk80t")
+
+[node name="WesthoggSelectButton" type="OptionButton" parent="Dev"]
+offset_left = 327.0
+offset_top = 21.0
+offset_right = 471.0
+offset_bottom = 52.0
+focus_mode = 0
+action_mode = 1
+item_count = 2
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Westhogg"
+popup/item_0/id = 0
+popup/item_1/text = "Easthogg"
+popup/item_1/id = 1
+script = ExtResource("24_wjgce")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ncsmy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.44
+
+[connection signal="pressed" from="Dev/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Dev/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="item_selected" from="Dev/RoleSelectButton" to="Dev/RoleSelectButton" method="_on_item_selected"]
+[connection signal="item_selected" from="Dev/WesthoggSelectButton" to="Dev/WesthoggSelectButton" method="_on_item_selected"]

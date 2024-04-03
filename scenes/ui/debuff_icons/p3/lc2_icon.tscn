@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmm3xwp3b30xh"]
+
+[ext_resource type="Texture2D" uid="uid://0o1jwovpt3su" path="res://assets/png/debuff_icons/lc2_icon.png" id="1_c88or"]
+
+[node name="LC2Icon" type="TextureRect"]
+size_flags_horizontal = 10
+size_flags_vertical = 8
+tooltip_text = "Second in Line"
+texture = ExtResource("1_c88or")
+metadata/debuff_name = "lc_2"

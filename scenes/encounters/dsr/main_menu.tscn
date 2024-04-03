@@ -1,0 +1,1062 @@
+[gd_scene load_steps=29 format=3 uid="uid://bnvls8fdb3rlx"]
+
+[ext_resource type="Script" path="res://scenes/encounters/dsr/main_menu.gd" id="1_ufvqy"]
+[ext_resource type="Texture2D" uid="uid://cr6osefluwjvl" path="res://assets/png/ui_logos/dsr_frames/DSR_Frameless.png" id="2_lutkx"]
+[ext_resource type="FontFile" uid="uid://d3ioxbdorwora" path="res://assets/fonts/MYRIADPRO-SEMIBOLDIT.OTF" id="3_ux44j"]
+[ext_resource type="Texture2D" uid="uid://cy020iu8c6q32" path="res://assets/png/ui_logos/button_icons/update_button.png" id="4_oofjv"]
+[ext_resource type="Texture2D" uid="uid://obclwxalg35a" path="res://assets/png/ui_logos/button_icons/ff_x_highlight.png" id="4_ryvbj"]
+[ext_resource type="Texture2D" uid="uid://k17ge7imr1fk" path="res://assets/png/ui_logos/button_icons/ff_x_icon.png" id="5_oy8ks"]
+[ext_resource type="FontFile" uid="uid://dflgosesmjvf" path="res://assets/fonts/MYRIADPRO-BOLD.OTF" id="6_rh6qn"]
+[ext_resource type="FontFile" uid="uid://b87hanxewtnrb" path="res://assets/fonts/MYRIADPRO-BOLDCOND.OTF" id="8_juo8j"]
+[ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="9_03l4y"]
+[ext_resource type="Texture2D" uid="uid://gntk4dnhyncg" path="res://assets/png/ui_logos/button_icons/discord-white-icon.webp" id="9_6fh71"]
+[ext_resource type="Texture2D" uid="uid://kbdyhqmdcqnw" path="res://assets/png/ui_logos/time_clock_bg.png" id="9_ccvfl"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/options_menu.gd" id="10_eb04o"]
+[ext_resource type="FontFile" uid="uid://djss5nme5fyi8" path="res://assets/fonts/MYRIADPRO-BOLDCONDIT.OTF" id="10_fu25c"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/keybinds_menu_container.gd" id="12_gcodo"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/lineup_menu_container.gd" id="13_ge3m7"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/lineup_menu/lineup_role_container.gd" id="14_q1vi6"]
+[ext_resource type="Texture2D" uid="uid://dg3morh5arxui" path="res://assets/png/ui_logos/button_icons/white_arrow.png" id="14_rstfj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fsohq"]
+font = ExtResource("3_ux44j")
+font_size = 84
+outline_size = 5
+outline_color = Color(0.92549, 0.466667, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 0.556863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tecbv"]
+font = ExtResource("6_rh6qn")
+font_color = Color(0.313726, 0.752941, 0.443137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0q2l"]
+bg_color = Color(0, 0.780392, 0.168627, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_odj15"]
+font = ExtResource("6_rh6qn")
+font_size = 50
+outline_size = 4
+outline_color = Color(1, 0.603922, 0.176471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8x8sj"]
+font = ExtResource("6_rh6qn")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_vkj6m"]
+font = ExtResource("6_rh6qn")
+font_size = 37
+outline_size = 4
+outline_color = Color(1, 0.603922, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwl6h"]
+bg_color = Color(0.34902, 0.34902, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wbdc"]
+bg_color = Color(0.737255, 0.482353, 0.796078, 1)
+
+[sub_resource type="Animation" id="Animation_48al6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_masqt"]
+resource_name = "fade_in"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lf4qh"]
+_data = {
+"RESET": SubResource("Animation_48al6"),
+"fade_in": SubResource("Animation_masqt")
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_ufvqy")
+
+[node name="MenuContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="MenuContainer"]
+layout_mode = 2
+texture = ExtResource("2_lutkx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 67
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 113.33)
+layout_mode = 2
+
+[node name="MainTitleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = " Dragonsong Sim"
+label_settings = SubResource("LabelSettings_fsohq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("5_oy8ks")
+texture_hover = ExtResource("4_ryvbj")
+stretch_mode = 0
+
+[node name="MainMenuContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 87
+theme_override_constants/margin_bottom = 65
+
+[node name="Panel" type="Panel" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 38
+
+[node name="LeftButtonsVBox" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer"]
+custom_minimum_size = Vector2(621, 580)
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="P3LaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_rh6qn")
+theme_override_font_sizes/font_size = 30
+text = "Phase 3 : Limit Cut"
+
+[node name="P5WLaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_rh6qn")
+theme_override_font_sizes/font_size = 30
+text = "Phase 5 : Wrath of the Heavens"
+
+[node name="P5DLaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_rh6qn")
+theme_override_font_sizes/font_size = 30
+text = "Phase 5 : Death of the Heavens"
+
+[node name="P6LaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_rh6qn")
+theme_override_font_sizes/font_size = 30
+text = "Phase 6 : Double Dragons"
+
+[node name="UpdateHBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpdateLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Update Available!"
+label_settings = SubResource("LabelSettings_tecbv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpdateLauncherButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_rh6qn")
+theme_override_font_sizes/font_size = 20
+text = "Download Update"
+icon = ExtResource("4_oofjv")
+expand_icon = true
+
+[node name="LauncherDownloadProgress" type="ProgressBar" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_t0q2l")
+step = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = -90
+
+[node name="OptionsButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(154, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_juo8j")
+theme_override_font_sizes/font_size = 42
+text = "Options"
+
+[node name="DiscordButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(52.225, 50.7)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_juo8j")
+theme_override_font_sizes/font_size = 42
+icon = ExtResource("9_6fh71")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ExitButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_juo8j")
+theme_override_font_sizes/font_size = 42
+text = "Exit"
+
+[node name="OptionsMenuContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_constants/margin_left = 115
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 115
+theme_override_constants/margin_bottom = 65
+script = ExtResource("10_eb04o")
+
+[node name="Panel" type="Panel" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 38
+
+[node name="LeftButtonsVBox" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 550)
+layout_mode = 2
+theme_override_constants/separation = 29
+
+[node name="HeaderLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_odj15")
+horizontal_alignment = 1
+
+[node name="StrategyContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StrategyLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/StrategyContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "APD: 
+- Westhogg
+- Doth Dooms Anchor
+- WB1 Healers Anchor
+- WB2 Static
+
+LPDU: 
+- Easthogg
+- Doth Dooms Anchor
+- WB1 G1 Anchor
+- WB2 5N1S
+
+Twintails:
+- LPDU w/ Doth Static"
+mouse_filter = 1
+text = "Strategy:"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="StrategySelectButton" type="OptionButton" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/StrategyContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "APD: 
+- Westhogg
+- Doth Dooms Anchor
+- WB1 Healers Anchor
+- WB2 Static
+
+LPDU: 
+- Easthogg
+- Doth Dooms Anchor
+- WB1 G1 Anchor
+- WB2 5N1S
+
+Twintails:
+- LPDU w/ Doth Static"
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+action_mode = 1
+alignment = 1
+item_count = 3
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "APD"
+popup/item_0/id = 0
+popup/item_1/text = "LPDU"
+popup/item_1/id = 1
+popup/item_2/text = "Twintails"
+popup/item_2/id = 2
+
+[node name="MarkersContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MarkersLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/MarkersContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Waymarks:"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="MarkersSelectButton" type="OptionButton" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/MarkersContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+action_mode = 1
+alignment = 1
+item_count = 2
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "APD"
+popup/item_0/id = 0
+popup/item_1/text = "LPDU"
+popup/item_1/id = 1
+
+[node name="DefaultRoleContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="DefaultRoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DefaultRoleContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Player Role:"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="RoleSelectButton" type="OptionButton" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DefaultRoleContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+action_mode = 1
+alignment = 1
+item_count = 8
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "Tank 1"
+popup/item_0/id = 0
+popup/item_1/text = "Tank 2"
+popup/item_1/id = 1
+popup/item_2/text = "Healer 1"
+popup/item_2/id = 2
+popup/item_3/text = "Healer 2"
+popup/item_3/id = 3
+popup/item_4/text = "Melee 1"
+popup/item_4/id = 4
+popup/item_5/text = "Melee 2"
+popup/item_5/id = 5
+popup/item_6/text = "Ranged 1"
+popup/item_6/id = 6
+popup/item_7/text = "Ranged 2"
+popup/item_7/id = 7
+script = ExtResource("9_03l4y")
+
+[node name="DothLineup" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="DothLineupLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DothLineup"]
+visible = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "DotH Lineup:"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="DothLineupButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DothLineup"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "DotH Lineup"
+
+[node name="WindowModeContainer2" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WindowLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/WindowModeContainer2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Window Mode:"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="WindowSelectButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/WindowModeContainer2"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "Windowed"
+
+[node name="ControlModeContainer3" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ControlLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/ControlModeContainer3"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Control Style:"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="ControlButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/ControlModeContainer3"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "Legacy"
+
+[node name="KeybindsButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_font_sizes/font_size = 26
+text = "Keybinds"
+
+[node name="BottomHBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/BottomHBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_juo8j")
+theme_override_font_sizes/font_size = 42
+text = "Back"
+
+[node name="KeybindsMenuContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_constants/margin_left = 115
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 115
+theme_override_constants/margin_bottom = 65
+script = ExtResource("12_gcodo")
+
+[node name="Panel" type="Panel" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 38
+
+[node name="LeftButtonsVBox" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 550)
+layout_mode = 2
+theme_override_constants/separation = 29
+
+[node name="HeaderLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+text = "Keybinds"
+label_settings = SubResource("LabelSettings_odj15")
+horizontal_alignment = 1
+
+[node name="SprintContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SprintLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/SprintContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Sprint"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="SprintKeyButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/SprintContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="ArmsContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ArmsLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/ArmsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Arm's Length"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="ArmsKeyButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/ArmsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "2"
+
+[node name="DashContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="DashLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/DashContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "En Avant (Dash)"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="DashKeyButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/DashContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 24
+text = "3"
+
+[node name="BottomHBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/BottomHBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_juo8j")
+theme_override_font_sizes/font_size = 42
+text = "Back"
+
+[node name="LineupMenuContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_constants/margin_left = 115
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 115
+theme_override_constants/margin_bottom = 35
+script = ExtResource("13_ge3m7")
+
+[node name="Panel" type="Panel" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 38
+
+[node name="LeftButtonsVBox" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 550)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HeaderLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+custom_minimum_size = Vector2(0, 44.61)
+layout_mode = 2
+text = "DotH Lineup (Left to Right)"
+label_settings = SubResource("LabelSettings_vkj6m")
+horizontal_alignment = 1
+
+[node name="DefaultButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+custom_minimum_size = Vector2(125.22, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_juo8j")
+theme_override_font_sizes/font_size = 35
+text = "Default"
+
+[node name="T1Container" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("14_q1vi6")
+
+[node name="RoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container"]
+custom_minimum_size = Vector2(125.345, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Tank  1"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="UpButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container"]
+custom_minimum_size = Vector2(27, 14.8)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
+
+[node name="DownButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container"]
+custom_minimum_size = Vector2(27, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="T2Container" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("14_q1vi6")
+
+[node name="RoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T2Container"]
+custom_minimum_size = Vector2(125.345, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Tank  2"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="UpButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T2Container"]
+custom_minimum_size = Vector2(27, 14.8)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
+
+[node name="DownButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T2Container"]
+custom_minimum_size = Vector2(27, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="H1Container" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("14_q1vi6")
+
+[node name="RoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H1Container"]
+custom_minimum_size = Vector2(125.345, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Healer 1"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="UpButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H1Container"]
+custom_minimum_size = Vector2(27, 14.8)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
+
+[node name="DownButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H1Container"]
+custom_minimum_size = Vector2(27, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="H2Container" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("14_q1vi6")
+
+[node name="RoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H2Container"]
+custom_minimum_size = Vector2(125.345, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Healer 2"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="UpButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H2Container"]
+custom_minimum_size = Vector2(27, 14.8)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
+
+[node name="DownButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H2Container"]
+custom_minimum_size = Vector2(27, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="M1Container" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("14_q1vi6")
+
+[node name="RoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M1Container"]
+custom_minimum_size = Vector2(125.345, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Melee 1"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="UpButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M1Container"]
+custom_minimum_size = Vector2(27, 14.8)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
+
+[node name="DownButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M1Container"]
+custom_minimum_size = Vector2(27, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="M2Container" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("14_q1vi6")
+
+[node name="RoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M2Container"]
+custom_minimum_size = Vector2(125.345, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Melee 2"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="UpButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M2Container"]
+custom_minimum_size = Vector2(27, 14.8)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
+
+[node name="DownButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M2Container"]
+custom_minimum_size = Vector2(27, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="R1Container" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("14_q1vi6")
+
+[node name="RoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R1Container"]
+custom_minimum_size = Vector2(125.345, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Ranged 1"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="UpButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R1Container"]
+custom_minimum_size = Vector2(27, 14.8)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
+
+[node name="DownButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R1Container"]
+custom_minimum_size = Vector2(27, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="R2Container" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("14_q1vi6")
+
+[node name="RoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R2Container"]
+custom_minimum_size = Vector2(125.345, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Ranged 2"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="UpButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R2Container"]
+custom_minimum_size = Vector2(27, 14.8)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
+
+[node name="DownButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R2Container"]
+custom_minimum_size = Vector2(27, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("14_rstfj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BottomHBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 60
+
+[node name="BackButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/BottomHBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_juo8j")
+theme_override_font_sizes/font_size = 42
+text = "Back"
+
+[node name="LoadScreenContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LoadScreenContainer"]
+layout_mode = 2
+texture = ExtResource("9_ccvfl")
+expand_mode = 2
+
+[node name="LoadingProgressBar" type="ProgressBar" parent="LoadScreenContainer/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 314.0
+offset_top = 801.0
+offset_right = 1298.0
+offset_bottom = 830.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nwl6h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4wbdc")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="LoadingLabel" type="Label" parent="LoadScreenContainer/TextureRect/LoadingProgressBar"]
+layout_mode = 0
+offset_left = 448.0
+offset_right = 532.0
+offset_bottom = 29.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("10_fu25c")
+theme_override_font_sizes/font_size = 26
+text = "Loading"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TransitionAnimationPlayer" type="AnimationPlayer" parent="LoadScreenContainer"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_lf4qh")
+}
+
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer/XButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/P3LaunchButton" to="." method="_on_p3_launch_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/P5WLaunchButton" to="." method="_on_p5w_launch_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/P5DLaunchButton" to="." method="_on_p5d_launch_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/P6LaunchButton" to="." method="_on_p6_launch_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer/UpdateLauncherButton" to="." method="_on_update_launcher_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3/DiscordButton" to="." method="_on_discord_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="item_selected" from="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/StrategyContainer/StrategySelectButton" to="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer" method="_on_strategy_select_button_item_selected"]
+[connection signal="item_selected" from="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/MarkersContainer/MarkersSelectButton" to="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer" method="_on_markers_select_button_item_selected"]
+[connection signal="item_selected" from="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DefaultRoleContainer/RoleSelectButton" to="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DefaultRoleContainer/RoleSelectButton" method="_on_item_selected"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DothLineup/DothLineupButton" to="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer" method="_on_doth_lineup_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/KeybindsButton" to="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer" method="_on_keybinds_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/BottomHBoxContainer/BackButton" to="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer" method="_on_back_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/SprintContainer/SprintKeyButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_sprint_key_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/ArmsContainer/ArmsKeyButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_arms_key_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/DashContainer/DashKeyButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_dash_key_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/BottomHBoxContainer/BackButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_back_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/DefaultButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer" method="_on_default_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container" method="_on_up_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container/DownButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container" method="_on_down_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T2Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T2Container" method="_on_up_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T2Container/DownButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T2Container" method="_on_down_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H1Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H1Container" method="_on_up_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H1Container/DownButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H1Container" method="_on_down_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H2Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H2Container" method="_on_up_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H2Container/DownButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/H2Container" method="_on_down_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M1Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M1Container" method="_on_up_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M1Container/DownButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M1Container" method="_on_down_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M2Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M2Container" method="_on_up_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M2Container/DownButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/M2Container" method="_on_down_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R1Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R1Container" method="_on_up_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R1Container/DownButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R1Container" method="_on_down_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R2Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R2Container" method="_on_up_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R2Container/DownButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/R2Container" method="_on_down_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/BottomHBoxContainer/BackButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer" method="_on_back_button_pressed"]

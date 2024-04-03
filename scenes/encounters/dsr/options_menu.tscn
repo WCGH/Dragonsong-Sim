@@ -1,0 +1,257 @@
+[gd_scene load_steps=11 format=3 uid="uid://dit04nhrsu4r8"]
+
+[ext_resource type="Texture2D" uid="uid://cr6osefluwjvl" path="res://assets/png/ui_logos/dsr_frames/DSR_Frameless.png" id="2_c652e"]
+[ext_resource type="FontFile" uid="uid://d3ioxbdorwora" path="res://assets/fonts/MYRIADPRO-SEMIBOLDIT.OTF" id="3_by1eu"]
+[ext_resource type="Texture2D" uid="uid://k17ge7imr1fk" path="res://assets/png/ui_logos/button_icons/ff_x_icon.png" id="4_qd3q0"]
+[ext_resource type="Texture2D" uid="uid://obclwxalg35a" path="res://assets/png/ui_logos/button_icons/ff_x_highlight.png" id="5_jaf0p"]
+[ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="6_ohgsg"]
+[ext_resource type="FontFile" uid="uid://dflgosesmjvf" path="res://assets/fonts/MYRIADPRO-BOLD.OTF" id="6_sbxno"]
+[ext_resource type="FontFile" uid="uid://b87hanxewtnrb" path="res://assets/fonts/MYRIADPRO-BOLDCOND.OTF" id="8_wyq6u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fsohq"]
+font = ExtResource("3_by1eu")
+font_size = 84
+outline_size = 5
+outline_color = Color(0.92549, 0.466667, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 0.556863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_420yd"]
+font = ExtResource("6_sbxno")
+font_size = 50
+outline_size = 4
+outline_color = Color(1, 0.603922, 0.176471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2rdw2"]
+font = ExtResource("6_sbxno")
+font_size = 28
+
+[node name="OptionsMenu" type="CanvasLayer"]
+
+[node name="MenuContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="MenuContainer"]
+layout_mode = 2
+texture = ExtResource("2_c652e")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 67
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 113.33)
+layout_mode = 2
+
+[node name="MainTitleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = " Dragonsong Sim"
+label_settings = SubResource("LabelSettings_fsohq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("4_qd3q0")
+texture_hover = ExtResource("5_jaf0p")
+stretch_mode = 0
+
+[node name="OptionsMenuContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_constants/margin_left = 115
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 115
+theme_override_constants/margin_bottom = 65
+
+[node name="Panel" type="Panel" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 38
+
+[node name="LeftButtonsVBox" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 550)
+layout_mode = 2
+theme_override_constants/separation = 29
+
+[node name="Label" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_420yd")
+horizontal_alignment = 1
+
+[node name="StrategyContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StrategyLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/StrategyContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Strategy:"
+label_settings = SubResource("LabelSettings_2rdw2")
+
+[node name="StrategySelectButton" type="OptionButton" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/StrategyContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+action_mode = 1
+alignment = 1
+item_count = 1
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "APD"
+popup/item_0/id = 0
+script = ExtResource("6_ohgsg")
+
+[node name="DefaultRoleContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="DefaultRoleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DefaultRoleContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Default Role:"
+label_settings = SubResource("LabelSettings_2rdw2")
+
+[node name="RoleSelectButton" type="OptionButton" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DefaultRoleContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+action_mode = 1
+alignment = 1
+item_count = 8
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "Tank 1"
+popup/item_0/id = 0
+popup/item_1/text = "Tank 2"
+popup/item_1/id = 1
+popup/item_2/text = "Healer 1"
+popup/item_2/id = 2
+popup/item_3/text = "Healer 2"
+popup/item_3/id = 3
+popup/item_4/text = "Melee 1"
+popup/item_4/id = 4
+popup/item_5/text = "Melee 2"
+popup/item_5/id = 5
+popup/item_6/text = "Phys Ranged"
+popup/item_6/id = 6
+popup/item_7/text = "Caster"
+popup/item_7/id = 7
+script = ExtResource("6_ohgsg")
+
+[node name="WindowModeContainer2" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WindowLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/WindowModeContainer2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Window Mode:"
+label_settings = SubResource("LabelSettings_2rdw2")
+
+[node name="WindowSelectButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/WindowModeContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "Windowed"
+
+[node name="ControlModeContainer3" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ControlLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/ControlModeContainer3"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Control Style:"
+label_settings = SubResource("LabelSettings_2rdw2")
+
+[node name="ControlButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/ControlModeContainer3"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "Legacy"
+
+[node name="DothLineup" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="DothLineupLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DothLineup"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Control Style:"
+label_settings = SubResource("LabelSettings_2rdw2")
+
+[node name="RoleSelectButton" type="MenuButton" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/DothLineup"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 24
+text = "Legacy"
+item_count = 2
+popup/item_0/text = "test1"
+popup/item_0/id = 0
+popup/item_1/text = "test2"
+popup/item_1/id = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="KeybindsButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_wyq6u")
+theme_override_font_sizes/font_size = 42
+text = "Keybinds"
+
+[node name="BackButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_wyq6u")
+theme_override_font_sizes/font_size = 42
+text = "Back"
+
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer/XButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3/KeybindsButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3/BackButton" to="." method="_on_exit_button_pressed"]

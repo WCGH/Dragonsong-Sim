@@ -1,0 +1,1836 @@
+[gd_scene load_steps=90 format=3 uid="uid://v1hpgw55s4bk"]
+
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/p6_wyrm.gd" id="1_i51uh"]
+[ext_resource type="PackedScene" uid="uid://btigj53q7q4oi" path="res://scenes/ui/cast_bars/target_cast_bar.tscn" id="2_ycnju"]
+[ext_resource type="PackedScene" uid="uid://cri3gvnrtsbrf" path="res://scenes/ui/cast_bars/enemy_cast_bar.tscn" id="3_32gw0"]
+[ext_resource type="PackedScene" uid="uid://cg0h4uysscvtc" path="res://scenes/ui/action_bar.tscn" id="4_gb3qp"]
+[ext_resource type="PackedScene" uid="uid://cidk1e7u3l0ya" path="res://scenes/ui/fail_list.tscn" id="4_mxnwg"]
+[ext_resource type="PackedScene" uid="uid://02ckwb1trdp4" path="res://scenes/ui/party_list.tscn" id="5_mngpf"]
+[ext_resource type="PackedScene" uid="uid://du2fr4o3nsww0" path="res://scenes/ui/player_debuffs.tscn" id="6_77ute"]
+[ext_resource type="PackedScene" uid="uid://ctvier3tpchg3" path="res://scenes/controllers/target_controller.tscn" id="7_ahm8g"]
+[ext_resource type="PackedScene" uid="uid://bayxk6ajn7khf" path="res://scenes/controllers/party_controller.tscn" id="7_b2160"]
+[ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="7_e2m8d"]
+[ext_resource type="Script" path="res://scenes/ui/sequence_select_button.gd" id="8_iejqf"]
+[ext_resource type="PackedScene" uid="uid://bauk161giibov" path="res://scenes/controllers/ground_aoe_controller.tscn" id="8_uxuy6"]
+[ext_resource type="PackedScene" uid="uid://crewso7ys1t5t" path="res://scenes/controllers/encounter_controller.tscn" id="9_xub00"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/seq1_wyrm.gd" id="10_3uauk"]
+[ext_resource type="PackedScene" uid="uid://dmp33gbqijftl" path="res://scenes/controllers/tether_controller.tscn" id="10_avk3w"]
+[ext_resource type="PackedScene" uid="uid://bwd1v6kvgas8d" path="res://scenes/controllers/waymark_controller.tscn" id="10_pcqg1"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wb1_button.gd" id="10_r6fdw"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wb2_button.gd" id="11_na20n"]
+[ext_resource type="PackedScene" uid="uid://dktirpxqry1m1" path="res://scenes/controllers/target_marker_controller.tscn" id="11_nw8ca"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wroth_flame_controller.gd" id="12_gctdh"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/p6_sequence.gd" id="13_1hls7"]
+[ext_resource type="PackedScene" uid="uid://l44kfd8rk857" path="res://scenes/markers/ground/wroth_line.tscn" id="13_w17me"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/seq_wyrm1.gd" id="14_5a5ql"]
+[ext_resource type="PackedScene" uid="uid://bd3so8mgkmg2i" path="res://scenes/ui/debuff_icons/p6/mortal_vow.tscn" id="14_mh4j8"]
+[ext_resource type="PackedScene" uid="uid://c2b2mjc4ia8dg" path="res://scenes/markers/ground/wroth_zig.tscn" id="14_ojksp"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/seq_aa1.gd" id="15_kdf64"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/seq_wings1.gd" id="16_g8dvo"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/seq_wroth.gd" id="17_e0ek6"]
+[ext_resource type="PackedScene" uid="uid://co0wrm3wjsxb2" path="res://assets/objects/p3_arena/Steppes Platform.glb" id="19_7w2ba"]
+[ext_resource type="Script" path="res://scenes/markers/ground/death_wall.gd" id="20_0hjm7"]
+[ext_resource type="PackedScene" uid="uid://cdeb8a4rq71jt" path="res://scenes/ui/debuff_icons/p6/entangled_flames.tscn" id="21_hf318"]
+[ext_resource type="ArrayMesh" uid="uid://bjj8b1hvrgmo6" path="res://assets/models/coinSilver.obj" id="21_y2ivl"]
+[ext_resource type="PackedScene" uid="uid://dblwjykj2w1au" path="res://scenes/ui/debuff_icons/p6/spreading_flame.tscn" id="22_lyxay"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/seq_aa2.gd" id="25_25rn1"]
+[ext_resource type="Script" path="res://scenes/markers/ground/donut_aoe.gd" id="26_dihg5"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/seq_wings2.gd" id="26_rnrix"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/seq_wyrm2.gd" id="27_qtrvs"]
+[ext_resource type="Shader" path="res://assets/shaders/donut.gdshader" id="27_rybub"]
+[ext_resource type="PackedScene" uid="uid://dxyb4888aqmm1" path="res://scenes/ui/debuff_icons/p6/boiling.tscn" id="28_bsmym"]
+[ext_resource type="Script" path="res://scenes/markers/ground/cone_aoe.gd" id="28_i2qh5"]
+[ext_resource type="PackedScene" uid="uid://dipgko86asjjn" path="res://scenes/ui/debuff_icons/p6/pyretic.tscn" id="28_qlr3y"]
+[ext_resource type="PackedScene" uid="uid://h4jctxmsg8u7" path="res://scenes/ui/debuff_icons/p6/freezing.tscn" id="29_3fr4l"]
+[ext_resource type="Script" path="res://scenes/markers/ground/circle_aoe.gd" id="29_6tvlc"]
+[ext_resource type="PackedScene" uid="uid://ce4avowkwahr6" path="res://scenes/ui/debuff_icons/p6/deep_freeze.tscn" id="29_bgg8i"]
+[ext_resource type="Script" path="res://scenes/markers/ground/line_aoe.gd" id="38_isr6p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dcu0j"]
+font_size = 18
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nc07y"]
+font_size = 32
+outline_size = 4
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_tqhyy"]
+resource_name = "wyrm1"
+length = 19.1
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 2.25, 3.25, 5.25, 8.25, 8.75, 12, 18.25, 19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"move_wyrm_pre"
+}, {
+"args": [],
+"method": &"wyrm1_cast"
+}, {
+"args": [],
+"method": &"spawn_wyrm_donut"
+}, {
+"args": [],
+"method": &"move_to_wyrm_pos"
+}, {
+"args": [],
+"method": &"finish_breath_animation"
+}, {
+"args": [],
+"method": &"wyrm1_hit"
+}, {
+"args": [],
+"method": &"move_to_vow1"
+}, {
+"args": [],
+"method": &"vow1_hit"
+}, {
+"args": [],
+"method": &"end_of_sub_sequence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_psayq"]
+_data = {
+"wyrm1": SubResource("Animation_tqhyy")
+}
+
+[sub_resource type="Animation" id="Animation_73xos"]
+resource_name = "aa1"
+length = 11.1
+step = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.5, 5, 8, 9.75, 10.25, 11),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"aa1_cast"
+}, {
+"args": [],
+"method": &"move_to_lp_stacks"
+}, {
+"args": [],
+"method": &"remove_tether"
+}, {
+"args": [],
+"method": &"finish_breath_animation"
+}, {
+"args": [],
+"method": &"aa1_hit"
+}, {
+"args": [],
+"method": &"end_of_sub_sequence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3pmr"]
+_data = {
+"aa1": SubResource("Animation_73xos")
+}
+
+[sub_resource type="Animation" id="Animation_n1pcu"]
+resource_name = "wings1"
+length = 23.1
+step = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.75, 5.25, 8.5, 13.25, 13.5, 17, 22.25, 23),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"nid_jump"
+}, {
+"args": [],
+"method": &"wings1_cast"
+}, {
+"args": [],
+"method": &"move_to_wings_pos"
+}, {
+"args": [],
+"method": &"play_divebomb"
+}, {
+"args": [],
+"method": &"wings1_hit"
+}, {
+"args": [],
+"method": &"move_to_vow2"
+}, {
+"args": [],
+"method": &"vow_hit_2"
+}, {
+"args": [],
+"method": &"end_of_sub_sequence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkgcn"]
+_data = {
+"wings1": SubResource("Animation_n1pcu")
+}
+
+[sub_resource type="Animation" id="Animation_h3smn"]
+resource_name = "wroth"
+length = 34.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.5, 5.5, 6.5, 6.8, 7.4, 7.7, 9, 10.7, 12.2, 16, 16.1, 16.5, 16.8, 17.1, 17.8, 18.2, 18.5, 19.1, 19.3, 19.7, 20.5, 20.9, 21.3, 22.1, 23.6, 25, 27.7, 29.4, 30.3, 33.3, 34),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"cast_wroth"
+}, {
+"args": [],
+"method": &"hrae_jump"
+}, {
+"args": [],
+"method": &"add_debuffs"
+}, {
+"args": [],
+"method": &"warp_in_hra"
+}, {
+"args": [],
+"method": &"orbs_1_spawn"
+}, {
+"args": [],
+"method": &"cast_akh_morn"
+}, {
+"args": [],
+"method": &"orbs_2_spawn"
+}, {
+"args": [],
+"method": &"cast_cauterize"
+}, {
+"args": [],
+"method": &"orbs_3_spawn"
+}, {
+"args": [],
+"method": &"db_anim"
+}, {
+"args": [],
+"method": &"snapshot_am_pos"
+}, {
+"args": [],
+"method": &"am_1_hit"
+}, {
+"args": [],
+"method": &"move_party_am_1"
+}, {
+"args": [],
+"method": &"orb_1_tele"
+}, {
+"args": [],
+"method": &"snapshot_am_pos"
+}, {
+"args": [],
+"method": &"am_2_hit"
+}, {
+"args": [],
+"method": &"orb_1_hit"
+}, {
+"args": [],
+"method": &"orb_2_tele"
+}, {
+"args": [],
+"method": &"snapshot_am_pos"
+}, {
+"args": [],
+"method": &"am_3_hit"
+}, {
+"args": [],
+"method": &"orb_2_hit"
+}, {
+"args": [],
+"method": &"snapshot_am_pos"
+}, {
+"args": [],
+"method": &"am_4_hit"
+}, {
+"args": [],
+"method": &"orb_3_tele"
+}, {
+"args": [],
+"method": &"orb_3_hit"
+}, {
+"args": [],
+"method": &"move_to_spread"
+}, {
+"args": [],
+"method": &"tail_wing_tele"
+}, {
+"args": [],
+"method": &"debuff_aoe_hits"
+}, {
+"args": [],
+"method": &"move_tanks_to_middle"
+}, {
+"args": [],
+"method": &"vow_hit_3"
+}, {
+"args": [],
+"method": &"end_of_sub_sequence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j473j"]
+_data = {
+"wroth": SubResource("Animation_h3smn")
+}
+
+[sub_resource type="Animation" id="Animation_efd1p"]
+resource_name = "aa2"
+length = 12.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.7, 5, 8, 11, 11.5, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"aa2_cast"
+}, {
+"args": [],
+"method": &"move_to_lp_stacks"
+}, {
+"args": [],
+"method": &"remove_tether"
+}, {
+"args": [],
+"method": &"finish_breath_animation"
+}, {
+"args": [],
+"method": &"aa2_hit"
+}, {
+"args": [],
+"method": &"end_of_sub_sequence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7hqa"]
+_data = {
+"aa2": SubResource("Animation_efd1p")
+}
+
+[sub_resource type="Animation" id="Animation_5sfcn"]
+resource_name = "wings2"
+length = 22.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4.4, 6.5, 9, 12.1, 12.6, 17, 21.5, 22),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"wings2_cast"
+}, {
+"args": [],
+"method": &"cast_wing_tail"
+}, {
+"args": [],
+"method": &"move_to_wings_pos"
+}, {
+"args": [],
+"method": &"hot_wing_tail_tele"
+}, {
+"args": [],
+"method": &"wings2_hit"
+}, {
+"args": [],
+"method": &"move_to_vow4"
+}, {
+"args": [],
+"method": &"vow_hit_4"
+}, {
+"args": [],
+"method": &"end_of_sub_sequence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qycmu"]
+_data = {
+"wings2": SubResource("Animation_5sfcn")
+}
+
+[sub_resource type="Animation" id="Animation_u24m7"]
+resource_name = "wyrm2"
+length = 35.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 3.4, 4.5, 6, 9.5, 10, 14, 15.7, 16.9, 18, 21.5, 22.7, 23.8, 27, 29.9, 31, 33.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"move_wyrm_pre"
+}, {
+"args": [],
+"method": &"wyrm2_cast"
+}, {
+"args": [],
+"method": &"spawn_wyrm_donut"
+}, {
+"args": [],
+"method": &"move_to_wyrm_pos"
+}, {
+"args": [],
+"method": &"finish_breath_animation"
+}, {
+"args": [],
+"method": &"wyrm2_hit"
+}, {
+"args": [],
+"method": &"move_to_pre_db"
+}, {
+"args": [],
+"method": &"warp_out_bosses"
+}, {
+"args": [],
+"method": &"warp_in_bosses"
+}, {
+"args": [],
+"method": &"move_to_db_positions"
+}, {
+"args": [],
+"method": &"apply_debuffs"
+}, {
+"args": [],
+"method": &"start_db_anim"
+}, {
+"args": [],
+"method": &"db_hit"
+}, {
+"args": [],
+"method": &"move_north"
+}, {
+"args": [],
+"method": &"touchdown"
+}, {
+"args": [],
+"method": &"move_to_vow_5"
+}, {
+"args": [],
+"method": &"vow_hit_5"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3tslw"]
+_data = {
+"wyrm2": SubResource("Animation_u24m7")
+}
+
+[sub_resource type="Animation" id="Animation_pwsbp"]
+resource_name = "seq1"
+length = 80.0
+step = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 2.25, 4.25, 5.25, 7.25, 10.25, 10.75, 12, 18.25, 21.5, 27, 28.75, 29.25, 33.75, 35.25, 40, 43.25, 43.5, 47, 52.25, 53),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"spawn_npcs"
+}, {
+"args": [],
+"method": &"move_wyrm_pre"
+}, {
+"args": [],
+"method": &"wyrm1_cast"
+}, {
+"args": [],
+"method": &"spawn_wyrm_donut"
+}, {
+"args": [],
+"method": &"move_to_wyrm_pos"
+}, {
+"args": [],
+"method": &"finish_breath_animation"
+}, {
+"args": [],
+"method": &"wyrm1_hit"
+}, {
+"args": [],
+"method": &"move_to_vow1"
+}, {
+"args": [],
+"method": &"vow1_hit"
+}, {
+"args": [],
+"method": &"aa1_cast"
+}, {
+"args": [],
+"method": &"remove_tether"
+}, {
+"args": [],
+"method": &"finish_breath_animation"
+}, {
+"args": [],
+"method": &"aa1_hit"
+}, {
+"args": [],
+"method": &"nid_jump"
+}, {
+"args": [],
+"method": &"wings1_cast"
+}, {
+"args": [],
+"method": &"move_to_wings_pos"
+}, {
+"args": [],
+"method": &"play_divebomb"
+}, {
+"args": [],
+"method": &"wings1_hit"
+}, {
+"args": [],
+"method": &"move_to_vow2"
+}, {
+"args": [],
+"method": &"vow_hit_2"
+}, {
+"args": [],
+"method": &"next_sequence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o7t2a"]
+_data = {
+"seq1": SubResource("Animation_pwsbp")
+}
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_23fhv"]
+data = PackedVector3Array(150, 0, 150, -150, 0, 150, 150, 0, -150, -150, 0, 150, -150, 0, -150, 150, 0, -150)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l7d6v"]
+points = PackedVector3Array(-45.2, -3, -45.2, -45.2, 7, -45.2, 45.2, -3, -45.2, -45.2, -3, 45.2, -45.2, 7, 45.2, 45.2, 7, -45.2, 45.2, -3, 45.2, 45.2, 7, 45.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vhtj"]
+transparency = 1
+albedo_color = Color(0.313726, 0.654902, 0.898039, 0.141176)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ripk3"]
+material = SubResource("StandardMaterial3D_0vhtj")
+size = Vector2(4.5, 95.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gtf6"]
+emission_enabled = true
+emission = Color(0.176471, 0.972549, 1, 1)
+emission_energy_multiplier = 12.65
+
+[sub_resource type="BoxMesh" id="BoxMesh_2vl62"]
+material = SubResource("StandardMaterial3D_8gtf6")
+size = Vector3(0.136, 0.01, 90.4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8mb6i"]
+top_radius = 0.06
+bottom_radius = 0.06
+height = 45.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnvpr"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("27_rybub")
+shader_parameter/size = 0.238
+shader_parameter/alpha = 0.3
+shader_parameter/color = Vector3(0.5, 0, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y14pb"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_cnvpr")
+top_radius = 43.472
+bottom_radius = 64.861
+height = 0.01
+cap_bottom = false
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yvyj4"]
+resource_local_to_scene = true
+height = 0.01
+radius = 60.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddleq"]
+transparency = 1
+albedo_color = Color(1, 0.317647, 0.168627, 0.741176)
+
+[sub_resource type="PrismMesh" id="PrismMesh_q1aox"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_ddleq")
+size = Vector3(52.134, 1, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mofwu"]
+points = PackedVector3Array(0, 0.5, 0, 0.5, -0.5, 0, 0, 0.5, 0.056, -0.5, -0.5, 0.054, 0.5, -0.5, 0.053, -0.5, -0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qigu6"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.933333, 0.388235, 0, 0.419608)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gyv0q"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_qigu6")
+top_radius = 10.0
+bottom_radius = 10.0
+height = 0.01
+cap_bottom = false
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v5a50"]
+resource_local_to_scene = true
+height = 5.0
+radius = 10.0
+
+[sub_resource type="Animation" id="Animation_tmq7b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:top_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:bottom_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+
+[sub_resource type="Animation" id="Animation_r5d64"]
+resource_name = "grow_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:top_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:bottom_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bk3tn"]
+_data = {
+"RESET": SubResource("Animation_tmq7b"),
+"grow_in": SubResource("Animation_r5d64")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pokvf"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 0.317647, 0.168627, 0.741176)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2kvhy"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_pokvf")
+size = Vector2(33.75, 200)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bcf6s"]
+resource_local_to_scene = true
+size = Vector3(0, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n540m"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kideh"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5e3hv"]
+sky_material = SubResource("ProceduralSkyMaterial_kideh")
+
+[sub_resource type="Environment" id="Environment_ncsmy"]
+background_mode = 2
+sky = SubResource("Sky_5e3hv")
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.06
+fog_light_energy = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_emission_energy = 30.68
+volumetric_fog_length = 100.0
+
+[node name="P6Wyrm" type="Node3D"]
+script = ExtResource("1_i51uh")
+
+[node name="TargetCastBar" parent="." instance=ExtResource("2_ycnju")]
+unique_name_in_owner = true
+
+[node name="EnemyCastBar" parent="." instance=ExtResource("3_32gw0")]
+unique_name_in_owner = true
+
+[node name="ActionBar" parent="." instance=ExtResource("4_gb3qp")]
+
+[node name="FailList" parent="." instance=ExtResource("4_mxnwg")]
+unique_name_in_owner = true
+
+[node name="PartyList" parent="." instance=ExtResource("5_mngpf")]
+unique_name_in_owner = true
+
+[node name="PlayerDebuffs" parent="." instance=ExtResource("6_77ute")]
+unique_name_in_owner = true
+
+[node name="OnScreenButtons" type="CanvasLayer" parent="."]
+
+[node name="ResetButton" type="Button" parent="OnScreenButtons"]
+offset_left = 28.0
+offset_top = 18.0
+offset_right = 128.0
+offset_bottom = 58.0
+focus_mode = 0
+text = "Reset"
+
+[node name="RoleSelectButton" type="OptionButton" parent="OnScreenButtons"]
+offset_left = 160.0
+offset_top = 21.0
+offset_right = 304.0
+offset_bottom = 52.0
+focus_mode = 0
+action_mode = 1
+item_count = 8
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "Tank 1"
+popup/item_0/id = 0
+popup/item_1/text = "Tank 2"
+popup/item_1/id = 1
+popup/item_2/text = "Healer 1"
+popup/item_2/id = 2
+popup/item_3/text = "Healer 2"
+popup/item_3/id = 3
+popup/item_4/text = "Melee 1"
+popup/item_4/id = 4
+popup/item_5/text = "Melee 2"
+popup/item_5/id = 5
+popup/item_6/text = "Phys Ranged"
+popup/item_6/id = 6
+popup/item_7/text = "Caster"
+popup/item_7/id = 7
+script = ExtResource("7_e2m8d")
+
+[node name="SequenceSelectButton" type="OptionButton" parent="OnScreenButtons"]
+offset_left = 321.0
+offset_top = 21.0
+offset_right = 465.0
+offset_bottom = 52.0
+focus_mode = 0
+action_mode = 1
+item_count = 5
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "Wyrmsbreath 1"
+popup/item_0/id = 0
+popup/item_1/text = "Wings 1"
+popup/item_1/id = 1
+popup/item_2/text = "Wroth Flames"
+popup/item_2/id = 2
+popup/item_3/text = "Wings 2"
+popup/item_3/id = 3
+popup/item_4/text = "Wyrmsbreath 2"
+popup/item_4/id = 4
+script = ExtResource("8_iejqf")
+
+[node name="WB1Button" type="OptionButton" parent="OnScreenButtons"]
+custom_minimum_size = Vector2(168, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -188.0
+offset_top = 17.0
+offset_right = -20.0
+offset_bottom = 48.0
+grow_horizontal = 0
+focus_mode = 0
+action_mode = 1
+item_count = 3
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "Healers Anchor"
+popup/item_0/id = 0
+popup/item_1/text = "Ranged Anchor"
+popup/item_1/id = 1
+popup/item_2/text = "Group 1 Anchor"
+popup/item_2/id = 2
+script = ExtResource("10_r6fdw")
+
+[node name="Label" type="Label" parent="OnScreenButtons/WB1Button"]
+layout_mode = 0
+offset_left = -49.0
+offset_top = 3.0
+offset_right = 63.0
+offset_bottom = 29.0
+text = "WB 1"
+label_settings = SubResource("LabelSettings_dcu0j")
+
+[node name="WB2Button" type="OptionButton" parent="OnScreenButtons"]
+custom_minimum_size = Vector2(168, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -188.0
+offset_top = 61.0
+offset_right = -20.0
+offset_bottom = 92.0
+grow_horizontal = 0
+focus_mode = 0
+action_mode = 1
+item_count = 2
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "5 North 1 South"
+popup/item_0/id = 0
+popup/item_1/text = "Static"
+popup/item_1/id = 1
+script = ExtResource("11_na20n")
+
+[node name="Label" type="Label" parent="OnScreenButtons/WB2Button"]
+layout_mode = 0
+offset_left = -49.0
+offset_top = 3.0
+offset_right = 63.0
+offset_bottom = 29.0
+text = "WB 2"
+label_settings = SubResource("LabelSettings_dcu0j")
+
+[node name="MainMenuButton" type="Button" parent="OnScreenButtons"]
+offset_left = 28.0
+offset_top = 73.0
+offset_right = 128.0
+offset_bottom = 113.0
+text = "Main Menu"
+
+[node name="BossHPWarn" type="Label" parent="OnScreenButtons"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.0
+offset_top = 56.0
+offset_right = 138.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Watch Boss HP"
+label_settings = SubResource("LabelSettings_nc07y")
+
+[node name="WaymarkController" parent="." node_paths=PackedStringArray("arena_node") instance=ExtResource("10_pcqg1")]
+arena_node = NodePath("../Waymarks")
+
+[node name="PartyController" parent="." instance=ExtResource("7_b2160")]
+unique_name_in_owner = true
+
+[node name="TargetController" parent="." instance=ExtResource("7_ahm8g")]
+unique_name_in_owner = true
+
+[node name="TargetMarkerController" parent="." instance=ExtResource("11_nw8ca")]
+unique_name_in_owner = true
+
+[node name="GroundAoEController" parent="." instance=ExtResource("8_uxuy6")]
+unique_name_in_owner = true
+
+[node name="TetherController" parent="." instance=ExtResource("10_avk3w")]
+unique_name_in_owner = true
+
+[node name="WrothFlameController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("12_gctdh")
+wroth_line_scene = ExtResource("13_w17me")
+wroth_zig_scene = ExtResource("14_ojksp")
+
+[node name="EncounterController" parent="." instance=ExtResource("9_xub00")]
+unique_name_in_owner = true
+
+[node name="P6Sequence" type="Node" parent="EncounterController"]
+script = ExtResource("13_1hls7")
+
+[node name="Wyrm1" type="Node" parent="EncounterController/P6Sequence"]
+unique_name_in_owner = true
+script = ExtResource("14_5a5ql")
+
+[node name="Wyrm1Anim" type="AnimationPlayer" parent="EncounterController/P6Sequence/Wyrm1"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_psayq")
+}
+
+[node name="AA1" type="Node" parent="EncounterController/P6Sequence"]
+unique_name_in_owner = true
+script = ExtResource("15_kdf64")
+
+[node name="AA1Anim" type="AnimationPlayer" parent="EncounterController/P6Sequence/AA1"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_y3pmr")
+}
+
+[node name="Wings1" type="Node" parent="EncounterController/P6Sequence"]
+unique_name_in_owner = true
+script = ExtResource("16_g8dvo")
+
+[node name="Wings1Anim" type="AnimationPlayer" parent="EncounterController/P6Sequence/Wings1"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_dkgcn")
+}
+
+[node name="Wroth" type="Node" parent="EncounterController/P6Sequence"]
+unique_name_in_owner = true
+script = ExtResource("17_e0ek6")
+entangled_flames_icon_scene = ExtResource("21_hf318")
+spreading_flames_icon_scene = ExtResource("22_lyxay")
+
+[node name="WrothAnim" type="AnimationPlayer" parent="EncounterController/P6Sequence/Wroth"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_j473j")
+}
+
+[node name="AA2" type="Node" parent="EncounterController/P6Sequence"]
+unique_name_in_owner = true
+script = ExtResource("25_25rn1")
+
+[node name="AA2Anim" type="AnimationPlayer" parent="EncounterController/P6Sequence/AA2"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_a7hqa")
+}
+
+[node name="Wings2" type="Node" parent="EncounterController/P6Sequence"]
+unique_name_in_owner = true
+script = ExtResource("26_rnrix")
+
+[node name="Wings2Anim" type="AnimationPlayer" parent="EncounterController/P6Sequence/Wings2"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_qycmu")
+}
+
+[node name="Wyrm2" type="Node" parent="EncounterController/P6Sequence"]
+unique_name_in_owner = true
+script = ExtResource("27_qtrvs")
+boiling_icon_scene = ExtResource("28_bsmym")
+freezing_icon_scene = ExtResource("29_3fr4l")
+pyretic_icon_scene = ExtResource("28_qlr3y")
+deep_freeze_icon_scene = ExtResource("29_bgg8i")
+
+[node name="Wyrm2Anim" type="AnimationPlayer" parent="EncounterController/P6Sequence/Wyrm2"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_3tslw")
+}
+
+[node name="Seq1WyrmOLD" type="Node" parent="EncounterController"]
+unique_name_in_owner = true
+script = ExtResource("10_3uauk")
+vow_icon_scene = ExtResource("14_mh4j8")
+
+[node name="Seq1Anim" type="AnimationPlayer" parent="EncounterController/Seq1WyrmOLD"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_o7t2a")
+}
+
+[node name="Arena" type="Node3D" parent="."]
+
+[node name="Visual" type="Node3D" parent="Arena"]
+
+[node name="Steppes Platform" parent="Arena/Visual" instance=ExtResource("19_7w2ba")]
+transform = Transform3D(2.381, 0, 0, 0, 2.381, 0, 0, 0, 2.381, 0, -0.32, 0)
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/FloorMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/FloorMesh/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_23fhv")
+
+[node name="DeathWallSquare" type="Node3D" parent="Arena"]
+script = ExtResource("20_0hjm7")
+
+[node name="DeathwallTrigger" type="Area3D" parent="Arena/DeathWallSquare"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/DeathWallSquare/DeathwallTrigger"]
+shape = SubResource("ConvexPolygonShape3D_l7d6v")
+
+[node name="OutterFog" type="Node3D" parent="Arena/DeathWallSquare"]
+
+[node name="Quad1" type="MeshInstance3D" parent="Arena/DeathWallSquare/OutterFog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.4, 0, -2.231)
+mesh = SubResource("PlaneMesh_ripk3")
+skeleton = NodePath("../..")
+
+[node name="Quad2" type="MeshInstance3D" parent="Arena/DeathWallSquare/OutterFog"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.152, 0, -47.4)
+mesh = SubResource("PlaneMesh_ripk3")
+skeleton = NodePath("../..")
+
+[node name="Quad3" type="MeshInstance3D" parent="Arena/DeathWallSquare/OutterFog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.4, 0, 2.165)
+mesh = SubResource("PlaneMesh_ripk3")
+skeleton = NodePath("../..")
+
+[node name="Quad4" type="MeshInstance3D" parent="Arena/DeathWallSquare/OutterFog"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.145, 0, 47.4)
+mesh = SubResource("PlaneMesh_ripk3")
+skeleton = NodePath("../..")
+
+[node name="Quadrant1" type="Node3D" parent="Arena/DeathWallSquare"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.2, 0, -45.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.137, -45.1)
+mesh = SubResource("BoxMesh_2vl62")
+
+[node name="Section1" type="Node3D" parent="Arena/DeathWallSquare/Quadrant1"]
+
+[node name="Chain" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.8, -22.6)
+mesh = SubResource("CylinderMesh_8mb6i")
+
+[node name="Notch" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, 0)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -3.01)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -6.02)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -9.03)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -12.04)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -15.05)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -18.06)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -21.07)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -24.08)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -27.09)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -30.1)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -33.11)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch13" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -36.12)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch14" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -39.13)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch15" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -42.14)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Section2" type="Node3D" parent="Arena/DeathWallSquare/Quadrant1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.2)
+
+[node name="Chain" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.8, -22.6)
+mesh = SubResource("CylinderMesh_8mb6i")
+
+[node name="Notch" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, 0)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -3.01)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -6.02)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -9.03)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -12.04)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -15.05)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -18.06)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -21.07)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -24.08)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -27.09)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -30.1)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -33.11)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch13" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -36.12)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch14" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -39.13)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch15" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant1/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -42.14)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Quadrant2" type="Node3D" parent="Arena/DeathWallSquare"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -45.2, 0, -45.2)
+
+[node name="Section1" type="Node3D" parent="Arena/DeathWallSquare/Quadrant2"]
+
+[node name="Chain" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.8, -22.6)
+mesh = SubResource("CylinderMesh_8mb6i")
+
+[node name="Notch" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, 0)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -3.01)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -6.02)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -9.03)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -12.04)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -15.05)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -18.06)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -21.07)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -24.08)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -27.09)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -30.1)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -33.11)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch13" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -36.12)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch14" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -39.13)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch15" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -42.14)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Section2" type="Node3D" parent="Arena/DeathWallSquare/Quadrant2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.2)
+
+[node name="Chain" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.8, -22.6)
+mesh = SubResource("CylinderMesh_8mb6i")
+
+[node name="Notch" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, 0)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -3.01)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -6.02)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -9.03)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -12.04)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -15.05)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -18.06)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -21.07)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -24.08)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -27.09)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -30.1)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -33.11)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch13" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -36.12)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch14" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -39.13)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch15" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -42.14)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.137, -45.1)
+mesh = SubResource("BoxMesh_2vl62")
+
+[node name="Quadrant3" type="Node3D" parent="Arena/DeathWallSquare"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -45.2, 0, 45.2)
+
+[node name="Section1" type="Node3D" parent="Arena/DeathWallSquare/Quadrant3"]
+
+[node name="Chain" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.8, -22.6)
+mesh = SubResource("CylinderMesh_8mb6i")
+
+[node name="Notch" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, 0)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -3.01)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -6.02)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -9.03)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -12.04)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -15.05)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -18.06)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -21.07)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -24.08)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -27.09)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -30.1)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -33.11)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch13" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -36.12)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch14" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -39.13)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch15" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -42.14)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Section2" type="Node3D" parent="Arena/DeathWallSquare/Quadrant3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.2)
+
+[node name="Chain" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.8, -22.6)
+mesh = SubResource("CylinderMesh_8mb6i")
+
+[node name="Notch" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, 0)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -3.01)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -6.02)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -9.03)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -12.04)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -15.05)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -18.06)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -21.07)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -24.08)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -27.09)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -30.1)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -33.11)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch13" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -36.12)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch14" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -39.13)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch15" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -42.14)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.137, -45.1)
+mesh = SubResource("BoxMesh_2vl62")
+
+[node name="Quadrant4" type="Node3D" parent="Arena/DeathWallSquare"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2, 0, 45.2)
+
+[node name="Section1" type="Node3D" parent="Arena/DeathWallSquare/Quadrant4"]
+
+[node name="Chain" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.8, -22.6)
+mesh = SubResource("CylinderMesh_8mb6i")
+
+[node name="Notch" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, 0)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -3.01)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -6.02)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -9.03)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -12.04)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -15.05)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -18.06)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -21.07)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -24.08)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -27.09)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -30.1)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -33.11)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch13" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -36.12)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch14" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -39.13)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch15" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section1"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -42.14)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Section2" type="Node3D" parent="Arena/DeathWallSquare/Quadrant4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.2)
+
+[node name="Chain" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.8, -22.6)
+mesh = SubResource("CylinderMesh_8mb6i")
+
+[node name="Notch" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, 0)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -3.01)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -6.02)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -9.03)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -12.04)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -15.05)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -18.06)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -21.07)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -24.08)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -27.09)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -30.1)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -33.11)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch13" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -36.12)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch14" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -39.13)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="Notch15" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4/Section2"]
+transform = Transform3D(-5.64314e-08, 0, 2.148, 0, 3.954, 0, -1.291, 0, -9.38921e-08, 0, 0, -42.14)
+mesh = ExtResource("21_y2ivl")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/DeathWallSquare/Quadrant4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.137, -45.1)
+mesh = SubResource("BoxMesh_2vl62")
+
+[node name="Waymarks" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Characters" type="Node3D" parent="." groups=["characters_layer"]]
+
+[node name="Enemies" type="Node3D" parent="." groups=["enemies_layer"]]
+unique_name_in_owner = true
+
+[node name="GroundMarkers" type="Node3D" parent="." groups=["ground_marker_layer"]]
+
+[node name="DonutAoE" type="Area3D" parent="GroundMarkers"]
+visible = false
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("26_dihg5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GroundMarkers/DonutAoE"]
+mesh = SubResource("CylinderMesh_y14pb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundMarkers/DonutAoE"]
+shape = SubResource("CylinderShape3D_yvyj4")
+
+[node name="ConeAoE" type="Area3D" parent="GroundMarkers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50, 0, 0)
+visible = false
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("28_i2qh5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GroundMarkers/ConeAoE"]
+transform = Transform3D(-1, 0, 0, 0, 4.37114e-06, 1, 0, -100, 4.37114e-08, 0, 0, 50)
+mesh = SubResource("PrismMesh_q1aox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundMarkers/ConeAoE"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.5)
+shape = SubResource("ConvexPolygonShape3D_mofwu")
+
+[node name="CircleAoE" type="Area3D" parent="GroundMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94829, -1.04904e-05, 3.28143)
+visible = false
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("29_6tvlc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GroundMarkers/CircleAoE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.89194, 1.90735e-06, 6.03535)
+mesh = SubResource("CylinderMesh_gyv0q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundMarkers/CircleAoE"]
+shape = SubResource("CylinderShape3D_v5a50")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GroundMarkers/CircleAoE"]
+libraries = {
+"": SubResource("AnimationLibrary_bk3tn")
+}
+
+[node name="LineAoE" type="Area3D" parent="GroundMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.215, 0, 0)
+visible = false
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("38_isr6p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GroundMarkers/LineAoE"]
+mesh = SubResource("QuadMesh_2kvhy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="GroundMarkers/LineAoE"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_2kvhy")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundMarkers/LineAoE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+shape = SubResource("BoxShape3D_bcf6s")
+
+[node name="Dev" type="Node3D" parent="."]
+
+[node name="Coords" type="Label" parent="Dev" groups=["coords_label"]]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_top = 152.0
+offset_right = -25.0
+offset_bottom = 197.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "0,12"
+label_settings = SubResource("LabelSettings_n540m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ncsmy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.44
+
+[connection signal="pressed" from="OnScreenButtons/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="item_selected" from="OnScreenButtons/RoleSelectButton" to="OnScreenButtons/RoleSelectButton" method="_on_item_selected"]
+[connection signal="item_selected" from="OnScreenButtons/SequenceSelectButton" to="OnScreenButtons/SequenceSelectButton" method="_on_item_selected"]
+[connection signal="item_selected" from="OnScreenButtons/WB1Button" to="OnScreenButtons/WB1Button" method="_on_item_selected"]
+[connection signal="item_selected" from="OnScreenButtons/WB2Button" to="OnScreenButtons/WB2Button" method="_on_item_selected"]
+[connection signal="pressed" from="OnScreenButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="body_exited" from="Arena/DeathWallSquare/DeathwallTrigger" to="Arena/DeathWallSquare" method="_on_deathwall_trigger_body_exited"]
+[connection signal="body_entered" from="GroundMarkers/ConeAoE" to="GroundMarkers/ConeAoE" method="_on_body_entered"]
+[connection signal="body_entered" from="GroundMarkers/CircleAoE" to="GroundMarkers/CircleAoE" method="_on_body_entered"]

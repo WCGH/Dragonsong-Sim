@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cryha54258ujw"]
+
+[ext_resource type="Texture2D" uid="uid://ncp31c5krtu1" path="res://assets/lockon/3.svg" id="1_qkipo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeg7e"]
+transparency = 1
+albedo_texture = ExtResource("1_qkipo")
+emission_enabled = true
+emission = Color(0.337255, 0.372549, 1, 1)
+emission_energy_multiplier = 9.26
+rim_enabled = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_3o8og"]
+material = SubResource("StandardMaterial3D_eeg7e")
+size = Vector2(2, 1)
+
+[node name="LimitCut3" type="Node3D" groups=["lc_icon"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+metadata/id = 9
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_3o8og")

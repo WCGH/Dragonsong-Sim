@@ -1,0 +1,323 @@
+[gd_scene load_steps=19 format=3 uid="uid://deb27n0l8dlyy"]
+
+[ext_resource type="Script" path="res://scenes/encounters/dsr/main_menu.gd" id="1_5hkm5"]
+[ext_resource type="Texture2D" uid="uid://bxflpidkvl1ks" path="res://assets/zz_old_assets/misc/DSR_Frame_Cropped.png" id="2_66fjs"]
+[ext_resource type="FontFile" uid="uid://d3ioxbdorwora" path="res://assets/fonts/MYRIADPRO-SEMIBOLDIT.OTF" id="3_ihcux"]
+[ext_resource type="Texture2D" uid="uid://k17ge7imr1fk" path="res://assets/png/ui_logos/button_icons/ff_x_icon.png" id="4_uykqr"]
+[ext_resource type="Texture2D" uid="uid://obclwxalg35a" path="res://assets/png/ui_logos/button_icons/ff_x_highlight.png" id="5_yqkus"]
+[ext_resource type="FontFile" uid="uid://dflgosesmjvf" path="res://assets/fonts/MYRIADPRO-BOLD.OTF" id="6_l2vrs"]
+[ext_resource type="Texture2D" uid="uid://cy020iu8c6q32" path="res://assets/png/ui_logos/button_icons/update_button.png" id="7_owsr1"]
+[ext_resource type="FontFile" uid="uid://b87hanxewtnrb" path="res://assets/fonts/MYRIADPRO-BOLDCOND.OTF" id="8_i3fns"]
+[ext_resource type="Texture2D" uid="uid://kbdyhqmdcqnw" path="res://assets/png/ui_logos/time_clock_bg.png" id="9_fxgdr"]
+[ext_resource type="FontFile" uid="uid://djss5nme5fyi8" path="res://assets/fonts/MYRIADPRO-BOLDCONDIT.OTF" id="10_yj01i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fsohq"]
+font = ExtResource("3_ihcux")
+font_size = 64
+outline_size = 5
+outline_color = Color(0.92549, 0.466667, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 0.556863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tecbv"]
+font = ExtResource("6_l2vrs")
+font_color = Color(0.313726, 0.752941, 0.443137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0q2l"]
+bg_color = Color(0, 0.780392, 0.168627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwl6h"]
+bg_color = Color(0.34902, 0.34902, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wbdc"]
+bg_color = Color(0.737255, 0.482353, 0.796078, 1)
+
+[sub_resource type="Animation" id="Animation_48al6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_masqt"]
+resource_name = "fade_in"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lf4qh"]
+_data = {
+"RESET": SubResource("Animation_48al6"),
+"fade_in": SubResource("Animation_masqt")
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_5hkm5")
+
+[node name="MenuContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="MenuContainer"]
+layout_mode = 2
+texture = ExtResource("2_66fjs")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 290
+theme_override_constants/margin_top = 162
+theme_override_constants/margin_right = 216
+theme_override_constants/margin_bottom = 140
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 78.312)
+layout_mode = 2
+
+[node name="MainTitleLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = " Dragonsong Sim"
+label_settings = SubResource("LabelSettings_fsohq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XButton" type="TextureButton" parent="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("4_uykqr")
+texture_hover = ExtResource("5_yqkus")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_constants/margin_left = 85
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 87
+theme_override_constants/margin_bottom = 32
+
+[node name="Panel" type="Panel" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 31
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 31
+theme_override_constants/margin_bottom = 22
+
+[node name="LeftButtonsVBox" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
+custom_minimum_size = Vector2(397.35, 415)
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="P3LaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_l2vrs")
+theme_override_font_sizes/font_size = 26
+text = "Phase 3 : Limit Cut"
+
+[node name="P5WLaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_l2vrs")
+theme_override_font_sizes/font_size = 26
+text = "Phase 5 : Wrath of the Heavens"
+
+[node name="P5DLaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_l2vrs")
+theme_override_font_sizes/font_size = 26
+text = "Phase 5 : Death of the Heavens"
+
+[node name="P6LaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_l2vrs")
+theme_override_font_sizes/font_size = 26
+text = "Phase 6 : Double Dragons"
+
+[node name="UpdateHBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpdateLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Update Available!"
+label_settings = SubResource("LabelSettings_tecbv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpdateLauncherButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_l2vrs")
+theme_override_font_sizes/font_size = 20
+text = "Download Update"
+icon = ExtResource("7_owsr1")
+expand_icon = true
+
+[node name="LauncherDownloadProgress" type="ProgressBar" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_t0q2l")
+step = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="OptionsButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(147.795, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_i3fns")
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_i3fns")
+theme_override_font_sizes/font_size = 36
+text = "Exit"
+
+[node name="LoadScreenContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LoadScreenContainer"]
+layout_mode = 2
+texture = ExtResource("9_fxgdr")
+expand_mode = 2
+
+[node name="LoadingProgressBar" type="ProgressBar" parent="LoadScreenContainer/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 314.0
+offset_top = 801.0
+offset_right = 1298.0
+offset_bottom = 830.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nwl6h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4wbdc")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="LoadingLabel" type="Label" parent="LoadScreenContainer/TextureRect/LoadingProgressBar"]
+layout_mode = 0
+offset_left = 448.0
+offset_right = 532.0
+offset_bottom = 29.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("10_yj01i")
+theme_override_font_sizes/font_size = 26
+text = "Loading"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TransitionAnimationPlayer" type="AnimationPlayer" parent="LoadScreenContainer"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_lf4qh")
+}
+
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer/XButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/P3LaunchButton" to="." method="_on_p3_launch_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/P5WLaunchButton" to="." method="_on_p5w_launch_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/P5DLaunchButton" to="." method="_on_p5d_launch_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/P6LaunchButton" to="." method="_on_p6_launch_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer/UpdateLauncherButton" to="." method="_on_update_launcher_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3/ExitButton" to="." method="_on_exit_button_pressed"]

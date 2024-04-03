@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2w6j0ped8mgg"]
+
+[ext_resource type="FontFile" uid="uid://dflgosesmjvf" path="res://assets/fonts/MYRIADPRO-BOLD.OTF" id="1_mnu24"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7u378"]
+font = ExtResource("1_mnu24")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="AuraContainer" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+
+[node name="RoleLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "   You     "
+label_settings = SubResource("LabelSettings_7u378")

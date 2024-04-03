@@ -1,0 +1,678 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5a8l81gltuhy"]
+
+[ext_resource type="Script" path="res://scenes/markers/ground/death_wall.gd" id="1_3h0us"]
+[ext_resource type="ArrayMesh" uid="uid://bjj8b1hvrgmo6" path="res://assets/models/coinSilver.obj" id="1_qw6i6"]
+
+[sub_resource type="Shader" id="Shader_wo7nj"]
+code = "shader_type spatial;
+render_mode unshaded;
+uniform float size: hint_range(0.0, 0.25);
+uniform float alpha: hint_range(0.0, 1.0);
+uniform vec3 color;
+
+void fragment() {
+	vec2 center = vec2(0.25, 0.75);
+	float df = distance(UV, center);
+	float circle = step(size, df);
+	ALBEDO = vec3(circle) * color;
+	ALPHA = alpha;
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_na6a0"]
+render_priority = 0
+shader = SubResource("Shader_wo7nj")
+shader_parameter/size = 0.148
+shader_parameter/alpha = 0.422
+shader_parameter/color = Vector3(0.014, 0.004, 0.294)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3y48n"]
+material = SubResource("ShaderMaterial_na6a0")
+top_radius = 73.0
+bottom_radius = 73.0
+height = 0.05
+cap_bottom = false
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6wyjr"]
+height = 5.0
+radius = 43.0
+
+[node name="DeathWall" type="Node3D"]
+script = ExtResource("1_3h0us")
+
+[node name="Quadrant" type="Node3D" parent="."]
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(-5.64314e-08, 0, -2.148, 0, 3.954, 0, 1.291, 0, -9.38921e-08, -43, 0.19, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.0897633, 0, -2.1428, 0, 3.954, 0, 1.28788, 0, 0.149351, -42.8289, 0.19, 3.00008)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.179672, 0, -2.1271, 0, 3.954, 0, 1.27844, 0, 0.298944, -42.6097, 0.19, 6.02977)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.268414, 0, -2.10106, 0, 3.954, 0, 1.26279, 0, 0.446594, -41.9931, 0.19, 8.91625)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.355848, 0, -2.06479, 0, 3.954, 0, 1.24099, 0, 0.592069, -41.3139, 0.19, 11.8695)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.441548, 0, -2.01846, 0, 3.954, 0, 1.21314, 0, 0.734659, -40.3241, 0.19, 14.6599)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.525097, 0, -1.9623, 0, 3.954, 0, 1.17939, 0, 0.87367, -39.2249, 0.19, 17.4842)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.606088, 0, -1.89657, 0, 3.954, 0, 1.13989, 0, 1.00842, -37.8955, 0.19, 20.1684)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.684126, 0, -1.82161, 0, 3.954, 0, 1.09483, 0, 1.13827, -36.4177, 0.19, 22.7589)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.758831, 0, -1.73777, 0, 3.954, 0, 1.04444, 0, 1.26256, -34.7786, 0.19, 25.2835)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.829839, 0, -1.64546, 0, 3.954, 0, 0.988963, 0, 1.38071, -32.9154, 0.19, 27.64)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Quadrant"]
+transform = Transform3D(0.863848, 0, -1.59628, 0, 3.954, 0, 0.9594, 0, 1.43729, -30.9172, 0.19, 29.8686)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Mitsub" type="Node3D" parent="Quadrant"]
+transform = Transform3D(-0.713519, 0, 0.700635, 0, 1, 0, -0.700635, 0, -0.713519, -30.697, 0.907776, 30.7687)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant/Mitsub"]
+transform = Transform3D(1.291, 0, 0, 0, 3.954, 0, 0, 0, 2.148, 0, -0.224, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant/Mitsub"]
+transform = Transform3D(0.912875, 2.7959, 0, -0.912875, 2.7959, 0, 0, 0, 2.148, -0.23, 0.837, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant/Mitsub"]
+transform = Transform3D(0.912875, -2.7959, 0, 0.912875, 2.7959, 0, 0, 0, 2.148, 0.23, 0.847, 0)
+mesh = ExtResource("1_qw6i6")
+
+[node name="Mitsub2" type="Node3D" parent="Quadrant"]
+transform = Transform3D(0.0123219, 0, 0.999924, 0, 1, 0, -0.999924, 0, 0.0123219, -43.5674, 0.907777, -0.00212669)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant/Mitsub2"]
+transform = Transform3D(1.291, 0, 0, 0, 3.954, 0, 0, 0, 2.148, 0, -0.224, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant/Mitsub2"]
+transform = Transform3D(0.912875, 2.7959, 0, -0.912875, 2.7959, 0, 0, 0, 2.148, -0.23, 0.837, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant/Mitsub2"]
+transform = Transform3D(0.912875, -2.7959, 0, 0.912875, 2.7959, 0, 0, 0, 2.148, 0.23, 0.847, 0)
+mesh = ExtResource("1_qw6i6")
+
+[node name="Quadrant2" type="Node3D" parent="."]
+transform = Transform3D(0.669131, 0, 0.743145, 0, 1, 0, -0.743145, 0, 0.669131, 0, 0, 0)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(-5.64314e-08, 0, -2.148, 0, 3.954, 0, 1.291, 0, -9.38921e-08, -43, 0.19, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.0897633, 0, -2.1428, 0, 3.954, 0, 1.28788, 0, 0.149351, -42.8289, 0.19, 3.00008)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.179672, 0, -2.1271, 0, 3.954, 0, 1.27844, 0, 0.298944, -42.6097, 0.19, 6.02977)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.268414, 0, -2.10106, 0, 3.954, 0, 1.26279, 0, 0.446594, -41.9931, 0.19, 8.91625)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.355848, 0, -2.06479, 0, 3.954, 0, 1.24099, 0, 0.592069, -41.3139, 0.19, 11.8695)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.441548, 0, -2.01846, 0, 3.954, 0, 1.21314, 0, 0.734659, -40.3241, 0.19, 14.6599)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.525097, 0, -1.9623, 0, 3.954, 0, 1.17939, 0, 0.87367, -39.2249, 0.19, 17.4842)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.606088, 0, -1.89657, 0, 3.954, 0, 1.13989, 0, 1.00842, -37.8955, 0.19, 20.1684)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.684126, 0, -1.82161, 0, 3.954, 0, 1.09483, 0, 1.13827, -36.4177, 0.19, 22.7589)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.758831, 0, -1.73777, 0, 3.954, 0, 1.04444, 0, 1.26256, -34.7786, 0.19, 25.2835)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.829839, 0, -1.64546, 0, 3.954, 0, 0.988963, 0, 1.38071, -32.9154, 0.19, 27.64)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Quadrant2"]
+transform = Transform3D(0.863848, 0, -1.59628, 0, 3.954, 0, 0.9594, 0, 1.43729, -30.9172, 0.19, 29.8686)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Mitsub" type="Node3D" parent="Quadrant2"]
+transform = Transform3D(-0.653156, 0, 0.757223, 0, 1, 0, -0.757223, 0, -0.653156, -32.4701, 0.907776, 29.1901)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant2/Mitsub"]
+transform = Transform3D(1.291, 0, 0, 0, 3.954, 0, 0, 0, 2.148, 0, -0.224, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant2/Mitsub"]
+transform = Transform3D(0.912875, 2.7959, 0, -0.912875, 2.7959, 0, 0, 0, 2.148, -0.23, 0.837, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant2/Mitsub"]
+transform = Transform3D(0.912875, -2.7959, 0, 0.912875, 2.7959, 0, 0, 0, 2.148, 0.23, 0.847, 0)
+mesh = ExtResource("1_qw6i6")
+
+[node name="Quadrant3" type="Node3D" parent="."]
+transform = Transform3D(-0.104529, 0, 0.994522, 0, 1, 0, -0.994522, 0, -0.104529, 0, 0, 0)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(-5.64314e-08, 0, -2.148, 0, 3.954, 0, 1.291, 0, -9.38921e-08, -43, 0.19, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.0897633, 0, -2.1428, 0, 3.954, 0, 1.28788, 0, 0.149351, -42.8289, 0.19, 3.00008)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.179672, 0, -2.1271, 0, 3.954, 0, 1.27844, 0, 0.298944, -42.6097, 0.19, 6.02977)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.268414, 0, -2.10106, 0, 3.954, 0, 1.26279, 0, 0.446594, -41.9931, 0.19, 8.91625)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.355848, 0, -2.06479, 0, 3.954, 0, 1.24099, 0, 0.592069, -41.3139, 0.19, 11.8695)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.441548, 0, -2.01846, 0, 3.954, 0, 1.21314, 0, 0.734659, -40.3241, 0.19, 14.6599)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.525097, 0, -1.9623, 0, 3.954, 0, 1.17939, 0, 0.87367, -39.2249, 0.19, 17.4842)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.606088, 0, -1.89657, 0, 3.954, 0, 1.13989, 0, 1.00842, -37.8955, 0.19, 20.1684)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.684126, 0, -1.82161, 0, 3.954, 0, 1.09483, 0, 1.13827, -36.4177, 0.19, 22.7589)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.758831, 0, -1.73777, 0, 3.954, 0, 1.04444, 0, 1.26256, -34.7786, 0.19, 25.2835)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.829839, 0, -1.64546, 0, 3.954, 0, 0.988963, 0, 1.38071, -32.9154, 0.19, 27.64)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Quadrant3"]
+transform = Transform3D(0.863848, 0, -1.59628, 0, 3.954, 0, 0.9594, 0, 1.43729, -30.9172, 0.19, 29.8686)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Mitsub" type="Node3D" parent="Quadrant3"]
+transform = Transform3D(-0.622201, 0, 0.782858, 0, 1, 0, -0.782858, 0, -0.622201, -33.877, 0.907776, 27.3425)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant3/Mitsub"]
+transform = Transform3D(1.291, 0, 0, 0, 3.954, 0, 0, 0, 2.148, 0, -0.224, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant3/Mitsub"]
+transform = Transform3D(0.912875, 2.7959, 0, -0.912875, 2.7959, 0, 0, 0, 2.148, -0.23, 0.837, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant3/Mitsub"]
+transform = Transform3D(0.912875, -2.7959, 0, 0.912875, 2.7959, 0, 0, 0, 2.148, 0.23, 0.847, 0)
+mesh = ExtResource("1_qw6i6")
+
+[node name="Quadrant4" type="Node3D" parent="."]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 0, 0, 0)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(-5.64314e-08, 0, -2.148, 0, 3.954, 0, 1.291, 0, -9.38921e-08, -43, 0.19, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.0897633, 0, -2.1428, 0, 3.954, 0, 1.28788, 0, 0.149351, -42.8289, 0.19, 3.00008)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.179672, 0, -2.1271, 0, 3.954, 0, 1.27844, 0, 0.298944, -42.6097, 0.19, 6.02977)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.268414, 0, -2.10106, 0, 3.954, 0, 1.26279, 0, 0.446594, -41.9931, 0.19, 8.91625)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.355848, 0, -2.06479, 0, 3.954, 0, 1.24099, 0, 0.592069, -41.3139, 0.19, 11.8695)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.441548, 0, -2.01846, 0, 3.954, 0, 1.21314, 0, 0.734659, -40.3241, 0.19, 14.6599)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.525097, 0, -1.9623, 0, 3.954, 0, 1.17939, 0, 0.87367, -39.2249, 0.19, 17.4842)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.606088, 0, -1.89657, 0, 3.954, 0, 1.13989, 0, 1.00842, -37.8955, 0.19, 20.1684)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.684126, 0, -1.82161, 0, 3.954, 0, 1.09483, 0, 1.13827, -36.4177, 0.19, 22.7589)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.758831, 0, -1.73777, 0, 3.954, 0, 1.04444, 0, 1.26256, -34.7786, 0.19, 25.2835)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.829839, 0, -1.64546, 0, 3.954, 0, 0.988963, 0, 1.38071, -32.9154, 0.19, 27.64)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Quadrant4"]
+transform = Transform3D(0.863848, 0, -1.59628, 0, 3.954, 0, 0.9594, 0, 1.43729, -30.9172, 0.19, 29.8686)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Mitsub" type="Node3D" parent="Quadrant4"]
+transform = Transform3D(-0.46793, 0, 0.883766, 0, 1, 0, -0.883766, 0, -0.46793, -35.2028, 0.907776, 25.5926)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant4/Mitsub"]
+transform = Transform3D(1.291, 0, 0, 0, 3.954, 0, 0, 0, 2.148, 0, -0.224, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant4/Mitsub"]
+transform = Transform3D(0.912875, 2.7959, 0, -0.912875, 2.7959, 0, 0, 0, 2.148, -0.23, 0.837, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant4/Mitsub"]
+transform = Transform3D(0.912875, -2.7959, 0, 0.912875, 2.7959, 0, 0, 0, 2.148, 0.23, 0.847, 0)
+mesh = ExtResource("1_qw6i6")
+
+[node name="Quadrant5" type="Node3D" parent="."]
+transform = Transform3D(-0.978148, 0, -0.207912, 0, 1, 0, 0.207912, 0, -0.978148, 0, 0, 0)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(-5.64314e-08, 0, -2.148, 0, 3.954, 0, 1.291, 0, -9.38921e-08, -43, 0.19, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.0897633, 0, -2.1428, 0, 3.954, 0, 1.28788, 0, 0.149351, -42.8289, 0.19, 3.00008)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.179672, 0, -2.1271, 0, 3.954, 0, 1.27844, 0, 0.298944, -42.6097, 0.19, 6.02977)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.268414, 0, -2.10106, 0, 3.954, 0, 1.26279, 0, 0.446594, -41.9931, 0.19, 8.91625)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.355848, 0, -2.06479, 0, 3.954, 0, 1.24099, 0, 0.592069, -41.3139, 0.19, 11.8695)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.441548, 0, -2.01846, 0, 3.954, 0, 1.21314, 0, 0.734659, -40.3241, 0.19, 14.6599)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.525097, 0, -1.9623, 0, 3.954, 0, 1.17939, 0, 0.87367, -39.2249, 0.19, 17.4842)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.606088, 0, -1.89657, 0, 3.954, 0, 1.13989, 0, 1.00842, -37.8955, 0.19, 20.1684)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.684126, 0, -1.82161, 0, 3.954, 0, 1.09483, 0, 1.13827, -36.4177, 0.19, 22.7589)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.758831, 0, -1.73777, 0, 3.954, 0, 1.04444, 0, 1.26256, -34.7786, 0.19, 25.2835)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.829839, 0, -1.64546, 0, 3.954, 0, 0.988963, 0, 1.38071, -32.9154, 0.19, 27.64)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Quadrant5"]
+transform = Transform3D(0.863848, 0, -1.59628, 0, 3.954, 0, 0.9594, 0, 1.43729, -30.9172, 0.19, 29.8686)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Mitsub" type="Node3D" parent="Quadrant5"]
+transform = Transform3D(-0.568174, 0, 0.822908, 0, 1, 0, -0.822908, 0, -0.568174, -36.2737, 0.907776, 24.1417)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant5/Mitsub"]
+transform = Transform3D(1.291, 0, 0, 0, 3.954, 0, 0, 0, 2.148, 0, -0.224, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant5/Mitsub"]
+transform = Transform3D(0.912875, 2.7959, 0, -0.912875, 2.7959, 0, 0, 0, 2.148, -0.23, 0.837, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant5/Mitsub"]
+transform = Transform3D(0.912875, -2.7959, 0, 0.912875, 2.7959, 0, 0, 0, 2.148, 0.23, 0.847, 0)
+mesh = ExtResource("1_qw6i6")
+
+[node name="Quadrant6" type="Node3D" parent="."]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 0, 0)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(-5.64314e-08, 0, -2.148, 0, 3.954, 0, 1.291, 0, -9.38921e-08, -43, 0.19, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.0897633, 0, -2.1428, 0, 3.954, 0, 1.28788, 0, 0.149351, -42.8289, 0.19, 3.00008)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.179672, 0, -2.1271, 0, 3.954, 0, 1.27844, 0, 0.298944, -42.6097, 0.19, 6.02977)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.268414, 0, -2.10106, 0, 3.954, 0, 1.26279, 0, 0.446594, -41.9931, 0.19, 8.91625)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.355848, 0, -2.06479, 0, 3.954, 0, 1.24099, 0, 0.592069, -41.3139, 0.19, 11.8695)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.441548, 0, -2.01846, 0, 3.954, 0, 1.21314, 0, 0.734659, -40.3241, 0.19, 14.6599)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.525097, 0, -1.9623, 0, 3.954, 0, 1.17939, 0, 0.87367, -39.2249, 0.19, 17.4842)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.606088, 0, -1.89657, 0, 3.954, 0, 1.13989, 0, 1.00842, -37.8955, 0.19, 20.1684)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.684126, 0, -1.82161, 0, 3.954, 0, 1.09483, 0, 1.13827, -36.4177, 0.19, 22.7589)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.758831, 0, -1.73777, 0, 3.954, 0, 1.04444, 0, 1.26256, -34.7786, 0.19, 25.2835)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.829839, 0, -1.64546, 0, 3.954, 0, 0.988963, 0, 1.38071, -32.9154, 0.19, 27.64)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Quadrant6"]
+transform = Transform3D(0.863848, 0, -1.59628, 0, 3.954, 0, 0.9594, 0, 1.43729, -30.9172, 0.19, 29.8686)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Mitsub" type="Node3D" parent="Quadrant6"]
+transform = Transform3D(-0.46793, 0, 0.883766, 0, 1, 0, -0.883766, 0, -0.46793, -37.8885, 0.907776, 21.8961)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant6/Mitsub"]
+transform = Transform3D(1.291, 0, 0, 0, 3.954, 0, 0, 0, 2.148, 0, -0.224, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant6/Mitsub"]
+transform = Transform3D(0.912875, 2.7959, 0, -0.912875, 2.7959, 0, 0, 0, 2.148, -0.23, 0.837, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant6/Mitsub"]
+transform = Transform3D(0.912875, -2.7959, 0, 0.912875, 2.7959, 0, 0, 0, 2.148, 0.23, 0.847, 0)
+mesh = ExtResource("1_qw6i6")
+
+[node name="Quadrant7" type="Node3D" parent="."]
+transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, 0, 0, 0)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(-5.64314e-08, 0, -2.148, 0, 3.954, 0, 1.291, 0, -9.38921e-08, -43, 0.19, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.0897633, 0, -2.1428, 0, 3.954, 0, 1.28788, 0, 0.149351, -42.8289, 0.19, 3.00008)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.179672, 0, -2.1271, 0, 3.954, 0, 1.27844, 0, 0.298944, -42.6097, 0.19, 6.02977)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.268414, 0, -2.10106, 0, 3.954, 0, 1.26279, 0, 0.446594, -41.9931, 0.19, 8.91625)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.355848, 0, -2.06479, 0, 3.954, 0, 1.24099, 0, 0.592069, -41.3139, 0.19, 11.8695)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.441548, 0, -2.01846, 0, 3.954, 0, 1.21314, 0, 0.734659, -40.3241, 0.19, 14.6599)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch7" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.525097, 0, -1.9623, 0, 3.954, 0, 1.17939, 0, 0.87367, -39.2249, 0.19, 17.4842)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch8" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.606088, 0, -1.89657, 0, 3.954, 0, 1.13989, 0, 1.00842, -37.8955, 0.19, 20.1684)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch9" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.684126, 0, -1.82161, 0, 3.954, 0, 1.09483, 0, 1.13827, -36.4177, 0.19, 22.7589)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch10" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.758831, 0, -1.73777, 0, 3.954, 0, 1.04444, 0, 1.26256, -34.7786, 0.19, 25.2835)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch11" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.829839, 0, -1.64546, 0, 3.954, 0, 0.988963, 0, 1.38071, -32.9154, 0.19, 27.64)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch12" type="MeshInstance3D" parent="Quadrant7"]
+transform = Transform3D(0.863848, 0, -1.59628, 0, 3.954, 0, 0.9594, 0, 1.43729, -30.9172, 0.19, 29.8686)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Mitsub" type="Node3D" parent="Quadrant7"]
+transform = Transform3D(-0.451718, 0, 0.89216, 0, 1, 0, -0.89216, 0, -0.451718, -38.7471, 0.907776, 19.7189)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant7/Mitsub"]
+transform = Transform3D(1.291, 0, 0, 0, 3.954, 0, 0, 0, 2.148, 0, -0.224, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant7/Mitsub"]
+transform = Transform3D(0.912875, 2.7959, 0, -0.912875, 2.7959, 0, 0, 0, 2.148, -0.23, 0.837, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant7/Mitsub"]
+transform = Transform3D(0.912875, -2.7959, 0, 0.912875, 2.7959, 0, 0, 0, 2.148, 0.23, 0.847, 0)
+mesh = ExtResource("1_qw6i6")
+
+[node name="Quadrant8" type="Node3D" parent="."]
+transform = Transform3D(0.913546, 0, -0.406736, 0, 1, 0, 0.406736, 0, 0.913546, 0, 0, 0)
+
+[node name="Notch" type="MeshInstance3D" parent="Quadrant8"]
+transform = Transform3D(-5.64314e-08, 0, -2.148, 0, 3.954, 0, 1.291, 0, -9.38921e-08, -43, 0.19, 0)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch2" type="MeshInstance3D" parent="Quadrant8"]
+transform = Transform3D(0.0897633, 0, -2.1428, 0, 3.954, 0, 1.28788, 0, 0.149351, -42.8289, 0.19, 3.00008)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch3" type="MeshInstance3D" parent="Quadrant8"]
+transform = Transform3D(0.179672, 0, -2.1271, 0, 3.954, 0, 1.27844, 0, 0.298944, -42.6097, 0.19, 6.02977)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch4" type="MeshInstance3D" parent="Quadrant8"]
+transform = Transform3D(0.268414, 0, -2.10106, 0, 3.954, 0, 1.26279, 0, 0.446594, -41.9931, 0.19, 8.91625)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch5" type="MeshInstance3D" parent="Quadrant8"]
+transform = Transform3D(0.355848, 0, -2.06479, 0, 3.954, 0, 1.24099, 0, 0.592069, -41.3139, 0.19, 11.8695)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="Notch6" type="MeshInstance3D" parent="Quadrant8"]
+transform = Transform3D(0.441548, 0, -2.01846, 0, 3.954, 0, 1.21314, 0, 0.734659, -40.3241, 0.19, 14.6599)
+mesh = ExtResource("1_qw6i6")
+skeleton = NodePath("../../..")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.971, 0)
+use_collision = true
+collision_layer = 0
+collision_mask = 4
+inner_radius = 43.0
+outer_radius = 43.07
+sides = 64
+ring_sides = 3
+
+[node name="OutterFog" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_3y48n")
+
+[node name="DeathwallTrigger" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathwallTrigger"]
+shape = SubResource("CylinderShape3D_6wyjr")
+
+[connection signal="body_exited" from="DeathwallTrigger" to="." method="_on_deathwall_trigger_body_exited"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bauk161giibov"]
+
+[ext_resource type="Script" path="res://scenes/controllers/GroundAoEController.gd" id="1_efciy"]
+
+[node name="GroundAoEController" type="Node"]
+script = ExtResource("1_efciy")
