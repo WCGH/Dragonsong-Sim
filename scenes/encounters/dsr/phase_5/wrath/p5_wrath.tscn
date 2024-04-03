@@ -1,0 +1,378 @@
+[gd_scene load_steps=39 format=3 uid="uid://durq1c7pp6kfy"]
+
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_5/wrath/p5_wrath.gd" id="1_fl0kc"]
+[ext_resource type="PackedScene" uid="uid://chasoddjwqblg" path="res://scenes/ui/cast_bars/cast_bar.tscn" id="2_xg5e1"]
+[ext_resource type="PackedScene" uid="uid://cri3gvnrtsbrf" path="res://scenes/ui/cast_bars/enemy_cast_bar.tscn" id="3_7voka"]
+[ext_resource type="PackedScene" uid="uid://cg0h4uysscvtc" path="res://scenes/ui/action_bar.tscn" id="4_5os2k"]
+[ext_resource type="PackedScene" uid="uid://cidk1e7u3l0ya" path="res://scenes/ui/fail_list.tscn" id="4_d4wp5"]
+[ext_resource type="PackedScene" uid="uid://02ckwb1trdp4" path="res://scenes/ui/party_list.tscn" id="5_jdd0d"]
+[ext_resource type="PackedScene" uid="uid://du2fr4o3nsww0" path="res://scenes/ui/player_debuffs.tscn" id="6_1qdcn"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_5/wrath/puddle_check_button.gd" id="7_48x18"]
+[ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="8_0k834"]
+[ext_resource type="PackedScene" uid="uid://bayxk6ajn7khf" path="res://scenes/controllers/party_controller.tscn" id="9_jn5wv"]
+[ext_resource type="PackedScene" uid="uid://wdaa7tvsg1oy" path="res://scenes/controllers/lockon_controller.tscn" id="10_ka8yb"]
+[ext_resource type="PackedScene" uid="uid://bauk161giibov" path="res://scenes/controllers/ground_aoe_controller.tscn" id="10_l1i8u"]
+[ext_resource type="PackedScene" uid="uid://bwd1v6kvgas8d" path="res://scenes/controllers/waymark_controller.tscn" id="10_psrsb"]
+[ext_resource type="PackedScene" uid="uid://crewso7ys1t5t" path="res://scenes/controllers/encounter_controller.tscn" id="11_yiv2n"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_5/wrath/seq_wrath.gd" id="12_ngkma"]
+[ext_resource type="PackedScene" uid="uid://c8err2ij6qr0y" path="res://scenes/ui/debuff_icons/common/thunder_icon.tscn" id="13_8v06x"]
+[ext_resource type="Script" path="res://scenes/controllers/puddle_controller.gd" id="14_v4rck"]
+[ext_resource type="PackedScene" uid="uid://cvevcef0hbojl" path="res://scenes/markers/ground/circle_aoe.tscn" id="15_4o01n"]
+[ext_resource type="PackedScene" uid="uid://br4ou771tkotc" path="res://assets/objects/p5_arena/DSR_P5_Arena_Full.tscn" id="16_kri4v"]
+[ext_resource type="PackedScene" uid="uid://b5a8l81gltuhy" path="res://scenes/markers/ground/death_wall.tscn" id="17_n5bri"]
+[ext_resource type="Texture2D" uid="uid://ig2b2e4smtei" path="res://assets/png/misc/target_ring_w_trans.png" id="27_06l1s"]
+[ext_resource type="PackedScene" uid="uid://dcwjtk6eliwao" path="res://scenes/enemies/p5/thordan_model.tscn" id="28_13knp"]
+[ext_resource type="Script" path="res://scenes/ui/frame_debug.gd" id="37_gyun0"]
+
+[sub_resource type="Animation" id="Animation_oh3w4"]
+resource_name = "altar_pyre_seq"
+length = 4.0
+step = 0.125
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.25, 2.5, 3.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"ap_drop"
+}, {
+"args": [],
+"method": &"ap_drop"
+}, {
+"args": [],
+"method": &"ap_drop"
+}, {
+"args": [],
+"method": &"ap_drop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fvtfd"]
+_data = {
+"altar_pyre_seq": SubResource("Animation_oh3w4")
+}
+
+[sub_resource type="Animation" id="Animation_miyiv"]
+resource_name = "liquid_hell_seq"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 1.6, 2.6, 3.6, 4.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"lh_drop"
+}, {
+"args": [],
+"method": &"lh_drop"
+}, {
+"args": [],
+"method": &"lh_drop"
+}, {
+"args": [],
+"method": &"lh_drop"
+}, {
+"args": [],
+"method": &"lh_drop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2utaa"]
+_data = {
+"liquid_hell_seq": SubResource("Animation_miyiv")
+}
+
+[sub_resource type="Animation" id="Animation_vbn3m"]
+resource_name = "wrath_sequence"
+length = 30.0
+step = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 4.5, 8, 9, 10, 10.75, 15, 16, 16.5, 17, 18.25, 22, 22.5, 24.5, 28.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"cast_wrath"
+}, {
+"args": [],
+"method": &"jump_thordan"
+}, {
+"args": [],
+"method": &"move_knights"
+}, {
+"args": [],
+"method": &"show_knights"
+}, {
+"args": [],
+"method": &"set_tethers"
+}, {
+"args": [],
+"method": &"move_to_pos1"
+}, {
+"args": [],
+"method": &"add_thunder"
+}, {
+"args": [],
+"method": &"show_grinchar"
+}, {
+"args": [],
+"method": &"play_divebomb"
+}, {
+"args": [],
+"method": &"spawn_multi_aoe"
+}, {
+"args": [],
+"method": &"spawn_twisters"
+}, {
+"args": [],
+"method": &"spawn_ascalon"
+}, {
+"args": [],
+"method": &"lh_ap_hits"
+}, {
+"args": [],
+"method": &"cast_empty"
+}, {
+"args": [],
+"method": &"empty_hit"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w37ol"]
+_data = {
+"wrath_sequence": SubResource("Animation_vbn3m")
+}
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xtxgf"]
+data = PackedVector3Array(150, 0, 150, -150, 0, 150, 150, 0, -150, -150, 0, 150, -150, 0, -150, 150, 0, -150)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mavpe"]
+transparency = 1
+albedo_texture = ExtResource("27_06l1s")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_irju0"]
+material = SubResource("StandardMaterial3D_mavpe")
+size = Vector2(6, 5.5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mtfjk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_81c6b"]
+sky_material = SubResource("ProceduralSkyMaterial_mtfjk")
+
+[sub_resource type="Environment" id="Environment_t2taj"]
+background_mode = 2
+sky = SubResource("Sky_81c6b")
+tonemap_mode = 2
+glow_enabled = true
+glow_strength = 1.6
+
+[sub_resource type="LabelSettings" id="LabelSettings_j5d70"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tic18"]
+albedo_color = Color(0.592157, 0.976471, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ggt40"]
+material = SubResource("StandardMaterial3D_tic18")
+size = Vector3(100, 0.034, 0.087)
+
+[node name="P5Wrath" type="Node3D"]
+script = ExtResource("1_fl0kc")
+
+[node name="CastBar" parent="." instance=ExtResource("2_xg5e1")]
+visible = false
+
+[node name="EnemyCastBar" parent="." instance=ExtResource("3_7voka")]
+
+[node name="ActionBar" parent="." instance=ExtResource("4_5os2k")]
+
+[node name="FailList" parent="." instance=ExtResource("4_d4wp5")]
+
+[node name="PartyList" parent="." instance=ExtResource("5_jdd0d")]
+
+[node name="PlayerDebuffs" parent="." instance=ExtResource("6_1qdcn")]
+
+[node name="OnScreenButtons" type="CanvasLayer" parent="."]
+
+[node name="ResetButton" type="Button" parent="OnScreenButtons"]
+offset_left = 28.0
+offset_top = 18.0
+offset_right = 128.0
+offset_bottom = 58.0
+text = "Reset"
+
+[node name="PuddleCheckButton" type="CheckButton" parent="OnScreenButtons"]
+layout_direction = 3
+offset_left = 21.0
+offset_top = 13.0
+offset_right = 220.0
+offset_bottom = 44.0
+focus_mode = 0
+text = "Always Get Puddles"
+script = ExtResource("7_48x18")
+
+[node name="RoleSelectButton" type="OptionButton" parent="OnScreenButtons"]
+offset_left = 160.0
+offset_top = 21.0
+offset_right = 304.0
+offset_bottom = 52.0
+focus_mode = 0
+action_mode = 1
+item_count = 8
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "Tank 1"
+popup/item_0/id = 0
+popup/item_1/text = "Tank 2"
+popup/item_1/id = 1
+popup/item_2/text = "Healer 1"
+popup/item_2/id = 2
+popup/item_3/text = "Healer 2"
+popup/item_3/id = 3
+popup/item_4/text = "Melee 1"
+popup/item_4/id = 4
+popup/item_5/text = "Melee 2"
+popup/item_5/id = 5
+popup/item_6/text = "Phys Ranged"
+popup/item_6/id = 6
+popup/item_7/text = "Caster"
+popup/item_7/id = 7
+script = ExtResource("8_0k834")
+
+[node name="MainMenuButton" type="Button" parent="OnScreenButtons"]
+offset_left = 28.0
+offset_top = 73.0
+offset_right = 128.0
+offset_bottom = 113.0
+text = "Main Menu"
+
+[node name="WaymarkController" parent="." node_paths=PackedStringArray("arena_node") instance=ExtResource("10_psrsb")]
+arena_node = NodePath("../Arena")
+
+[node name="PartyController" parent="." instance=ExtResource("9_jn5wv")]
+unique_name_in_owner = true
+
+[node name="LockonController" parent="." instance=ExtResource("10_ka8yb")]
+unique_name_in_owner = true
+
+[node name="GroundAoEController" parent="." instance=ExtResource("10_l1i8u")]
+unique_name_in_owner = true
+
+[node name="EncounterController" parent="." instance=ExtResource("11_yiv2n")]
+unique_name_in_owner = true
+
+[node name="Wrath" type="Node" parent="EncounterController"]
+script = ExtResource("12_ngkma")
+thunder_icon_scene = ExtResource("13_8v06x")
+
+[node name="PuddleController" type="Node" parent="EncounterController/Wrath"]
+unique_name_in_owner = true
+script = ExtResource("14_v4rck")
+circle_aoe_scene = ExtResource("15_4o01n")
+
+[node name="AltarPyreSeq" type="AnimationPlayer" parent="EncounterController/Wrath/PuddleController"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_fvtfd")
+}
+
+[node name="LiquidHellSeq" type="AnimationPlayer" parent="EncounterController/Wrath/PuddleController"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_2utaa")
+}
+
+[node name="WrathSeq" type="AnimationPlayer" parent="EncounterController/Wrath"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_w37ol")
+}
+
+[node name="Arena" type="Node3D" parent="."]
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/FloorMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/FloorMesh/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xtxgf")
+
+[node name="P5ArenaFull" parent="Arena" instance=ExtResource("16_kri4v")]
+transform = Transform3D(0.999877, 0, -0.0157073, 0, 1, 0, 0.0157073, 0, 0.999877, -201.66, -0.126, -208.189)
+
+[node name="DeathWall" parent="Arena" instance=ExtResource("17_n5bri")]
+
+[node name="Characters" type="Node3D" parent="." groups=["characters_layer"]]
+
+[node name="Enemies" type="Node3D" parent="." groups=["enemies_layer"]]
+
+[node name="Thordan" type="Node3D" parent="Enemies"]
+unique_name_in_owner = true
+transform = Transform3D(-2.42117e-07, 0, 5.539, 0, 5.539, 0, -5.539, 0, -2.42117e-07, 0, 0, 0)
+
+[node name="HitboxRing" type="MeshInstance3D" parent="Enemies/Thordan"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.5)
+visible = false
+mesh = SubResource("PlaneMesh_irju0")
+
+[node name="ThordanModel" parent="Enemies/Thordan" instance=ExtResource("28_13knp")]
+transform = Transform3D(1.371, 0, 7.10543e-15, 0, 1.371, 0, -7.10543e-15, 0, 1.371, 0, 0, 0)
+
+[node name="GroundMarkers" type="Node3D" parent="." groups=["ground_marker_layer"]]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, 0.75, -0.433013, 0, 92, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t2taj")
+
+[node name="Dev" type="Node3D" parent="."]
+
+[node name="Coords" type="Label" parent="Dev" groups=["coords_label"]]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_top = 17.0
+offset_right = -15.0
+offset_bottom = 62.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "0,12"
+label_settings = SubResource("LabelSettings_j5d70")
+
+[node name="FrameDebug" type="Node" parent="Dev"]
+script = ExtResource("37_gyun0")
+
+[node name="radian" type="MeshInstance3D" parent="Dev"]
+transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_ggt40")
+skeleton = NodePath("../..")
+
+[connection signal="pressed" from="OnScreenButtons/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="OnScreenButtons/PuddleCheckButton" to="OnScreenButtons/PuddleCheckButton" method="_on_pressed"]
+[connection signal="item_selected" from="OnScreenButtons/RoleSelectButton" to="OnScreenButtons/RoleSelectButton" method="_on_item_selected"]
+[connection signal="pressed" from="OnScreenButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

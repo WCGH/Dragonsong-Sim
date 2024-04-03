@@ -1,0 +1,332 @@
+[gd_scene load_steps=32 format=3 uid="uid://c1xpbbb0rw2v7"]
+
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_5/death/p5_death.gd" id="1_fdte7"]
+[ext_resource type="PackedScene" uid="uid://chasoddjwqblg" path="res://scenes/ui/cast_bars/cast_bar.tscn" id="2_phhq2"]
+[ext_resource type="PackedScene" uid="uid://cri3gvnrtsbrf" path="res://scenes/ui/cast_bars/enemy_cast_bar.tscn" id="3_32fqj"]
+[ext_resource type="PackedScene" uid="uid://cidk1e7u3l0ya" path="res://scenes/ui/fail_list.tscn" id="4_mbu3y"]
+[ext_resource type="PackedScene" uid="uid://cg0h4uysscvtc" path="res://scenes/ui/action_bar.tscn" id="4_vuodv"]
+[ext_resource type="PackedScene" uid="uid://02ckwb1trdp4" path="res://scenes/ui/party_list.tscn" id="5_8f1q1"]
+[ext_resource type="PackedScene" uid="uid://du2fr4o3nsww0" path="res://scenes/ui/player_debuffs.tscn" id="6_xqxn2"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_5/death/RarePatternButton.gd" id="7_d111m"]
+[ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="8_don2h"]
+[ext_resource type="PackedScene" uid="uid://bayxk6ajn7khf" path="res://scenes/controllers/party_controller.tscn" id="9_icpk8"]
+[ext_resource type="PackedScene" uid="uid://bauk161giibov" path="res://scenes/controllers/ground_aoe_controller.tscn" id="10_f8qck"]
+[ext_resource type="PackedScene" uid="uid://wdaa7tvsg1oy" path="res://scenes/controllers/lockon_controller.tscn" id="10_vxhfg"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_5/death/doom_anchor_button.gd" id="10_w5xxg"]
+[ext_resource type="PackedScene" uid="uid://bwd1v6kvgas8d" path="res://scenes/controllers/waymark_controller.tscn" id="11_72qn8"]
+[ext_resource type="PackedScene" uid="uid://crewso7ys1t5t" path="res://scenes/controllers/encounter_controller.tscn" id="11_txnes"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_5/death/seq_death.gd" id="12_66iv0"]
+[ext_resource type="PackedScene" uid="uid://cd1lcq832fme3" path="res://scenes/enemies/p5/thordan.tscn" id="13_g8oyf"]
+[ext_resource type="PackedScene" uid="uid://c22b0c5i0c147" path="res://scenes/ui/debuff_icons/p5/doom_icon.tscn" id="13_w8h0l"]
+[ext_resource type="PackedScene" uid="uid://dagecdxd40cmj" path="res://scenes/ui/debuff_icons/p5/chains_icon.tscn" id="14_e2hpo"]
+[ext_resource type="PackedScene" uid="uid://jl8oj6r0qdvu" path="res://scenes/markers/lockon/tether.tscn" id="15_km4m8"]
+[ext_resource type="PackedScene" uid="uid://b5a8l81gltuhy" path="res://scenes/markers/ground/death_wall.tscn" id="17_y25or"]
+[ext_resource type="PackedScene" uid="uid://br4ou771tkotc" path="res://assets/objects/p5_arena/DSR_P5_Arena_Full.tscn" id="18_0aao6"]
+
+[sub_resource type="Animation" id="Animation_xh7s6"]
+resource_name = "death_sequence"
+length = 50.0
+step = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 4.5, 9, 10, 13, 14, 14.5, 16.5, 20, 21.5, 22, 22.5, 24, 24.5, 26, 28, 30, 32.5, 34, 35, 35.75, 36, 36.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"cast_death"
+}, {
+"args": [],
+"method": &"jump_thordan"
+}, {
+"args": [],
+"method": &"spawn_npcs"
+}, {
+"args": [],
+"method": &"move_to_lineup"
+}, {
+"args": [],
+"method": &"spawn_dooms"
+}, {
+"args": [],
+"method": &"move_to_doom_lineup"
+}, {
+"args": [],
+"method": &"impact_telegraph"
+}, {
+"args": [],
+"method": &"move_to_impact_1"
+}, {
+"args": [],
+"method": &"impact_1"
+}, {
+"args": [],
+"method": &"start_dive_anim"
+}, {
+"args": [],
+"method": &"impact_2"
+}, {
+"args": [],
+"method": &"twister_snapshot"
+}, {
+"args": [],
+"method": &"impact_3"
+}, {
+"args": [],
+"method": &"move_to_impact_3"
+}, {
+"args": [],
+"method": &"impact_4"
+}, {
+"args": [],
+"method": &"impact_5"
+}, {
+"args": [],
+"method": &"show_ps_markers"
+}, {
+"args": [],
+"method": &"move_to_ps2"
+}, {
+"args": [],
+"method": &"add_chains"
+}, {
+"args": [],
+"method": &"knockback"
+}, {
+"args": [],
+"method": &"check_tethers"
+}, {
+"args": [],
+"method": &"move_to_cleanse"
+}, {
+"args": [],
+"method": &"spawn_hellflame"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_smive"]
+_data = {
+"death_sequence": SubResource("Animation_xh7s6")
+}
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mtfjk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_81c6b"]
+sky_material = SubResource("ProceduralSkyMaterial_mtfjk")
+
+[sub_resource type="Environment" id="Environment_t2taj"]
+background_mode = 1
+background_color = Color(0.298039, 0, 0.439216, 1)
+background_energy_multiplier = 1.25
+sky = SubResource("Sky_81c6b")
+ambient_light_source = 3
+reflected_light_source = 1
+tonemap_mode = 2
+glow_strength = 1.6
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_length = 150.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_j5d70"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tic18"]
+albedo_color = Color(0.592157, 0.976471, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ggt40"]
+material = SubResource("StandardMaterial3D_tic18")
+size = Vector3(100, 0.034, 0.087)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u2d5m"]
+data = PackedVector3Array(150, 0, 150, -150, 0, 150, 150, 0, -150, -150, 0, 150, -150, 0, -150, 150, 0, -150)
+
+[node name="P5Death" type="Node3D"]
+script = ExtResource("1_fdte7")
+
+[node name="CastBar" parent="." instance=ExtResource("2_phhq2")]
+visible = false
+
+[node name="EnemyCastBar" parent="." instance=ExtResource("3_32fqj")]
+
+[node name="ActionBar" parent="." instance=ExtResource("4_vuodv")]
+
+[node name="FailList" parent="." instance=ExtResource("4_mbu3y")]
+
+[node name="PartyList" parent="." instance=ExtResource("5_8f1q1")]
+
+[node name="PlayerDebuffs" parent="." instance=ExtResource("6_xqxn2")]
+
+[node name="OnScreenButtons" type="CanvasLayer" parent="."]
+
+[node name="ResetButton" type="Button" parent="OnScreenButtons"]
+offset_left = 28.0
+offset_top = 18.0
+offset_right = 128.0
+offset_bottom = 58.0
+focus_mode = 0
+text = "Reset"
+
+[node name="RarePatternButton" type="CheckButton" parent="OnScreenButtons"]
+layout_direction = 3
+offset_left = 21.0
+offset_top = 13.0
+offset_right = 178.0
+offset_bottom = 44.0
+focus_mode = 0
+text = "Rare Pattern"
+script = ExtResource("7_d111m")
+
+[node name="RoleSelectButton" type="OptionButton" parent="OnScreenButtons"]
+offset_left = 160.0
+offset_top = 21.0
+offset_right = 304.0
+offset_bottom = 52.0
+focus_mode = 0
+action_mode = 1
+item_count = 8
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "Tank 1"
+popup/item_0/id = 0
+popup/item_1/text = "Tank 2"
+popup/item_1/id = 1
+popup/item_2/text = "Healer 1"
+popup/item_2/id = 2
+popup/item_3/text = "Healer 2"
+popup/item_3/id = 3
+popup/item_4/text = "Melee 1"
+popup/item_4/id = 4
+popup/item_5/text = "Melee 2"
+popup/item_5/id = 5
+popup/item_6/text = "Phys Ranged"
+popup/item_6/id = 6
+popup/item_7/text = "Caster"
+popup/item_7/id = 7
+script = ExtResource("8_don2h")
+
+[node name="DoomAnchorButton" type="OptionButton" parent="OnScreenButtons"]
+offset_left = 330.0
+offset_top = 21.0
+offset_right = 474.0
+offset_bottom = 52.0
+focus_mode = 0
+action_mode = 1
+item_count = 2
+selected = 1
+fit_to_longest_item = false
+popup/item_0/text = "Dooms Anchor"
+popup/item_0/id = 0
+popup/item_1/text = "Static Positions"
+popup/item_1/id = 1
+script = ExtResource("10_w5xxg")
+
+[node name="MainMenuButton" type="Button" parent="OnScreenButtons"]
+offset_left = 28.0
+offset_top = 73.0
+offset_right = 128.0
+offset_bottom = 113.0
+text = "Main Menu"
+
+[node name="WaymarkController" parent="." node_paths=PackedStringArray("arena_node") instance=ExtResource("11_72qn8")]
+arena_node = NodePath("../Arena")
+
+[node name="PartyController" parent="." instance=ExtResource("9_icpk8")]
+unique_name_in_owner = true
+
+[node name="LockonController" parent="." instance=ExtResource("10_vxhfg")]
+unique_name_in_owner = true
+
+[node name="GroundAoEController" parent="." instance=ExtResource("10_f8qck")]
+unique_name_in_owner = true
+
+[node name="EncounterController" parent="." instance=ExtResource("11_txnes")]
+unique_name_in_owner = true
+
+[node name="Death" type="Node" parent="EncounterController"]
+script = ExtResource("12_66iv0")
+thordan_scene = ExtResource("13_g8oyf")
+doom_icon_scene = ExtResource("13_w8h0l")
+chains_icon_scene = ExtResource("14_e2hpo")
+tether_scene = ExtResource("15_km4m8")
+
+[node name="DeathSeq" type="AnimationPlayer" parent="EncounterController/Death"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_smive")
+}
+
+[node name="Characters" type="Node3D" parent="." groups=["characters_layer"]]
+
+[node name="Enemies" type="Node3D" parent="." groups=["enemies_layer"]]
+
+[node name="GroundMarkers" type="Node3D" parent="." groups=["ground_marker_layer"]]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.894514, 0.445554, -0.0364142, -0.0356621, 0.010075, 0.999313, 0.445614, 0.895199, 0.00687715, 0, 92, 0)
+light_energy = 1.232
+directional_shadow_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t2taj")
+
+[node name="Dev" type="Node3D" parent="."]
+
+[node name="Coords" type="Label" parent="Dev" groups=["coords_label"]]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_top = 17.0
+offset_right = -15.0
+offset_bottom = 62.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "0,12"
+label_settings = SubResource("LabelSettings_j5d70")
+
+[node name="radian" type="MeshInstance3D" parent="Dev"]
+transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_ggt40")
+skeleton = NodePath("../..")
+
+[node name="Pushback" type="Button" parent="Dev"]
+visible = false
+offset_left = 27.0
+offset_top = 668.0
+offset_right = 141.0
+offset_bottom = 699.0
+focus_mode = 0
+text = "Pushback"
+
+[node name="Arena" type="Node3D" parent="."]
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/FloorMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/FloorMesh/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_u2d5m")
+
+[node name="P5ArenaFull" parent="Arena" instance=ExtResource("18_0aao6")]
+transform = Transform3D(0.999877, 0, -0.0157073, 0, 1, 0, 0.0157073, 0, 0.999877, -201.66, -0.126, -208.189)
+
+[node name="DeathWall" parent="Arena" instance=ExtResource("17_y25or")]
+
+[connection signal="pressed" from="OnScreenButtons/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="OnScreenButtons/RarePatternButton" to="OnScreenButtons/RarePatternButton" method="_on_pressed"]
+[connection signal="item_selected" from="OnScreenButtons/RoleSelectButton" to="OnScreenButtons/RoleSelectButton" method="_on_item_selected"]
+[connection signal="item_selected" from="OnScreenButtons/DoomAnchorButton" to="OnScreenButtons/DoomAnchorButton" method="_on_item_selected"]
+[connection signal="pressed" from="OnScreenButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Dev/Pushback" to="." method="_on_pushback_pressed"]

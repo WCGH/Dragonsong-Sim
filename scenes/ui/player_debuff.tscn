@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://csrqd4fou4reh"]
+
+[ext_resource type="Texture2D" uid="uid://b3p8knqm7o2q1" path="res://assets/png/debuff_icons/hj_icon.png" id="1_1rsjo"]
+
+[node name="PlayerDebuff" type="VBoxContainer"]
+
+[node name="DebuffIcon" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+tooltip_text = "High Jump Target"
+texture = ExtResource("1_1rsjo")
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 2
+text = "11.0"
+
+[node name="Timer" type="Timer" parent="."]

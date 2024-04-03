@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce1rukdbuak61"]
+
+[ext_resource type="Texture2D" uid="uid://i7o7jjyb3byt" path="res://assets/png/misc/gaze.png" id="1_rgg1i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0owkx"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_rgg1i")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_m37g1"]
+material = SubResource("StandardMaterial3D_0owkx")
+size = Vector2(2.35, 1)
+
+[node name="Gaze" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_m37g1")

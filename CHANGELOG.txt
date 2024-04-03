@@ -1,0 +1,14 @@
+
+### v1.0.3 Changelog:
+	- Added Twintails strategy option (https://youtu.be/A-P1eXE18ko).
+	- Added APD Waymark option.
+	- LC: Added in-game option East/Westhogg.
+	- Wrath: Added Ascalon's Mercy cast bar.
+	- Wrath: Added visual indicator for Thunder debuffs.
+	- DotH: Fixed issue where PS markers weren't so random.
+	- DotH: Added in-game option for Anchored Doom positions (default for APD and LPDU).
+	- P6: Added in-game option for Healer/Ranged anchor for WB1 (Healer anchor default for APD). Melee is always M1 anchor.
+	- P6: Added in-game option for Static WB2 (default for APD).
+	- Slightly raised camera angle to match FFXIV defaults.
+	- Camera zoom factor is saved when resetting or exiting game.
+	
