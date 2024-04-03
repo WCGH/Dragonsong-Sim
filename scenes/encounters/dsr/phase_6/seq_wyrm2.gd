@@ -64,9 +64,7 @@ var wb2_index: int
 # Needed to avoid duplicate ready calls in parent.
 func _ready() -> void:
 	# Get strat variables
-	wb2_index = SavedVariables.save_data["p6"]["wb_2"]
-	if wb2_index == SavedVariables.wb_2.DEFAULT:
-		wb2_index = SavedVariables.get_default("p6", "wb_2")
+	wb2_index = SavedVariables.get_data("p6", "wb_2")
 
 
 func _physics_process(_delta: float) -> void:
@@ -311,6 +309,10 @@ func move_to_db_positions() -> void:
 
 # 21.5 - Add debuffs (30s). Check movement
 func apply_debuffs() -> void:
+	# Tank Condition (don't apply debuff)
+	if party_tether.find_key(player) == null:
+		return
+	
 	# Handle player movement checks.
 	if party_tether.find_key(player).contains("fire"):
 		check_pyretic = true

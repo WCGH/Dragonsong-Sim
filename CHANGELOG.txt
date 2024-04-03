@@ -1,3 +1,11 @@
+### v1.0.4 Changelog:
+	- Fixed a crash during P6-Cauterize.
+	- Added options for target markers:
+		- Standard Auto-Marker: links outside, ignores inside, 1-4 spread (default for APD/LPDU).
+		- Manual markers: uses fewer markers, link1+ignore1 = outside pair, no marker = inside pair.
+		- No markers: be warned, there is no priority and it's fully random where bots decide to go.
+	- Reconfigured some settings. If you run into any issues, try deleting the "DSR Sim" folder, located in your %appdata% folder.
+
 
 ### v1.0.3 Changelog:
 	- Added Twintails strategy option (https://youtu.be/A-P1eXE18ko).

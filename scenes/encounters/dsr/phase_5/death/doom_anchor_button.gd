@@ -7,10 +7,10 @@ extends OptionButton
 
 
 func _ready() -> void:
-	var saved_index: int = SavedVariables.save_data["p5"]["dooms"]
-	if saved_index == SavedVariables.dooms.DEFAULT:
-		saved_index = SavedVariables.get_default("p5", "dooms")
-	selected = saved_index
+	#var saved_index: int = SavedVariables.save_data["p5"]["dooms"]
+	#if saved_index == SavedVariables.dooms.DEFAULT:
+		#saved_index = SavedVariables.get_default("p5", "dooms")
+	selected = SavedVariables.get_data("p5", "dooms")
 
 
 func _on_item_selected(index : int) -> void:

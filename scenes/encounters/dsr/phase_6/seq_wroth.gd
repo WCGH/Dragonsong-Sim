@@ -53,6 +53,21 @@ var pc_positions := {
 	},
 }
 
+var am_dict := {
+		SavedVariables.t_markers.AM: {
+			"st1": "link_1", "fr1": "link_2",
+			"st2": "stop_1", "fr2": "stop_2",
+			"sp1": "tar_1", "sp2": "tar_2",
+			"sp3": "tar_3", "sp4": "tar_4"
+		},
+		SavedVariables.t_markers.MANUAL: {
+			"st1": "stop_1", "fr1": "link_1",
+			"st2": "none", "fr2": "none",
+			"sp1": "tar_1", "sp2": "tar_2",
+			"sp3": "tar_3", "sp4": "tar_4"
+		}
+	}
+
 var party_wroth: Dictionary
 var party_list: Array
 var divebomb_keys := ["nw", "sw", "n", "s", "ne", "se"]
@@ -66,7 +81,7 @@ var am_puddles: Array[CircleAoe]
 var db_target: Vector2
 var am_snapshot: Vector2
 
-# Needed to avoid duplicate ready calls in parent.
+# Needed to override parent _ready.
 func _ready() -> void:
 	pass
 
@@ -335,14 +350,17 @@ func on_am_entered(body: CharacterBody3D, _circle: CircleAoe) -> void:
 
 ## Utility Methods
 func add_player_markers() -> void:
-	# Stack marks.
-	target_marker_controller.add_marker("stop_1", party_wroth["st1"])
-	target_marker_controller.add_marker("link_1", party_wroth["fr1"])
-	# Spread marks.
-	target_marker_controller.add_marker("tar_1", party_wroth["sp1"])
-	target_marker_controller.add_marker("tar_2", party_wroth["sp2"])
-	target_marker_controller.add_marker("tar_3", party_wroth["sp3"])
-	target_marker_controller.add_marker("tar_4", party_wroth["sp4"])
+	assign_am(SavedVariables.get_data("p6", "t_markers"))
+
+
+func assign_am(am_selection: int) -> void:
+	if am_selection == SavedVariables.t_markers.NONE:
+		return
+	
+	for key: String in party_wroth:
+		if am_dict[am_selection][key] == "none":
+			continue
+		target_marker_controller.add_marker(am_dict[am_selection][key], party_wroth[key])
 
 
 func remove_player_markers() -> void:

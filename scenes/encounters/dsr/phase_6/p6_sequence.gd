@@ -83,6 +83,7 @@ func start_sequence(new_party: Dictionary) -> Signal:
 		"Error. Sequence key mismatch in P6Sequence.")
 	party = new_party
 	player = get_tree().get_first_node_in_group("player")
+	print(player)
 	# Assign shared assignments
 	assign_vow()
 	# Spawn in assets when loaded
