@@ -13,3 +13,4 @@ To download the sim, head to the ⁠[releases](https://github.com/WCGH/Dragonson
 - Limit Cut debuffs are missing durations.
 - Having a dropdown menu open selected will prevent moving your camera with right click.
 - There is no indicator of who received first Mortal Vow debuff when starting Phase 6 at a later stage.
+- Tank Bots will not always make it to their safe spot in time in P6.
