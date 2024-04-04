@@ -11,6 +11,8 @@ To download the sim, head to the ⁠[releases](https://github.com/WCGH/Dragonson
 ## Known Issues:
 - Some machines might experience slow loading or stutters on their first run.
 - Limit Cut debuffs are missing durations.
+- Having a dropdown menu open selected will prevent moving your camera with right click.
+- There is no indicator of who received first Mortal Vow debuff when starting Phase 6 at a later stage.
 
 ## TODO:
 - Add control options (standard/legacy, mouse sensitivity).
