@@ -175,23 +175,23 @@ text = "Reset"
 
 [node name="RarePatternButton" type="CheckButton" parent="OnScreenButtons"]
 layout_direction = 3
-offset_left = 21.0
-offset_top = 13.0
-offset_right = 178.0
-offset_bottom = 44.0
+offset_left = 38.0
+offset_top = 16.0
+offset_right = 195.0
+offset_bottom = 47.0
 focus_mode = 0
 text = "Rare Pattern"
 script = ExtResource("7_d111m")
 
 [node name="RoleSelectButton" type="OptionButton" parent="OnScreenButtons"]
-offset_left = 160.0
+offset_left = 154.0
 offset_top = 21.0
-offset_right = 304.0
+offset_right = 331.0
 offset_bottom = 52.0
 focus_mode = 0
 action_mode = 1
 item_count = 8
-selected = 1
+selected = 6
 fit_to_longest_item = false
 popup/item_0/text = "Tank 1"
 popup/item_0/id = 0
@@ -205,17 +205,21 @@ popup/item_4/text = "Melee 1"
 popup/item_4/id = 4
 popup/item_5/text = "Melee 2"
 popup/item_5/id = 5
-popup/item_6/text = "Phys Ranged"
+popup/item_6/text = "Phys Ranged (R1)"
 popup/item_6/id = 6
-popup/item_7/text = "Caster"
+popup/item_7/text = "Caster (R2)"
 popup/item_7/id = 7
 script = ExtResource("8_don2h")
 
 [node name="DoomAnchorButton" type="OptionButton" parent="OnScreenButtons"]
-offset_left = 330.0
-offset_top = 21.0
-offset_right = 474.0
-offset_bottom = 52.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 58.0
+offset_right = -29.0
+offset_bottom = 89.0
+grow_horizontal = 0
 focus_mode = 0
 action_mode = 1
 item_count = 2

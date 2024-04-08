@@ -251,9 +251,9 @@ popup/item_4/text = "Melee 1"
 popup/item_4/id = 4
 popup/item_5/text = "Melee 2"
 popup/item_5/id = 5
-popup/item_6/text = "Phys Ranged"
+popup/item_6/text = "Phys Ranged (R1)"
 popup/item_6/id = 6
-popup/item_7/text = "Caster"
+popup/item_7/text = "Caster (R2)"
 popup/item_7/id = 7
 script = ExtResource("8_0k834")
 

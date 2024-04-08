@@ -1,3 +1,10 @@
+### v1.0.5 Changelog:
+	- Added option to pick Limit Cut numbers/arrows.
+	- Added option to pick first Mortal Vow Target.
+	- Fixed APD/LPDU Wroth spread positions. Added in-game option for static (APD/LPDU) and facing middle (Twin).
+	- Moved Wroth starting position slightly off E/W wall to better match movement without sprint.
+
+
 ### v1.0.4 Changelog:
 	- Fixed a crash during P6-Cauterize.
 	- Added options for target markers:

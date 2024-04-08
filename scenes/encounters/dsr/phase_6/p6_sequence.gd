@@ -102,6 +102,12 @@ func play_sequence(sequence_key: String) -> void:
 
 func assign_vow() -> void:
 	var party_list := party.values()
+	var first_vow: int = SavedVariables.get_data("p6", "first_vow")
+	# Determined vow target.
+	if first_vow != SavedVariables.first_vow.RANDOM:
+		vow_target = party_list[first_vow + 3]
+		return
+	# Random vow target.
 	var dps_party_list := party_list.slice(4, 8)
 	randomize()
 	vow_target = dps_party_list.pick_random()

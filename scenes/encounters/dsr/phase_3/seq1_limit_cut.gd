@@ -7,6 +7,8 @@
 
 extends Node
 
+enum arrow {RANDOM, UP, CIRCLE, DOWN}
+
 # Spell Dimensions
 const TOWER_DROP_RADIUS := 10.0
 const PARTY_SOAK_RADIUS := 10.0
@@ -35,6 +37,11 @@ const CLONE_ROTATION_SPEED := 0.5
 
 var lockon_ids := {"lc1": LockonController.LC_1, "lc2": LockonController.LC_2, "lc3": LockonController.LC_3}
 var has_arrows := {"lc1": false, "lc2": false, "lc3": false}
+var lc_key_str := ["rand", "lc1", "lc2", "lc3"]
+var player: Player
+var player_lc: int
+var player_arrow : int
+var forced_arrow := 0
 var positions: Dictionary
 var tower_snapshots : Dictionary
 var towers : Dictionary
@@ -46,7 +53,7 @@ var strat : int
 
 
 func start_sequence(new_party: Dictionary) -> void:
-	load_player_positions()
+	load_settings()
 	assert(new_party != null, "Error. Where the party at?")
 	initialize_party(new_party)
 	# Pre-load resources.
@@ -58,11 +65,52 @@ func start_sequence(new_party: Dictionary) -> void:
 	animation_player.play("limit_cut_sequence")
 
 
+func load_settings() -> void:
+	# East/Westhogg
+	strat = SavedVariables.get_data("p3", "nidhogg")
+	match strat:
+		SavedVariables.nidhogg.WEST:
+			positions = P3S1_Positions.positions_db
+		SavedVariables.nidhogg.EAST:
+			positions = P3S1_Positions_East.positions_db
+		_:
+			print("Error: Invalid strategy string in config. Loading Westhogg.")
+			positions = P3S1_Positions.positions_db
+	# LC Assignment
+	player_arrow = SavedVariables.get_data("p3", "arrow")  # 0 = rand
+	player_lc = SavedVariables.get_data("p3", "in_line")   # 0 = rand
+
+
 # Shuffles new party and stores it in Dictionary.
 func initialize_party(new_party: Dictionary) -> void:
+	player = get_tree().get_first_node_in_group("player")
 	var party_list := new_party.values()
 	randomize()
 	party_list.shuffle()
+	# Handle determined player assignment.
+	if not (player_arrow == 0 and player_lc == 0):
+		# Randomize if needed
+		if player_lc == 0:
+			player_lc = randi_range(1, 3)
+		if player_arrow == 0:
+			player_arrow = randi_range(1, 3) if player_lc != 2 else randi_range(1, 2)
+		# If not random arrow, force LC to have arrows.
+		else:
+			forced_arrow = player_lc
+		var player_index := 0
+		# Determine LC starting index
+		if player_lc != 1:
+			player_index += 3 if player_lc == 2 else 5
+		# Add from arrow index
+		# Handle LC2 Down arrow selection.
+		if player_lc == 2 and player_arrow == 3:
+			player_arrow = 2
+		player_index += (player_arrow - 1)
+		# Swap party list
+		var index_to_swap := party_list.find(player)
+		var temp: PlayableCharacter = party_list[player_index]
+		party_list[player_index] = party_list[index_to_swap]
+		party_list[index_to_swap] = temp
 	# Convert to dictionary
 	party = {
 		"lc1": {
@@ -80,20 +128,6 @@ func initialize_party(new_party: Dictionary) -> void:
 			"down": party_list[7]
 		}
 	}
-
-
-func load_player_positions() -> void:
-	strat = SavedVariables.get_data("p3", "nidhogg")
-	#if strat == SavedVariables.nidhogg.DEFAULT:
-		#strat = SavedVariables.get_default("p3", "nidhogg")
-	match strat:
-		SavedVariables.nidhogg.WEST:
-			positions = P3S1_Positions.positions_db
-		SavedVariables.nidhogg.EAST:
-			positions = P3S1_Positions_East.positions_db
-		_:
-			print("Error: Invalid strategy string in config. Loading Westhogg.")
-			positions = P3S1_Positions.positions_db
 
 
 ## Start of timed sequence.
@@ -137,6 +171,9 @@ func lc_pre_pos() -> void:
 # Randomly assign arrows to LC groups, shuffles the arrow groups and send debuffs
 func assign_arrows() -> void:
 	for pt_key: String in party:
+		if pt_key == lc_key_str[forced_arrow]:
+			has_arrows[pt_key] = true
+			continue
 		has_arrows[pt_key] = randi() % 2 == 0
 		if has_arrows[pt_key]:
 			shuffle_dict(party[pt_key])

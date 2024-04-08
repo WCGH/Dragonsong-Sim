@@ -14,7 +14,6 @@ signal target_changed(target: Node3D)
 const MAX_MOUSE_CLICK_MOVEMENT := 3000.0
 
 var debug := false
-
 @export var move_speed : float = 14.3
 @export var acceleration : float = 20.0
 @export var jump_force : float = 10.0

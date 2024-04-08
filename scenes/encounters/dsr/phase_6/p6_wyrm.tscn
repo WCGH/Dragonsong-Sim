@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://v1hpgw55s4bk"]
+[gd_scene load_steps=93 format=3 uid="uid://v1hpgw55s4bk"]
 
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/p6_wyrm.gd" id="1_i51uh"]
 [ext_resource type="PackedScene" uid="uid://btigj53q7q4oi" path="res://scenes/ui/cast_bars/target_cast_bar.tscn" id="2_ycnju"]
@@ -17,12 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://dmp33gbqijftl" path="res://scenes/controllers/tether_controller.tscn" id="10_avk3w"]
 [ext_resource type="PackedScene" uid="uid://bwd1v6kvgas8d" path="res://scenes/controllers/waymark_controller.tscn" id="10_pcqg1"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wb1_button.gd" id="10_r6fdw"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/first_vow_button.gd" id="11_02ec4"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wb2_button.gd" id="11_na20n"]
 [ext_resource type="PackedScene" uid="uid://dktirpxqry1m1" path="res://scenes/controllers/target_marker_controller.tscn" id="11_nw8ca"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/am_button.gd" id="12_afogn"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wroth_flame_controller.gd" id="12_gctdh"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/p6_sequence.gd" id="13_1hls7"]
 [ext_resource type="PackedScene" uid="uid://l44kfd8rk857" path="res://scenes/markers/ground/wroth_line.tscn" id="13_w17me"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/wroth_spread_button.gd" id="14_2iyl4"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_6/seq_wyrm1.gd" id="14_5a5ql"]
 [ext_resource type="PackedScene" uid="uid://bd3so8mgkmg2i" path="res://scenes/ui/debuff_icons/p6/mortal_vow.tscn" id="14_mh4j8"]
 [ext_resource type="PackedScene" uid="uid://c2b2mjc4ia8dg" path="res://scenes/markers/ground/wroth_zig.tscn" id="14_ojksp"]
@@ -748,14 +750,14 @@ focus_mode = 0
 text = "Reset"
 
 [node name="RoleSelectButton" type="OptionButton" parent="OnScreenButtons"]
-offset_left = 160.0
+offset_left = 153.0
 offset_top = 21.0
-offset_right = 304.0
+offset_right = 330.0
 offset_bottom = 52.0
 focus_mode = 0
 action_mode = 1
 item_count = 8
-selected = 1
+selected = 6
 fit_to_longest_item = false
 popup/item_0/text = "Tank 1"
 popup/item_0/id = 0
@@ -769,16 +771,16 @@ popup/item_4/text = "Melee 1"
 popup/item_4/id = 4
 popup/item_5/text = "Melee 2"
 popup/item_5/id = 5
-popup/item_6/text = "Phys Ranged"
+popup/item_6/text = "Phys Ranged (R1)"
 popup/item_6/id = 6
-popup/item_7/text = "Caster"
+popup/item_7/text = "Caster (R2)"
 popup/item_7/id = 7
 script = ExtResource("7_e2m8d")
 
 [node name="SequenceSelectButton" type="OptionButton" parent="OnScreenButtons"]
-offset_left = 321.0
+offset_left = 349.0
 offset_top = 21.0
-offset_right = 465.0
+offset_right = 493.0
 offset_bottom = 52.0
 focus_mode = 0
 action_mode = 1
@@ -798,14 +800,13 @@ popup/item_4/id = 4
 script = ExtResource("8_iejqf")
 
 [node name="WB1Button" type="OptionButton" parent="OnScreenButtons"]
-custom_minimum_size = Vector2(168, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -191.0
-offset_top = 29.0
-offset_right = -23.0
-offset_bottom = 60.0
+offset_left = -181.0
+offset_top = 31.0
+offset_right = -14.0
+offset_bottom = 62.0
 grow_horizontal = 0
 focus_mode = 0
 action_mode = 1
@@ -826,23 +827,57 @@ offset_left = 2.0
 offset_top = -24.0
 offset_right = 114.0
 offset_bottom = 2.0
-text = "WB 1"
+text = "Wyrmsbreath 1"
 label_settings = SubResource("LabelSettings_dcu0j")
 
-[node name="WB2Button" type="OptionButton" parent="OnScreenButtons"]
-custom_minimum_size = Vector2(168, 0)
+[node name="FirstVowButton" type="OptionButton" parent="OnScreenButtons"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -191.0
+offset_left = -179.0
 offset_top = 90.0
-offset_right = -23.0
+offset_right = -12.0
 offset_bottom = 121.0
 grow_horizontal = 0
 focus_mode = 0
 action_mode = 1
+item_count = 5
+selected = 3
+fit_to_longest_item = false
+popup/item_0/text = "Random"
+popup/item_0/id = 0
+popup/item_1/text = "Melee 1"
+popup/item_1/id = 1
+popup/item_2/text = "Melee 2"
+popup/item_2/id = 2
+popup/item_3/text = "Phys Ranged"
+popup/item_3/id = 3
+popup/item_4/text = "Caster"
+popup/item_4/id = 4
+script = ExtResource("11_02ec4")
+
+[node name="Label" type="Label" parent="OnScreenButtons/FirstVowButton"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -24.0
+offset_right = 114.0
+offset_bottom = 2.0
+text = "First Vow Target"
+label_settings = SubResource("LabelSettings_dcu0j")
+
+[node name="WB2Button" type="OptionButton" parent="OnScreenButtons"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -179.0
+offset_top = 274.0
+offset_right = -12.0
+offset_bottom = 305.0
+grow_horizontal = 0
+focus_mode = 0
+action_mode = 1
 item_count = 2
-selected = 1
+selected = 0
 fit_to_longest_item = false
 popup/item_0/text = "5 North 1 South"
 popup/item_0/id = 0
@@ -856,18 +891,17 @@ offset_left = 3.0
 offset_top = -24.0
 offset_right = 115.0
 offset_bottom = 2.0
-text = "WB 2"
+text = "Wyrmsbreath 2"
 label_settings = SubResource("LabelSettings_dcu0j")
 
 [node name="AMButton" type="OptionButton" parent="OnScreenButtons"]
-custom_minimum_size = Vector2(168, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -189.0
-offset_top = 154.0
-offset_right = -21.0
-offset_bottom = 185.0
+offset_left = -179.0
+offset_top = 152.0
+offset_right = -12.0
+offset_bottom = 183.0
 grow_horizontal = 0
 focus_mode = 0
 action_mode = 1
@@ -889,6 +923,35 @@ offset_top = -24.0
 offset_right = 134.0
 offset_bottom = 2.0
 text = "Wroth markers"
+label_settings = SubResource("LabelSettings_dcu0j")
+
+[node name="WrothSpreadButton" type="OptionButton" parent="OnScreenButtons"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -179.0
+offset_top = 213.0
+offset_right = -12.0
+offset_bottom = 244.0
+grow_horizontal = 0
+focus_mode = 0
+action_mode = 1
+item_count = 2
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Static"
+popup/item_0/id = 0
+popup/item_1/text = "Facing Middle"
+popup/item_1/id = 1
+script = ExtResource("14_2iyl4")
+
+[node name="Label" type="Label" parent="OnScreenButtons/WrothSpreadButton"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -24.0
+offset_right = 134.0
+offset_bottom = 2.0
+text = "Wroth Spread"
 label_settings = SubResource("LabelSettings_dcu0j")
 
 [node name="MainMenuButton" type="Button" parent="OnScreenButtons"]
@@ -1842,10 +1905,10 @@ visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -88.0
-offset_top = 152.0
-offset_right = -25.0
-offset_bottom = 197.0
+offset_left = -1500.0
+offset_top = 824.0
+offset_right = -1437.0
+offset_bottom = 869.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 22
 text = "0,12"
@@ -1862,8 +1925,10 @@ light_energy = 0.44
 [connection signal="item_selected" from="OnScreenButtons/RoleSelectButton" to="OnScreenButtons/RoleSelectButton" method="_on_item_selected"]
 [connection signal="item_selected" from="OnScreenButtons/SequenceSelectButton" to="OnScreenButtons/SequenceSelectButton" method="_on_item_selected"]
 [connection signal="item_selected" from="OnScreenButtons/WB1Button" to="OnScreenButtons/WB1Button" method="_on_item_selected"]
+[connection signal="item_selected" from="OnScreenButtons/FirstVowButton" to="OnScreenButtons/FirstVowButton" method="_on_item_selected"]
 [connection signal="item_selected" from="OnScreenButtons/WB2Button" to="OnScreenButtons/WB2Button" method="_on_item_selected"]
 [connection signal="item_selected" from="OnScreenButtons/AMButton" to="OnScreenButtons/AMButton" method="_on_item_selected"]
+[connection signal="item_selected" from="OnScreenButtons/WrothSpreadButton" to="OnScreenButtons/WrothSpreadButton" method="_on_item_selected"]
 [connection signal="pressed" from="OnScreenButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="body_exited" from="Arena/DeathWallSquare/DeathwallTrigger" to="Arena/DeathWallSquare" method="_on_deathwall_trigger_body_exited"]
 [connection signal="body_entered" from="GroundMarkers/ConeAoE" to="GroundMarkers/ConeAoE" method="_on_body_entered"]
