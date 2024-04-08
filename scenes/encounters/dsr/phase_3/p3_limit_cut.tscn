@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cybs5n4035ehd"]
+[gd_scene load_steps=38 format=3 uid="uid://cybs5n4035ehd"]
 
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/p3_limit_cut.gd" id="1_g37t4"]
 [ext_resource type="PackedScene" uid="uid://bayxk6ajn7khf" path="res://scenes/controllers/party_controller.tscn" id="1_wya2w"]
@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://b0wxaorlbce3d" path="res://scenes/enemies/p3/clone.tscn" id="22_r54t0"]
 [ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="23_rk80t"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/westhogg_select_button.gd" id="24_wjgce"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/in_line_select_button.gd" id="26_amsib"]
+[ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/arrow_select_button.gd" id="27_1quue"]
 
 [sub_resource type="Animation" id="Animation_pevb2"]
 resource_name = "limit_cut_sequence"
@@ -173,6 +175,11 @@ size = Vector2(6, 5.5)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_41mri"]
+font_size = 18
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kideh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -297,14 +304,14 @@ offset_bottom = 113.0
 text = "Main Menu"
 
 [node name="RoleSelectButton" type="OptionButton" parent="Dev"]
-offset_left = 160.0
+offset_left = 150.0
 offset_top = 21.0
-offset_right = 304.0
+offset_right = 327.0
 offset_bottom = 52.0
 focus_mode = 0
 action_mode = 1
 item_count = 8
-selected = 1
+selected = 6
 fit_to_longest_item = false
 popup/item_0/text = "Tank 1"
 popup/item_0/id = 0
@@ -318,17 +325,21 @@ popup/item_4/text = "Melee 1"
 popup/item_4/id = 4
 popup/item_5/text = "Melee 2"
 popup/item_5/id = 5
-popup/item_6/text = "Phys Ranged"
+popup/item_6/text = "Phys Ranged (R1)"
 popup/item_6/id = 6
-popup/item_7/text = "Caster"
+popup/item_7/text = "Caster (R2)"
 popup/item_7/id = 7
 script = ExtResource("23_rk80t")
 
 [node name="WesthoggSelectButton" type="OptionButton" parent="Dev"]
-offset_left = 327.0
-offset_top = 21.0
-offset_right = 471.0
-offset_bottom = 52.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -148.0
+offset_top = 15.0
+offset_right = -26.0
+offset_bottom = 46.0
+grow_horizontal = 0
 focus_mode = 0
 action_mode = 1
 item_count = 2
@@ -339,6 +350,73 @@ popup/item_0/id = 0
 popup/item_1/text = "Easthogg"
 popup/item_1/id = 1
 script = ExtResource("24_wjgce")
+
+[node name="InLineSelectButton" type="OptionButton" parent="Dev"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -147.0
+offset_top = 78.0
+offset_right = -25.0
+offset_bottom = 109.0
+grow_horizontal = 0
+focus_mode = 0
+action_mode = 1
+item_count = 4
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Random"
+popup/item_0/id = 0
+popup/item_1/text = "1"
+popup/item_1/id = 1
+popup/item_2/text = "2"
+popup/item_2/id = 2
+popup/item_3/text = "3"
+popup/item_3/id = 3
+script = ExtResource("26_amsib")
+
+[node name="Label" type="Label" parent="Dev/InLineSelectButton"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -24.0
+offset_right = 114.0
+offset_bottom = 2.0
+text = "Player In-Line"
+label_settings = SubResource("LabelSettings_41mri")
+
+[node name="ArrowSelectButton" type="OptionButton" parent="Dev"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -147.0
+offset_top = 139.0
+offset_right = -25.0
+offset_bottom = 170.0
+grow_horizontal = 0
+focus_mode = 0
+action_mode = 1
+item_count = 4
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Random"
+popup/item_0/id = 0
+popup/item_1/text = "Up"
+popup/item_1/id = 1
+popup/item_2/text = "Circle"
+popup/item_2/id = 2
+popup/item_3/text = "Down"
+popup/item_3/id = 3
+script = ExtResource("27_1quue")
+
+[node name="Label" type="Label" parent="Dev/ArrowSelectButton"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -24.0
+offset_right = 114.0
+offset_bottom = 2.0
+text = "Player Arrow"
+label_settings = SubResource("LabelSettings_41mri")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ncsmy")
@@ -351,3 +429,5 @@ light_energy = 0.44
 [connection signal="pressed" from="Dev/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="item_selected" from="Dev/RoleSelectButton" to="Dev/RoleSelectButton" method="_on_item_selected"]
 [connection signal="item_selected" from="Dev/WesthoggSelectButton" to="Dev/WesthoggSelectButton" method="_on_item_selected"]
+[connection signal="item_selected" from="Dev/InLineSelectButton" to="Dev/InLineSelectButton" method="_on_item_selected"]
+[connection signal="item_selected" from="Dev/ArrowSelectButton" to="Dev/ArrowSelectButton" method="_on_item_selected"]

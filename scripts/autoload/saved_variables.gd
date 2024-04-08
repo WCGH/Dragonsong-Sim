@@ -9,10 +9,18 @@ signal keybind_changed(keybinds: Dictionary)
 
 const CONFIG_FILE_PATH = "user://config.cfg"
 
+# General
 enum strats {APD, LPDU, TWIN}
 enum markers {APD, LPDU}
+# P3
 enum nidhogg {WEST, EAST, DEFAULT = -1}
+enum in_line {RANDOM, ONE, TWO, THREE, DEFAULT = -1}
+enum arrow {RANDOM, UP, CIRCLE, DOWN, DEFAULT = -1}
+# P5
 enum dooms {ANCHOR, STATIC, DEFAULT = -1}
+# P6
+enum first_vow {RANDOM, M1, M2, R1, R2, DEFAULT = -1}
+enum wroth {STATIC, J_RELATIVE, DEFAULT = -1}
 enum wb_1 {HEALERS, RANGED, G1, DEFAULT = -1}
 enum wb_2 {FNOS, STATIC, DEFAULT = -1}
 enum t_markers {AM, MANUAL, NONE, DEFAULT = -1}
@@ -28,13 +36,17 @@ var save_data: Dictionary = {
 		"markers": markers.APD
 	},
 	"p3": {
-		"nidhogg": nidhogg.DEFAULT
+		"nidhogg": nidhogg.DEFAULT,
+		"in_line": in_line.DEFAULT,
+		"arrow": arrow.DEFAULT
 	},
 	"p5": {
 		"lineup": ["r1", "t1", "r2", "m1", "h2", "t2", "m2", "h1"],
 		"dooms": dooms.DEFAULT
 	},
 	"p6": {
+		"first_vow": first_vow.DEFAULT,
+		"wroth": wroth.DEFAULT,
 		"wb_1": wb_1.DEFAULT,
 		"wb_2": wb_2.DEFAULT,
 		"t_markers": t_markers.DEFAULT
@@ -48,27 +60,37 @@ var save_data: Dictionary = {
 
 var defaults := {
 	strats.APD: {
-		"p3": { "nidhogg": nidhogg.WEST },
-		"p5": { "dooms": dooms.ANCHOR },
+		"p3": { 
+			"nidhogg": nidhogg.WEST, "in_line": in_line.RANDOM, "arrow": arrow.RANDOM},
+		"p5": { 
+			"dooms": dooms.ANCHOR },
 		"p6": {
+			"first_vow": first_vow.RANDOM, "wroth": wroth.STATIC,
 			"wb_1": wb_1.HEALERS, "wb_2": wb_2.STATIC, "t_markers": t_markers.AM
 		}
 	},
 	strats.LPDU: {
-		"p3": { "nidhogg": nidhogg.EAST },
-		"p5": { "dooms": dooms.ANCHOR },
+		"p3": { 
+			"nidhogg": nidhogg.EAST, "in_line": in_line.RANDOM, "arrow": arrow.RANDOM },
+		"p5": { 
+			"dooms": dooms.ANCHOR },
 		"p6": { 
+			"first_vow": first_vow.RANDOM, "wroth": wroth.STATIC,
 			"wb_1": wb_1.G1, "wb_2": wb_2.FNOS, "t_markers": t_markers.AM
 		}
 	},
 	strats.TWIN: {
-		"p3": { "nidhogg": nidhogg.EAST },
-		"p5": { "dooms": dooms.STATIC },
-		"p6": { "wb_1": wb_1.G1, "wb_2": wb_2.FNOS, "t_markers": t_markers.MANUAL}
+		"p3": { 
+			"nidhogg": nidhogg.EAST, "in_line": in_line.RANDOM, "arrow": arrow.RANDOM },
+		"p5": { 
+			"dooms": dooms.STATIC },
+		"p6": { 
+			"first_vow": first_vow.RANDOM, "wroth": wroth.J_RELATIVE,
+			"wb_1": wb_1.G1, "wb_2": wb_2.FNOS, "t_markers": t_markers.MANUAL}
 	}
 }
 
-var input_action_keys := ["ab1_sprint", "ab2_arms", "ab3_dash"]
+#var input_action_keys := ["ab1_sprint", "ab2_arms", "ab3_dash"]
 
 
 func _ready() -> void:

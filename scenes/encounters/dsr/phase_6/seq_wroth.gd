@@ -17,11 +17,11 @@ const AM_RADIUS = 12.0
 @onready var target_marker_controller: TargetMarkerController = %TargetMarkerController
 
 var pc_positions := {
-	"ne": {"a1": Vector2(43.5, -24), "a2": Vector2(29, -24), "a3": Vector2(5, -24)},
-	"nw": {"a1": Vector2(-43.5, -24), "a2": Vector2(-29, -24), "a3": Vector2(-5, -24)},
+	"ne": {"a1": Vector2(40, -24), "a2": Vector2(21.5, -24), "a3": Vector2(0, -24)},
+	"nw": {"a1": Vector2(-40, -24), "a2": Vector2(-21.5, -24), "a3": Vector2(0, -24)},
 	"n_mid" : Vector2(0, -1),
-	"se": {"a1": Vector2(43.5, 24), "a2": Vector2(29, 24), "a3": Vector2(5, 24)},
-	"sw": {"a1": Vector2(-43.5, 24), "a2": Vector2(-29, 24), "a3": Vector2(-5, 24)},
+	"se": {"a1": Vector2(40, 24), "a2": Vector2(21.5, 24), "a3": Vector2(0, 24)},
+	"sw": {"a1": Vector2(-40, 24), "a2": Vector2(-21.5, 24), "a3": Vector2(0, 24)},
 	"s_mid": Vector2(0, 1),
 	"n_spread": {
 		"wing": {
@@ -51,6 +51,35 @@ var pc_positions := {
 			"fr1": Vector2(-41, -31), "fr2": Vector2(-15, -29)
 		}
 	},
+	"sn_spread": {
+		"wing": {
+			"sp1": Vector2(-43, 0), "sp2": Vector2(-28.6, 0),
+			"sp3": Vector2(-14.3, 0), "sp4": Vector2(0, 0),
+			"st1": Vector2(40, 0), "st2": Vector2(20, 0),
+			"fr1": Vector2(39, 1), "fr2": Vector2(19, -1),
+			},
+		"tail": {
+			"sp1": Vector2(-43, 28), "sp2": Vector2(-28.6, 28),
+			"sp3": Vector2(-14.3, 28), "sp4": Vector2(0, 28),
+			"st1": Vector2(40, 28), "st2": Vector2(20, 28),
+			"fr1": Vector2(39, 29), "fr2": Vector2(19, 27),
+		}
+	},
+	"ss_spread": {
+		"wing": {
+			"sp1": Vector2(-43, 0), "sp2": Vector2(-28.6, 0),
+			"sp3": Vector2(-14.3, 0), "sp4": Vector2(0, 0),
+			"st1": Vector2(40, 0), "st2": Vector2(20, 0),
+			"fr1": Vector2(39, 1), "fr2": Vector2(19, -1),
+		},
+		"tail": {
+			"sp1": Vector2(-43, -28), "sp2": Vector2(-28.6, -28),
+			"sp3": Vector2(-14.3, -28), "sp4": Vector2(0, -28),
+			"st1": Vector2(40, -28), "st2": Vector2(20, -28),
+			"fr1": Vector2(39, -29), "fr2": Vector2(19, -27),
+		}
+	},
+	
 }
 
 var am_dict := {
@@ -275,7 +304,11 @@ func orb_3_hit() -> void:
 # 25 - Move party to spread pos.
 func move_to_spread() -> void:
 	var wing_tail := "wing" if hot_wing else "tail"
-	var north_south := "n_spread" if south_orb else "s_spread"
+	var north_south: String
+	if SavedVariables.get_data("p6", "wroth") == SavedVariables.wroth.J_RELATIVE:
+		north_south = "n_spread" if south_orb else "s_spread"
+	else:
+		north_south = "sn_spread" if south_orb else "ss_spread"
 	move_party(north_south, wing_tail)
 
 

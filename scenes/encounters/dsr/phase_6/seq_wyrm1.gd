@@ -24,14 +24,16 @@ extends P6Sequence
 var party_tether: Dictionary
 var orb_config: int
 var wb1_index: int
+var first_vow: int
 
 
 # Needed to avoid duplicate ready calls in parent. Needs TESTING
 func _ready() -> void:
 	# Get strat variables
-	wb1_index = SavedVariables.save_data["p6"]["wb_1"]
-	if wb1_index == SavedVariables.wb_1.DEFAULT:
-		wb1_index = SavedVariables.get_default("p6", "wb_1")
+	wb1_index = SavedVariables.get_data("p6", "wb_1")
+	#wb1_index = SavedVariables.save_data["p6"]["wb_1"]
+	#if wb1_index == SavedVariables.wb_1.DEFAULT:
+		#wb1_index = SavedVariables.get_default("p6", "wb_1")
 
 
 func start_sub_sequence() -> void:
