@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var sprint_action_button: ActionButton = $MarginContainer/ButtonsContainer/SprintActionButton
 @onready var arms_action_button: ActionButton = $MarginContainer/ButtonsContainer/ArmsActionButton
 @onready var dash_action_button: ActionButton = $MarginContainer/ButtonsContainer/DashActionButton
+@onready var parent_node: Sequence = $".."
 
 var player: Player
 var keybinds: Dictionary
@@ -35,6 +36,19 @@ func _unhandled_input(event : InputEvent) -> void:
 			arms_action_button._on_pressed()
 		elif keycode == keybinds["ab3_dash"]:
 			dash_action_button._on_pressed()
+	# Controller button binds (non-configurable)
+	elif event is InputEventJoypadButton:
+		var button_index: int = event.get_button_index()
+		match button_index:
+			JOY_BUTTON_X:
+				sprint_action_button._on_pressed()
+			JOY_BUTTON_A:
+				arms_action_button._on_pressed()
+			JOY_BUTTON_B:
+				dash_action_button._on_pressed()
+			JOY_BUTTON_Y:
+				parent_node._on_reset_button_pressed()
+
 
 #
 #func _process(_delta: float) -> void:

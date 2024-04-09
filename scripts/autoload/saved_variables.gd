@@ -33,7 +33,11 @@ var save_data: Dictionary = {
 		"maximized": false,
 		"camera_distance": 22,
 		"strat": strats.APD,
-		"markers": markers.APD
+		"markers": markers.APD,
+		"mouse_sens": 1.0,
+		"x_sens": 1.0,
+		"y_sens": 1.0,
+		"invert_y": false
 	},
 	"p3": {
 		"nidhogg": nidhogg.DEFAULT,
@@ -109,6 +113,7 @@ func get_data(category: String, key: String) -> Variant:
 	return save_data[category][key]
 
 
+# TODO: Replace old validation with version check.
 func load_save_file() -> void:
 	var _err := config_file.load(CONFIG_FILE_PATH)
 	
