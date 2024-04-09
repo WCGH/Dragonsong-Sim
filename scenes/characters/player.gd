@@ -33,6 +33,9 @@ var facing_angle : float
 var rotation_speed := 0.15
 var click_rotation_speed := 0.3
 var mouse_sensitivity := 0.002
+var invert_y := false
+var x_sensitivity := 0.027
+var y_sensitivity := 0.027
 var twist_input := 0.0
 var pitch_input := 0.0
 var mouse_position := Vector2(950.0, 480.0)
@@ -67,6 +70,11 @@ func _ready() -> void:
 	anim_state = model.get_node("AnimationTree").get("parameters/playback")
 	camera_distance = SavedVariables.save_data["settings"]["camera_distance"]
 	camera_spring_arm.spring_length = camera_distance
+	# Apply sensitivity options
+	mouse_sensitivity *= SavedVariables.save_data["settings"]["mouse_sens"]
+	x_sensitivity *= SavedVariables.save_data["settings"]["x_sens"]
+	y_sensitivity *= SavedVariables.save_data["settings"]["y_sens"]
+	invert_y = SavedVariables.save_data["settings"]["invert_y"]
 
 
 func set_parameters(new_role_key : String, new_model_scene : PackedScene, 
@@ -149,6 +157,15 @@ func _physics_process(delta : float) -> void:
 		var model_rotation: float = rad_to_deg(get_model_rotation().y)
 		coords_label.text = str("%.2f" % position.x, ", ", "%.2f" % position.z,
 			"\nAngle: %f" % (fposmod((model_rotation + 180), 360)))
+	
+	# Handle Controller right stick (camera)
+	var cam_input := Input.get_vector("look_left", "look_right", "look_up", "look_down")
+	if cam_input.length_squared() > 0.0:
+		twist_input = - cam_input.x * x_sensitivity
+		if invert_y:
+			pitch_input = cam_input.y * y_sensitivity
+		else:
+			pitch_input = - cam_input.y * y_sensitivity
 	
 	# Rotate model to match pivot.
 	if (Input.is_action_pressed("right_click") and Input.is_action_pressed("left_click")) or\
@@ -287,7 +304,6 @@ func is_player() -> bool:
 
 
 func dash() -> void:
-	#var dir : Vector3 = twist_pivot.global_transform.basis.z.normalized()
 	var tar : Vector3 = (twist_pivot.global_transform.basis.z.normalized() * -dash_distance) 
 	tar += global_position
 	var tween : Tween = get_tree().create_tween()

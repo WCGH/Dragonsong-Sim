@@ -3,30 +3,15 @@
 # This file is released under "GNU General Public License 3.0".
 # Please see the LICENSE file that should have been included as part of this package.
 
-## Note that some of this code pertains to the auto-update function, which
-## was removed for the public release. The app should not make any HTTP requests,
-## and the updater.pck is not distributed anymore.
-
 extends CanvasLayer
 
-# Release version is for standalone distribution only.
-# It will force a first-time download everytime it's launched.
 const LAUNCHER_VERSION = 1.05
-#const RELEASE_VERSION = false
 const WINDOW_SIZE = Vector2(1600, 900)
-#const EXE_SIZE = 45587433
 const DISCORD_INVITE_URL := "https://discord.gg/7GEqpRc55c"
 
 enum {DOWNLOAD, UPDATE, READY}
 
 var debug := false
-var test_download_links := false
-
-#var download_links := {
-	#"exe" : "",
-	#"pck" : "",
-	#"version" : ""
-#}
 var seq_scene_paths := {
 	"p3_lc": "res://scenes/encounters/dsr/phase_3/p3_limit_cut.tscn",
 	"p5_wrath": "res://scenes/encounters/dsr/phase_5/wrath/p5_wrath.tscn",
@@ -44,13 +29,11 @@ var button_text := {
 }
 var download_folder := "user://pcks/"
 var launch_status := DOWNLOAD
-#var http_request : HTTPRequest
 var update_in_progress := false
 var load_screen_active := false
 var load_progress : Array
 var loading_seq := ""
 var click_pos := Vector2.ZERO
-#var sequence_keys := ["p3_lc", "p5_wrath", "p5_death", "p6_wyrm"]
 
 @onready var buttons := {"p3_lc" : %P3LaunchButton, "p5_wrath" : %P5WLaunchButton,
 	"p5_death" : %P5DLaunchButton, "p6_wyrm" : %P6LaunchButton, "launcher" : %UpdateLauncherButton}
@@ -71,19 +54,6 @@ func _ready() -> void:
 	get_tree().get_root().borderless = true
 	get_tree().get_root().set_size(Vector2(WINDOW_SIZE))
 	get_tree().get_root().move_to_center()
-	
-	
-	# If release version, start download without user prompt.
-	#if RELEASE_VERSION:
-		#start_release_download()
-		#return
-	
-	# If we are returning to this scene from the game, don't check for update.
-	#if !Global.checked_update:
-		## Check launcher version.
-		#download_file(download_links["version"], file_path("version"), true)
-		#Global.checked_update = true
-		
 
 
 func _process(_delta: float) -> void:
@@ -220,4 +190,3 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_tree().get_root().position +
 			Vector2i(get_viewport().get_mouse_position()) -
 			Vector2i(click_pos))
-

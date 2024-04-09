@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bnvls8fdb3rlx"]
+[gd_scene load_steps=31 format=3 uid="uid://bnvls8fdb3rlx"]
 
 [ext_resource type="Script" path="res://scenes/encounters/dsr/main_menu.gd" id="1_ufvqy"]
 [ext_resource type="Texture2D" uid="uid://cr6osefluwjvl" path="res://assets/png/ui_logos/dsr_frames/DSR_Frameless.png" id="2_lutkx"]
@@ -41,7 +41,17 @@ outline_color = Color(1, 0.603922, 0.176471, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8x8sj"]
 font = ExtResource("6_rh6qn")
-font_size = 28
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_kjl38"]
+font = ExtResource("6_rh6qn")
+font_size = 45
+outline_size = 4
+outline_color = Color(1, 0.603922, 0.176471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukey4"]
+font = ExtResource("6_rh6qn")
+font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_vkj6m"]
 font = ExtResource("6_rh6qn")
@@ -528,7 +538,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 focus_mode = 0
 theme_override_font_sizes/font_size = 26
-text = "Keybinds"
+text = "Controls"
 
 [node name="BottomHBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
 layout_mode = 2
@@ -569,13 +579,13 @@ theme_override_constants/margin_bottom = 38
 [node name="LeftButtonsVBox" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer"]
 custom_minimum_size = Vector2(500, 550)
 layout_mode = 2
-theme_override_constants/separation = 29
+theme_override_constants/separation = 21
 
 [node name="HeaderLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
-custom_minimum_size = Vector2(0, 65)
+custom_minimum_size = Vector2(0, 46.865)
 layout_mode = 2
-text = "Keybinds"
-label_settings = SubResource("LabelSettings_odj15")
+text = "Controls"
+label_settings = SubResource("LabelSettings_kjl38")
 horizontal_alignment = 1
 
 [node name="SprintContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
@@ -597,7 +607,7 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 focus_mode = 0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 18
 text = "1"
 
 [node name="ArmsContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
@@ -618,7 +628,7 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 focus_mode = 0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 18
 text = "2"
 
 [node name="DashContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
@@ -636,8 +646,90 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 18
 text = "3"
+
+[node name="MouseSensContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="MouseSensLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/MouseSensContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Mouse Sensitivity"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="MouseSensHSlider" type="HSlider" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/MouseSensContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 28)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.4
+max_value = 1.8
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+custom_minimum_size = Vector2(0, 44.135)
+layout_mode = 2
+text = "Controller Options:"
+label_settings = SubResource("LabelSettings_ukey4")
+vertical_alignment = 2
+
+[node name="XSensContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="XSensLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/XSensContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "X Sensitivity"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="XSensHSlider" type="HSlider" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/XSensContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 28)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.5
+max_value = 1.5
+step = 0.01
+value = 1.0
+
+[node name="YSensContainer2" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="YSensLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/YSensContainer2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Y Sensitivity"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="YSensHSlider" type="HSlider" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/YSensContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 28)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.5
+max_value = 1.5
+step = 0.01
+value = 1.0
+
+[node name="InvertYContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 57
+
+[node name="InvertYLabel" type="Label" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/InvertYContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Invert Y"
+label_settings = SubResource("LabelSettings_8x8sj")
+
+[node name="InvertYCheckButton" type="CheckButton" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/InvertYContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
 
 [node name="BottomHBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox"]
 layout_mode = 2
@@ -1041,6 +1133,10 @@ libraries = {
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/SprintContainer/SprintKeyButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_sprint_key_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/ArmsContainer/ArmsKeyButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_arms_key_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/DashContainer/DashKeyButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_dash_key_button_pressed"]
+[connection signal="drag_ended" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/MouseSensContainer/MouseSensHSlider" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_mouse_sens_h_slider_drag_ended"]
+[connection signal="drag_ended" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/XSensContainer/XSensHSlider" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_x_sens_h_slider_drag_ended"]
+[connection signal="drag_ended" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/YSensContainer2/YSensHSlider" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_y_sens_h_slider_drag_ended"]
+[connection signal="toggled" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/InvertYContainer/InvertYCheckButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_invert_y_check_button_toggled"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/BottomHBoxContainer/BackButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_back_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/DefaultButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer" method="_on_default_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container" method="_on_up_button_pressed"]
