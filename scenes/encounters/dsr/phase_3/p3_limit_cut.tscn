@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cybs5n4035ehd"]
+[gd_scene load_steps=37 format=3 uid="uid://cybs5n4035ehd"]
 
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/p3_limit_cut.gd" id="1_g37t4"]
 [ext_resource type="PackedScene" uid="uid://bayxk6ajn7khf" path="res://scenes/controllers/party_controller.tscn" id="1_wya2w"]
@@ -17,13 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://wdaa7tvsg1oy" path="res://scenes/controllers/lockon_controller.tscn" id="8_rudf4"]
 [ext_resource type="PackedScene" uid="uid://bwd1v6kvgas8d" path="res://scenes/controllers/waymark_controller.tscn" id="8_ur353"]
 [ext_resource type="PackedScene" uid="uid://dryfwy8vvtst0" path="res://scenes/ui/debuff_icons/p3/lc1_icon.tscn" id="9_b77gb"]
-[ext_resource type="PackedScene" uid="uid://wya5hvcgyeyb" path="res://assets/objects/nidhogg_anim/nidhogg_anim_inh.tscn" id="9_rq3mc"]
 [ext_resource type="PackedScene" uid="uid://du2fr4o3nsww0" path="res://scenes/ui/player_debuffs.tscn" id="10_1ju27"]
 [ext_resource type="PackedScene" uid="uid://cmm3xwp3b30xh" path="res://scenes/ui/debuff_icons/p3/lc2_icon.tscn" id="10_4njl4"]
 [ext_resource type="PackedScene" uid="uid://c66bvq5c4scl0" path="res://scenes/ui/debuff_icons/p3/lc3_icon.tscn" id="11_dhgfi"]
 [ext_resource type="Texture2D" uid="uid://ig2b2e4smtei" path="res://assets/png/misc/target_ring_w_trans.png" id="18_7uife"]
-[ext_resource type="PackedScene" uid="uid://b0wxaorlbce3d" path="res://scenes/enemies/p3/clone.tscn" id="22_r54t0"]
+[ext_resource type="PackedScene" uid="uid://b0mat7pa2vyqk" path="res://scenes/enemies/p3/Nidhogg/nidhogg_2.tscn" id="20_j3dl0"]
 [ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="23_rk80t"]
+[ext_resource type="PackedScene" uid="uid://jcbpndkhehjl" path="res://scenes/ui/coords.tscn" id="24_hmx2m"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/westhogg_select_button.gd" id="24_wjgce"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/in_line_select_button.gd" id="26_amsib"]
 [ext_resource type="Script" path="res://scenes/encounters/dsr/phase_3/arrow_select_button.gd" id="27_1quue"]
@@ -31,7 +31,6 @@
 [sub_resource type="Animation" id="Animation_pevb2"]
 resource_name = "limit_cut_sequence"
 length = 60.0
-step = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -39,8 +38,8 @@ tracks/0/path = NodePath("LimitCut")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(6, 11, 13.5, 21, 25, 27, 28, 29.5, 31, 33.5, 35, 37, 39.5, 42, 43.5, 46, 48, 49, 50.5, 54.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(6, 11.4, 13.1, 21.1, 24.6, 27.4, 27.6, 28.8, 30, 30.8, 34.2, 34.6, 37.7, 40, 42.1, 44.2, 46, 48.6, 48.8, 50.7, 51, 55.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"assign_lc"
@@ -59,6 +58,9 @@ tracks/0/keys = {
 }, {
 "args": [],
 "method": &"tower1_soak_hit"
+}, {
+"args": [],
+"method": &"spawn_lg_2"
 }, {
 "args": [],
 "method": &"tower1_lg2_hit"
@@ -94,6 +96,9 @@ tracks/0/keys = {
 "method": &"tower3_soak_hit"
 }, {
 "args": [],
+"method": &"spawn_lg_2"
+}, {
+"args": [],
 "method": &"tower3_lg2_hit"
 }, {
 "args": [],
@@ -110,7 +115,7 @@ tracks/1/path = NodePath("LimitCut")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2, 7, 14, 21.5, 25.5, 28.5, 31.5, 38, 40, 42.5, 46.5, 49.5, 51),
+"times": PackedFloat32Array(2, 7, 15, 21.5, 25.5, 28, 31.5, 38.8, 40.5, 42.6, 46.8, 49.5, 52),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -153,6 +158,41 @@ tracks/1/keys = {
 "method": &"tower3_final_pos"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LimitCut")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(11, 20.4, 24.4, 27.4, 30.5, 41.7, 45.7, 48.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"dfg_finish"
+}, {
+"args": ["lc1"],
+"method": &"lg_finish"
+}, {
+"args": [1],
+"method": &"lg_hit"
+}, {
+"args": [2],
+"method": &"lg_hit"
+}, {
+"args": ["lc2"],
+"method": &"lg_finish"
+}, {
+"args": ["lc3"],
+"method": &"lg_finish"
+}, {
+"args": [1],
+"method": &"lg_hit"
+}, {
+"args": [2],
+"method": &"lg_hit"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_svxln"]
 _data = {
@@ -170,10 +210,6 @@ albedo_texture = ExtResource("18_7uife")
 [sub_resource type="PlaneMesh" id="PlaneMesh_re8vo"]
 material = SubResource("StandardMaterial3D_ca2tf")
 size = Vector2(6, 5.5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_n540m"]
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_41mri"]
 font_size = 18
@@ -206,8 +242,10 @@ visible = false
 [node name="FailList" parent="." instance=ExtResource("5_hx0ky")]
 
 [node name="PartyList" parent="." instance=ExtResource("4_nm4c5")]
+unique_name_in_owner = true
 
 [node name="PlayerDebuffs" parent="." instance=ExtResource("10_1ju27")]
+unique_name_in_owner = true
 
 [node name="WaymarkController" parent="." node_paths=PackedStringArray("arena_node") instance=ExtResource("8_ur353")]
 arena_node = NodePath("../Waymarks")
@@ -227,7 +265,7 @@ unique_name_in_owner = true
 [node name="LimitCut" type="Node" parent="EncounterController"]
 script = ExtResource("4_npi7b")
 icon_scenes = Array[PackedScene]([ExtResource("6_4dvdg"), ExtResource("7_pyysr"), ExtResource("8_r8es1"), ExtResource("9_b77gb"), ExtResource("10_4njl4"), ExtResource("11_dhgfi")])
-clone_scene = ExtResource("22_r54t0")
+clone_scene = ExtResource("20_j3dl0")
 
 [node name="LimitCutSeq" type="AnimationPlayer" parent="EncounterController/LimitCut"]
 unique_name_in_owner = true
@@ -260,13 +298,16 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="Enemies" type="Node3D" parent="." groups=["enemies_layer"]]
 
 [node name="Boss" type="Node3D" parent="Enemies"]
-transform = Transform3D(5.539, 0, 0, 0, 5.539, 0, 0, 0, 5.539, 0, 0, 0)
+transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 0, 0, -0.33553)
 
-[node name="NidhoggAnim" parent="Enemies/Boss" instance=ExtResource("9_rq3mc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+[node name="Nidhogg" parent="Enemies/Boss" instance=ExtResource("20_j3dl0")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = true
+role = 0
 
 [node name="HitboxRing" type="MeshInstance3D" parent="Enemies/Boss"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.5)
+transform = Transform3D(-4.5, 0, -6.79481e-07, 0, 4.5, 0, 6.79481e-07, 0, -4.5, 0, 0, 2.04772)
 mesh = SubResource("PlaneMesh_re8vo")
 
 [node name="GroundMarkers" type="Node3D" parent="." groups=["ground_marker_layer"]]
@@ -274,20 +315,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.046, 0, 16.8221)
 
 [node name="Dev" type="Node3D" parent="."]
 
-[node name="Coords" type="Label" parent="Dev" groups=["coords_label"]]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -78.0
-offset_top = 17.0
-offset_right = -15.0
-offset_bottom = 62.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 22
-text = "0,12"
-label_settings = SubResource("LabelSettings_n540m")
+[node name="Coords" parent="Dev" instance=ExtResource("24_hmx2m")]
 
 [node name="ResetButton" type="Button" parent="Dev"]
 offset_left = 28.0

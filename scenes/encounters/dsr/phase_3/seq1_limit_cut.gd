@@ -34,9 +34,11 @@ const CLONE_ROTATION_SPEED := 0.5
 @onready var ground_aoe_controller : GroundAoeController = %GroundAoEController
 @onready var animation_player: AnimationPlayer = %LimitCutSeq
 @onready var lockon_controller: LockonController = %LockonController
+@onready var nidhogg: Nidhogg = %Nidhogg
 
 var lockon_ids := {"lc1": LockonController.LC_1, "lc2": LockonController.LC_2, "lc3": LockonController.LC_3}
 var has_arrows := {"lc1": false, "lc2": false, "lc3": false}
+var arrow_durations := {"lc1": 9.1, "lc2": 19.1, "lc3": 30.1}
 var lc_key_str := ["rand", "lc1", "lc2", "lc3"]
 var player: Player
 var player_lc: int
@@ -137,10 +139,10 @@ func pre_spread_pos() -> void:
 	move_bots("pre_spread")
 
 
-## 0:06
+## 6.00
 # Assign all players an LC number, this has no bearing on which E/S/W spot they go to
 func assign_lc() -> void:
-	cast_bar.cast("Dive from Grace", 5.0)
+	cast_bar.cast("Dive from Grace", 5.4)
 	for lc_key: String in party:
 		for pos_key: String in party[lc_key]:
 			var pc: PlayableCharacter = party[lc_key][pos_key]
@@ -167,7 +169,7 @@ func lc_pre_pos() -> void:
 			party[lc_key][nearest_data["pt_key"]] = nearest_char
 	move_bots("lc_setup")
 
-## 0:11
+## 11.40
 # Randomly assign arrows to LC groups, shuffles the arrow groups and send debuffs
 func assign_arrows() -> void:
 	for pt_key: String in party:
@@ -185,28 +187,29 @@ func set_arrow_debuffs() -> void:
 		for pos_key: String in party[lc_key]:
 			var pc: PlayableCharacter = party[lc_key][pos_key]
 			if has_arrows[lc_key]:
-				pc.add_debuff(icon_scene_dict[pos_key])
+				pc.add_debuff(icon_scene_dict[pos_key], arrow_durations[lc_key])
 			else: # Assign High Jump to all
-				pc.add_debuff(icon_scene_dict["circle"])
+				pc.add_debuff(icon_scene_dict["circle"], arrow_durations[lc_key])
 			# Remove LC marker.
 			if hide_lc_markers:
 				lockon_controller.remove_marker(lockon_ids[lc_key], pc)
 
 
-## 0:13.5
+## 13.10
 func cast_lg() -> void:
 	lash_first = randi() % 2 == 0
-	cast_bar.cast("Lash and Gnash" if lash_first else "Gnash and Lash", 7.0)
+	cast_bar.cast("Lash and Gnash" if lash_first else "Gnash and Lash", 7.3)
+	nidhogg.start_lg()
 
 
-## 0:14
+## 15.0
 # Tower 1 Drop positions
 func tower1_pos1() -> void:
 	move_bots("t1_p1")
 	if has_arrows["lc1"]:
 		party["lc1"]["down"].set_look_direction(positions["west"])
 
-## 0:21
+## 0:21.1
 # Spawn Tower_AoE_1 on 1's (check for double hit), record positions /w arrows
 # Spawn Group Soak 1 AoE on random 2/3 (check for 5 hits)
 func tower1_hit() -> void:
@@ -240,7 +243,7 @@ func tower1_pos2() -> void:
 		move_bots("t1_p2_out")
 
 
-## 0:25
+## 24.6
 # Spawn In/Out AoE (check for any hit)
 # Spawn Tower_Soaks_1 on recorded positions
 func tower1_lg1_hit() -> void:
@@ -263,7 +266,7 @@ func tower_soak_spawn() -> void:
 	towers.clear()
 	for pos_key: String in tower_snapshots:
 		var tower: TowerAoe = ground_aoe_controller.spawn_tower(
-			tower_snapshots[pos_key], TOWER_SOAK_RADIUS, 2.0, Color.DARK_ORANGE)
+			tower_snapshots[pos_key], TOWER_SOAK_RADIUS, 2.2, Color.DARK_ORANGE)
 		towers[pos_key] = tower
 
 
@@ -275,11 +278,12 @@ func tower1_pos3() -> void:
 	else:
 		move_bots("t1_p3_in")
 
-## 0:27
+## 0:27.4
 # Check tower soaks, spawn clones, lockon to nearest
 func tower1_soak_hit() -> void:
 	# Check Towers
 	tower_soak_clone_spawn()
+
 
 func tower_soak_clone_spawn() -> void:
 	clones.clear()
@@ -288,26 +292,18 @@ func tower_soak_clone_spawn() -> void:
 		var bodies := tower.get_collisions()
 		check_fail(bodies, 1, 1, "Tower Soak (%s)." % key)  # TODO Add whitelist with flipped key on arrows.
 		# Spawn clone
-		var clone := clone_scene.instantiate() as Clone
+		var clone := clone_scene.instantiate() as Nidhogg
 		enemies_layer.add_child(clone)
 		clone.global_position = tower.global_position
-		clone.play_dive_animation()
+		#clone.play_dive_animation()
 		clones[key] = clone
 
-## 0:28
-# Set lockon for clones
-# Spawn In/Out AoE (check for any hit)
-func tower1_lg2_hit() -> void:
-	clones_lockon()
+## 27.6
+func spawn_lg_2() -> void:
 	spawn_lash_gnash(2)
 
-# Set clones lockon nearest player
-func clones_lockon() -> void:
-	for key: String in clones:
-		var clone: Clone = clones[key]
-		var nearest := get_nearest_player_to_vector(clone.global_position)
-		clone.set_lockon(nearest)
 
+## 28.0
 # Move to clone bait positions (2's out)
 func tower2_pos1() -> void:
 	move_bots("t2_p1")
@@ -315,17 +311,31 @@ func tower2_pos1() -> void:
 		party["lc2"]["up"].set_look_direction(positions["t2_west"])
 		party["lc2"]["down"].set_look_direction(positions["t2_west"])
 
-## 0:30
-# Start Geir Casts on locked pos (4s)
+## 28.8
+# Set lockon for clones
+# Spawn In/Out AoE (check for any hit)
+func tower1_lg2_hit() -> void:
+	clones_lockon()
+
+# Set clones lockon nearest player
+func clones_lockon() -> void:
+	for key: String in clones:
+		var clone: Nidhogg = clones[key]
+		var nearest := get_nearest_player_to_vector(clone.global_position)
+		clone.set_lockon(nearest)
+
+## 30.0
+# Start Geir Casts on locked pos (4.2s)
 func tower1_geir_cast() -> void:
 	start_geir_cast()
 
 func start_geir_cast() -> void:
-	clone_cast_bar.cast_clone("Geirskogul", 4.0)
+	clone_cast_bar.cast_clone("Geirskogul", 4.2)
 	for key: String in clones:
 		clones[key].remove_lockon()
+		clones[key].start_geir()
 
-## 0:31
+## 30.8
 # Spawn Tower_AoE_2 on 2's (check for double hit), record positions w/ arrows
 func tower2_tower_hit() -> void:
 	# Drop tower AoE's on 2's
@@ -337,7 +347,7 @@ func tower2_tower_hit() -> void:
 func tower2_pos2() -> void:
 	move_bots("t2_p2")
 
-## 0:34
+## 0:34.2
 # Spawn Geir 1 AoEs, check for hits
 func tower1_geir_hit() -> void:
 	spawn_geir_line_aoe()
@@ -345,42 +355,42 @@ func tower1_geir_hit() -> void:
 
 func spawn_geir_line_aoe() -> void:
 	for key: String in clones:
-		var clone: Clone = clones[key]
+		var clone: Nidhogg = clones[key]
 		var line_target := clone.get_facing_vector()
 		ground_aoe_controller.spawn_line(v2(clone.global_position), GEIR_WIDTH,
 			GEIR_LENGTH, v2(line_target), 0.3, Color.CORAL, [0, 0, "Geirskogul"])
-		clone.queue_free()
+		clone.finish_geir()
 
-## 0:35
-# Start Gnash/Lash 2 cast (7.0s)
+## 34.6
+# Start Gnash/Lash 2 cast (7.3s)
 # Spawn Tower_2 soaks on recorded positions w/ arrows
 func tower2_soak_spawn() -> void:
 	cast_lg()
 	tower_soak_spawn()
 
-## 0:37
+## 37.7
 # Check tower 2 soaks, spawn clones 2, lockon to nearest
 func tower2_soak_hit() -> void:
 	tower_soak_clone_spawn()
 
-## 0:38
+## 38.8
 # Clones lock on target (if moving 1's out, do it here)
 func tower2_pos3() -> void:
 	clones_lockon()
 
-## 0:39.5
-# Start Geir Casts on locked pos (4s)
+## 40.0
+# Start Geir Casts on locked pos (4.2s)
 func tower2_geir_cast() -> void:
 	start_geir_cast()
 
-## 0:40.5
+## 40.5
 # Move to tower 3 drop pos (1's move in, 3's move to drop pos and turn down if needed)
 func tower3_pos1() -> void:
 	move_bots("t3_p1")
 	if has_arrows["lc3"]:
 		party["lc3"]["down"].set_look_direction(positions["west"])
 
-## 0:42
+## 42.1
 # Spawn Tower_AoE_3 on 3's (check for double hit), record positions /w arrows
 # Spawn Group Soak AoE on random 2/3 (check for 5 hits)
 func tower3_tower_hit() -> void:
@@ -390,7 +400,7 @@ func tower3_tower_hit() -> void:
 	ground_aoe_controller.spawn_circle(v2(pc.global_position), PARTY_SOAK_RADIUS,
 		0.3, Color.ORANGE_RED, [5, 5, "Eye of the Tyrant (group soak)"])
 
-## 0:42.5
+## 0:42.6
 # Move to soak 3 pos (2's/1 out, all dodge in/out)
 func tower3_pos2() -> void:
 	if lash_first:
@@ -398,19 +408,19 @@ func tower3_pos2() -> void:
 	else:
 		move_bots("t3_p2_out")
 
-## 0:44
+## 44.2
 # Spawn Geir 2 AoEs on locked pos, check for hits
 func tower2_geir_hit() -> void:
 	spawn_geir_line_aoe()
 
-## 0:46
+## 46.0
 # Spawn In/Out AoE (check for any hit)
 # Spawn Tower_Soaks_3 on recorded positions
 func tower3_lg1_hit() -> void:
 	spawn_lash_gnash(1)
 	tower_soak_spawn()
 
-## 0:46.5
+## 46.8
 # Move to Soak_3_Pos_2 (dodge In or Out)
 func tower3_pos3() -> void:
 	if lash_first:
@@ -418,24 +428,26 @@ func tower3_pos3() -> void:
 	else:
 		move_bots("t3_p2_in")
 
-## 0:48
+## 48.6
 # Check tower 3 soaks, spawn clones 3, lockon to nearest
 func tower3_soak_hit() -> void:
 	tower_soak_clone_spawn()
+	#spawn_lash_gnash(2)
 
-## 0:49
-# Spawn In/Out 3-2 AoE (check for any hit)
-func tower3_lg2_hit() -> void:
-	clones_lockon()
-	spawn_lash_gnash(2)
+## 48.8 spawn lg2
 
-## 0:49.5
+## 49.5
 # Move to clone 3 bait positions (3's move, rest stack NE/NW, ignoring tank pos)
 func tower3_pos4() -> void:
 	move_bots("t3_p2_out")
 
-## 0:51
-# Start Geir 3 Casts on locked pos (4s)
+## 50.7
+# Spawn In/Out 3-2 AoE (check for any hit)
+func tower3_lg2_hit() -> void:
+	clones_lockon()
+
+## 51.0
+# Start Geir 3 Casts on locked pos (4.2s)
 func tower3_geir_cast() -> void:
 	start_geir_cast()
 
@@ -444,13 +456,44 @@ func tower3_geir_cast() -> void:
 func tower3_final_pos() -> void:
 	move_bots("t3_p3")
 
-## 0:55
+## 0:55.2
 # Spawn Geir 3 AoEs on locked pos, check for hits
 func tower3_geir_hit() -> void:
 	spawn_geir_line_aoe()
 
 ## End of Timed sequence
 
+
+## Animation Sequence
+
+## 11.0
+func dfg_finish() -> void:
+	nidhogg.finish_dfg()
+
+
+## 20.4
+func lg_finish(lc_key: String) -> void:
+	if lc_key != "lc2":
+		nidhogg.finish_lg()
+	# Spawn quick dives.
+	spawn_quick_dives(lc_key)
+
+
+func spawn_quick_dives(lc_key: String) -> void:
+	for pos_key: String in party[lc_key]:
+		var bunny: Nidhogg = clone_scene.instantiate()
+		bunny.set_start_position(party[lc_key][pos_key].global_position)
+		bunny.set_role(2)
+		enemies_layer.add_child(bunny)
+
+## 24.4
+func lg_hit(hit: int) -> void:
+	if (lash_first && hit == 1) or (!lash_first && hit == 2) :
+		nidhogg.lash_hit()
+	else:
+		nidhogg.gnash_hit()
+
+## 27.4 lg_hit(2)
 
 ## Utility methods
 

@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cvevcef0hbojl" path="res://scenes/markers/ground/circle_aoe.tscn" id="15_4o01n"]
 [ext_resource type="PackedScene" uid="uid://br4ou771tkotc" path="res://assets/objects/p5_arena/DSR_P5_Arena_Full.tscn" id="16_kri4v"]
 [ext_resource type="PackedScene" uid="uid://b5a8l81gltuhy" path="res://scenes/markers/ground/death_wall.tscn" id="17_n5bri"]
+[ext_resource type="PackedScene" uid="uid://jcbpndkhehjl" path="res://scenes/ui/coords.tscn" id="23_uxnx1"]
 [ext_resource type="Texture2D" uid="uid://ig2b2e4smtei" path="res://assets/png/misc/target_ring_w_trans.png" id="27_06l1s"]
 [ext_resource type="PackedScene" uid="uid://dcwjtk6eliwao" path="res://scenes/enemies/p5/thordan_model.tscn" id="28_13knp"]
 [ext_resource type="Script" path="res://scenes/ui/frame_debug.gd" id="37_gyun0"]
@@ -183,10 +184,6 @@ tonemap_mode = 2
 glow_enabled = true
 glow_strength = 1.6
 
-[sub_resource type="LabelSettings" id="LabelSettings_j5d70"]
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tic18"]
 albedo_color = Color(0.592157, 0.976471, 0, 1)
 
@@ -207,8 +204,10 @@ visible = false
 [node name="FailList" parent="." instance=ExtResource("4_d4wp5")]
 
 [node name="PartyList" parent="." instance=ExtResource("5_jdd0d")]
+unique_name_in_owner = true
 
 [node name="PlayerDebuffs" parent="." instance=ExtResource("6_1qdcn")]
+unique_name_in_owner = true
 
 [node name="OnScreenButtons" type="CanvasLayer" parent="."]
 
@@ -348,20 +347,7 @@ environment = SubResource("Environment_t2taj")
 
 [node name="Dev" type="Node3D" parent="."]
 
-[node name="Coords" type="Label" parent="Dev" groups=["coords_label"]]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -78.0
-offset_top = 17.0
-offset_right = -15.0
-offset_bottom = 62.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 22
-text = "0,12"
-label_settings = SubResource("LabelSettings_j5d70")
+[node name="Coords" parent="Dev" instance=ExtResource("23_uxnx1")]
 
 [node name="FrameDebug" type="Node" parent="Dev"]
 script = ExtResource("37_gyun0")

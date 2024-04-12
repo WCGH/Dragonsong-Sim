@@ -16,6 +16,11 @@ var remaining_duration := 20.0
 var owner_key : String
 
 
+func _ready() -> void:
+	if remaining_duration > 0.0:
+		timer.start()
+
+
 func set_debuff(debuff_icon_scene : PackedScene, new_owner_key : String, debuff_duration := 0.0) -> void:
 	owner_key = new_owner_key
 	remaining_duration = debuff_duration
@@ -24,12 +29,14 @@ func set_debuff(debuff_icon_scene : PackedScene, new_owner_key : String, debuff_
 	debuff_name = new_debuff_icon.get_meta("debuff_name")
 	self.add_child(new_debuff_icon)
 	self.move_child(new_debuff_icon, 0)
+	
 
 
 # This debuff andles whole number durations only. For float durations, use debuff_float.
 func _on_timer_timeout() -> void:
-	remaining_duration -= 1.0
-	if remaining_duration == 0:
+	if remaining_duration >= 1.0:
+		remaining_duration -= 1.0
+	else:
 		debuff_timeout.emit(owner_key)
 		queue_free()
 	duration_label.text = str("%.0f" % remaining_duration)

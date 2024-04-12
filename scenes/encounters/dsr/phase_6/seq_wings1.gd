@@ -15,7 +15,7 @@ extends P6Sequence
 		},
 		"nw": {
 			"t_near" : {"t2": Vector2(-5, -40), "t1": Vector2(-5, -5), "pt": Vector2(-30, -20)},
-			"t_far" : {"t2": Vector2(-25, -25), "t1": Vector2(-40, -40), "pt": Vector2(-5, -5)}
+			"t_far" : {"t2": Vector2(-40, -5), "t1": Vector2(-40, -40), "pt": Vector2(-5, -5)}
 		},
 		"se": {
 			"t_near" : {"t1": Vector2(40, 3), "t2": Vector2(40, 40), "pt": Vector2(10, 20)},
