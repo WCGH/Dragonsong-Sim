@@ -1,17 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2w6j0ped8mgg"]
 
-[ext_resource type="FontFile" uid="uid://dflgosesmjvf" path="res://assets/fonts/MYRIADPRO-BOLD.OTF" id="1_mnu24"]
+[ext_resource type="FontFile" uid="uid://dcxqcew3sn1wx" path="res://assets/fonts/MYRIADPRO-COND.OTF" id="1_xvkpj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7u378"]
-font = ExtResource("1_mnu24")
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
+font = ExtResource("1_xvkpj")
+font_size = 20
+outline_size = 1
+outline_color = Color(0.164706, 0.396078, 1, 1)
+shadow_size = 0
 
 [node name="AuraContainer" type="HBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 34)
+offset_right = 96.0
+offset_bottom = 28.0
+theme_override_constants/separation = 5
 
 [node name="RoleLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 0
-text = "   You     "
+size_flags_horizontal = 3
+text = "Ranged 1"
 label_settings = SubResource("LabelSettings_7u378")
+
+[node name="Auras" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -4

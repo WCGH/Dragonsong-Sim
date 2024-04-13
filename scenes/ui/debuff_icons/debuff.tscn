@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu7ghooei6mv5"]
+[gd_scene load_steps=5 format=3 uid="uid://cu7ghooei6mv5"]
 
 [ext_resource type="Script" path="res://scenes/ui/debuff_icons/debuff.gd" id="1_8yhqr"]
 [ext_resource type="FontFile" uid="uid://dflgosesmjvf" path="res://assets/fonts/MYRIADPRO-BOLD.OTF" id="3_55ndo"]
+[ext_resource type="FontFile" uid="uid://c7rt25kl02j0m" path="res://assets/fonts/Axis Extrabold.otf" id="3_lxd1w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eymd6"]
+font = ExtResource("3_lxd1w")
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Debuff" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
 offset_right = 24.0
 offset_bottom = 47.0
-theme_override_constants/separation = -1
+size_flags_vertical = 4
+theme_override_constants/separation = -6
 script = ExtResource("1_8yhqr")
 
 [node name="Duration" type="Label" parent="."]
@@ -16,10 +25,10 @@ size_flags_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_55ndo")
 theme_override_font_sizes/font_size = 16
+label_settings = SubResource("LabelSettings_eymd6")
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

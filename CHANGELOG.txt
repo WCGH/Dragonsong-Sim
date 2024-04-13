@@ -1,7 +1,18 @@
+### v1.0.6 Changelog:
+	- Added very basic controller support.
+		- Right side buttons are bound to sprint, arms length, dash and reset (non-configurable).
+	- Added options for mouse/controller look sensitivity.
+	- Cleaned up party list layout.
+	- P3: Adjusted some timings.
+	- P3: Added debuff timers for In-Line # and Dive arrows.
+	- P3: Added Nidhogg and clone animations.
+	- P6: Fixed incorrect tank movement on Wings 1.
+
+
 ### v1.0.5 Changelog:
 	- Added option to pick Limit Cut numbers/arrows.
 	- Added option to pick first Mortal Vow Target.
-	- Fixed APD/LPDU Wroth spread positions. Added in-game option for static (APD/LPDU) and facing middle (Twin).
+	- Fixed APD/LPDU P6 Wroth spread positions. Added in-game option for static (APD/LPDU) and facing middle (Twin).
 	- Moved Wroth starting position slightly off E/W wall to better match movement without sprint.
 
 

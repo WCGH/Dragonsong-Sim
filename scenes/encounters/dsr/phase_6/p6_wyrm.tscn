@@ -48,6 +48,7 @@
 [ext_resource type="Script" path="res://scenes/markers/ground/circle_aoe.gd" id="29_6tvlc"]
 [ext_resource type="PackedScene" uid="uid://ce4avowkwahr6" path="res://scenes/ui/debuff_icons/p6/deep_freeze.tscn" id="29_bgg8i"]
 [ext_resource type="Script" path="res://scenes/markers/ground/line_aoe.gd" id="38_isr6p"]
+[ext_resource type="PackedScene" uid="uid://jcbpndkhehjl" path="res://scenes/ui/coords.tscn" id="49_r11gp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dcu0j"]
 font_size = 18
@@ -695,10 +696,6 @@ orientation = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_bcf6s"]
 resource_local_to_scene = true
 size = Vector3(0, 1, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_n540m"]
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kideh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -1899,20 +1896,7 @@ shape = SubResource("BoxShape3D_bcf6s")
 
 [node name="Dev" type="Node3D" parent="."]
 
-[node name="Coords" type="Label" parent="Dev" groups=["coords_label"]]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1500.0
-offset_top = 824.0
-offset_right = -1437.0
-offset_bottom = 869.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 22
-text = "0,12"
-label_settings = SubResource("LabelSettings_n540m")
+[node name="Coords" parent="Dev" instance=ExtResource("49_r11gp")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ncsmy")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cykot1qnoc45c"]
+[gd_scene load_steps=5 format=3 uid="uid://cykot1qnoc45c"]
 
 [ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_7rhvh"]
+[ext_resource type="Script" path="res://scenes/characters/player_movement_controller.gd" id="2_bekby"]
 [ext_resource type="Script" path="res://scenes/characters/player_camera.gd" id="4_x7cba"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sg5fr"]
@@ -9,9 +10,10 @@ radius = 0.01
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 6
 script = ExtResource("1_7rhvh")
-jump_force = 13.0
-gravity = 37.0
-camera_distance = 22.0
+
+[node name="PlayerMovementController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_bekby")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988206, 0)
