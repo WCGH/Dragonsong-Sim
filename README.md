@@ -9,6 +9,7 @@ If you have any questions, feel free to join us on [Discord](https://discord.gg/
 To download the sim, head to the ⁠[releases](https://github.com/WCGH/Dragonsong-Sim/releases) page and download the latest zip file. Unzip and run dsr_sim.exe.
 
 ## Known Issues:
+- Some movement animations and facing angle do not work properly on controller, or with mouse/keyboard if you have a controller plugged in.
 - Some machines might experience slow loading or stutters on their first run.
 - Limit Cut debuffs are missing durations.
 - Having a dropdown menu open selected will prevent moving your camera with right click.
