@@ -5,7 +5,7 @@
 
 extends CanvasLayer
 
-const LAUNCHER_VERSION = 1.05
+const LAUNCHER_VERSION = 1.06
 const WINDOW_SIZE = Vector2(1600, 900)
 const DISCORD_INVITE_URL := "https://discord.gg/7GEqpRc55c"
 

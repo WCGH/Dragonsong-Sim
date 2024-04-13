@@ -8,13 +8,17 @@ class_name Debuff
 
 signal debuff_timeout(owner_key : String)
 
+@export var icon_size := 25.0
 @onready var duration_label : Label = %Duration
 @onready var timer : Timer = %Timer
 
 var debuff_name : String
 var remaining_duration := 20.0
 var owner_key : String
-
+var expand_mode = TextureRect.EXPAND_FIT_HEIGHT
+var stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+var horizontal_sizing = TextureRect.SIZE_SHRINK_BEGIN
+var vertical_sizing = TextureRect.SIZE_SHRINK_BEGIN
 
 func _ready() -> void:
 	if remaining_duration > 0.0:
@@ -26,6 +30,11 @@ func set_debuff(debuff_icon_scene : PackedScene, new_owner_key : String, debuff_
 	remaining_duration = debuff_duration
 	%Duration.visible = remaining_duration > 0.0
 	var new_debuff_icon : TextureRect = debuff_icon_scene.instantiate()
+	new_debuff_icon.set_expand_mode(expand_mode)
+	new_debuff_icon.set_stretch_mode(stretch_mode)
+	new_debuff_icon.set_custom_minimum_size(Vector2(icon_size, 0))
+	new_debuff_icon.set("size_flags_horizontal", horizontal_sizing)
+	new_debuff_icon.set("size_flags_vertical", vertical_sizing)
 	debuff_name = new_debuff_icon.get_meta("debuff_name")
 	self.add_child(new_debuff_icon)
 	self.move_child(new_debuff_icon, 0)

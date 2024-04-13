@@ -1,9 +1,11 @@
 ### v1.0.6 Changelog:
-	- Added very basic controller support (character movement and actions/reset button).
-	- Added a few options for mouse/controller look sensitivity.
+	- Added very basic controller support.
+		- Right side buttons are bound to sprint, arms length, dash and reset (non-configurable).
+	- Added options for mouse/controller look sensitivity.
 	- Cleaned up party list layout.
-	- P3: Added timers for In-Line and Dive debuffs. Made some small adjustments to snapshot timings.
-	- P3: Gave Nidhogg a weapon and added some animations.
+	- P3: Adjusted some timings.
+	- P3: Added debuff timers for In-Line # and Dive arrows.
+	- P3: Added Nidhogg and clone animations.
 	- P6: Fixed incorrect tank movement on Wings 1.
 
 
