@@ -197,13 +197,12 @@ theme_override_constants/margin_bottom = 38
 [node name="LeftButtonsVBox" type="VBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer"]
 custom_minimum_size = Vector2(621, 580)
 layout_mode = 2
-theme_override_constants/separation = 21
+theme_override_constants/separation = 26
 
 [node name="P3LaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 73.763)
 layout_mode = 2
-size_flags_vertical = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 30
@@ -211,9 +210,8 @@ text = "Phase 3 : Limit Cut"
 
 [node name="P5WLaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 73.763)
 layout_mode = 2
-size_flags_vertical = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 30
@@ -221,9 +219,8 @@ text = "Phase 5 : Wrath of the Heavens"
 
 [node name="P5DLaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 73.763)
 layout_mode = 2
-size_flags_vertical = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 30
@@ -231,13 +228,21 @@ text = "Phase 5 : Death of the Heavens"
 
 [node name="P6LaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 73.763)
 layout_mode = 2
-size_flags_vertical = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 30
 text = "Phase 6 : Double Dragons"
+
+[node name="P7LaunchButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 73.763)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_rh6qn")
+theme_override_font_sizes/font_size = 30
+text = "Phase 7 : Exaflares"
 
 [node name="UpdateHBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox"]
 unique_name_in_owner = true
@@ -370,7 +375,7 @@ LPDU:
 Twintails:
 - LPDU w/ Doth Static"
 mouse_filter = 1
-text = "Strategy:"
+text = "Default Strategy:"
 label_settings = SubResource("LabelSettings_8x8sj")
 
 [node name="StrategySelectButton" type="OptionButton" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox/StrategyContainer"]
@@ -1092,8 +1097,8 @@ offset_right = 1298.0
 offset_bottom = 830.0
 theme_override_styles/background = SubResource("StyleBoxFlat_nwl6h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4wbdc")
-step = 1.0
-value = 50.0
+max_value = 1.0
+value = 0.5
 show_percentage = false
 
 [node name="LoadingLabel" type="Label" parent="LoadScreenContainer/TextureRect/LoadingProgressBar"]
@@ -1120,6 +1125,7 @@ libraries = {
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/P5WLaunchButton" to="." method="_on_p5w_launch_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/P5DLaunchButton" to="." method="_on_p5d_launch_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/P6LaunchButton" to="." method="_on_p6_launch_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/P7LaunchButton" to="." method="_on_p7_launch_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer/UpdateLauncherButton" to="." method="_on_update_launcher_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer3/DiscordButton" to="." method="_on_discord_button_pressed"]

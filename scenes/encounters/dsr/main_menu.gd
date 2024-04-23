@@ -16,7 +16,8 @@ var seq_scene_paths := {
 	"p3_lc": "res://scenes/encounters/dsr/phase_3/p3_limit_cut.tscn",
 	"p5_wrath": "res://scenes/encounters/dsr/phase_5/wrath/p5_wrath.tscn",
 	"p5_death": "res://scenes/encounters/dsr/phase_5/death/p5_death.tscn",
-	"p6_wyrm": "res://scenes/encounters/dsr/phase_6/p6_wyrm.tscn"
+	"p6_wyrm": "res://scenes/encounters/dsr/phase_6/p6_wyrm.tscn",
+	"p7": "res://scenes/encounters/dsr/phase_7/p7_main.tscn"
 }
 var button_text := {
 	"update" : "Update Available!",
@@ -31,12 +32,13 @@ var download_folder := "user://pcks/"
 var launch_status := DOWNLOAD
 var update_in_progress := false
 var load_screen_active := false
-var load_progress : Array
+var load_progress := []
 var loading_seq := ""
 var click_pos := Vector2.ZERO
 
 @onready var buttons := {"p3_lc" : %P3LaunchButton, "p5_wrath" : %P5WLaunchButton,
-	"p5_death" : %P5DLaunchButton, "p6_wyrm" : %P6LaunchButton, "launcher" : %UpdateLauncherButton}
+	"p5_death" : %P5DLaunchButton, "p6_wyrm" : %P6LaunchButton, "p7": %P7LaunchButton,
+	"launcher" : %UpdateLauncherButton}
 @onready var download_progress_bar : ProgressBar = %LauncherDownloadProgress
 @onready var load_screen_container: MarginContainer = %LoadScreenContainer
 @onready var loading_progress_bar: ProgressBar = %LoadingProgressBar
@@ -147,6 +149,10 @@ func _on_p5d_launch_button_pressed() -> void:
 
 func _on_p6_launch_button_pressed() -> void:
 	start_game_scene("p6_wyrm")
+
+
+func _on_p7_launch_button_pressed() -> void:
+	start_game_scene("p7")
 
 
 func _on_update_launcher_button_pressed() -> void:

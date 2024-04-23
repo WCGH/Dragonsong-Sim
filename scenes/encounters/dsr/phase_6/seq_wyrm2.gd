@@ -75,6 +75,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func start_sub_sequence() -> void:
+	print("Start of Wyrm2: ", test_timer.time_left)
 	assign_tethers()
 	wyrm_2_anim.play("wyrm2")
 
@@ -379,6 +380,7 @@ func vow_hit_5() -> void:
 	for pc: PlayableCharacter in targets_hit:
 		if pc != melee_vow_target:
 			pc.add_debuff(vow_icon_scene, 34.0)
+	melee_vow_target.add_debuff(atonement_icon_scene, ATONEMENT_DURATION)
 
 
 ## Utility

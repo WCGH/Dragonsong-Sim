@@ -15,10 +15,10 @@ signal debuff_timeout(owner_key : String)
 var debuff_name : String
 var remaining_duration := 20.0
 var owner_key : String
-var expand_mode = TextureRect.EXPAND_FIT_HEIGHT
-var stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-var horizontal_sizing = TextureRect.SIZE_SHRINK_BEGIN
-var vertical_sizing = TextureRect.SIZE_SHRINK_BEGIN
+var expand_mode := TextureRect.EXPAND_FIT_HEIGHT
+var stretch_mode := TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+var horizontal_sizing := TextureRect.SIZE_SHRINK_BEGIN
+var vertical_sizing := TextureRect.SIZE_SHRINK_BEGIN
 
 func _ready() -> void:
 	if remaining_duration > 0.0:
@@ -41,11 +41,14 @@ func set_debuff(debuff_icon_scene : PackedScene, new_owner_key : String, debuff_
 	
 
 
-# This debuff andles whole number durations only. For float durations, use debuff_float.
+# This debuff handles whole number durations only. For float durations, use debuff_float.
 func _on_timer_timeout() -> void:
 	if remaining_duration >= 1.0:
 		remaining_duration -= 1.0
 	else:
 		debuff_timeout.emit(owner_key)
 		queue_free()
-	duration_label.text = str("%.0f" % remaining_duration)
+	if remaining_duration < 60.0:
+		duration_label.text = str("%.0f" % remaining_duration)
+	else:
+		duration_label.text = str("%dm" % (int(remaining_duration) / int(60)))

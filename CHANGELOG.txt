@@ -1,3 +1,9 @@
+### v1.0.7 Changelog:
+	- Added P7 Exaflare module (needs testing).
+	- P6: Added Mortal Atonement Debuff.
+	- P6: Added Vow debuffs when starting from later point.
+
+
 ### v1.0.6 Changelog:
 	- Added very basic controller support.
 		- Right side buttons are bound to sprint, arms length, dash and reset (non-configurable).
