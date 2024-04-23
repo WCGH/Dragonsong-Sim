@@ -20,7 +20,7 @@ func create_party_list(player_role_key : String) -> void:
 	# Add player first
 	var player_container : HBoxContainer = aura_container_scene.instantiate()
 	#var player_icon : TextureRect = player_container.get_child(0)
-	var player_icon = role_icons[player_role_key].instantiate()
+	var player_icon: Node = role_icons[player_role_key].instantiate()
 	var player_label : Label = player_container.get_child(0)
 	player_container.add_child(player_icon)
 	player_container.move_child(player_icon, 0)
@@ -33,7 +33,7 @@ func create_party_list(player_role_key : String) -> void:
 		if key == player_role_key:
 			continue
 		var new_container : HBoxContainer = aura_container_scene.instantiate()
-		var icon_texture = role_icons[key].instantiate()
+		var icon_texture: Node = role_icons[key].instantiate()
 		var label : Label = new_container.get_child(0)
 		new_container.add_child(icon_texture)
 		new_container.move_child(icon_texture, 0)

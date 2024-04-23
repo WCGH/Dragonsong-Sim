@@ -30,11 +30,14 @@ const HOT_WING_LENGTH = 100.0
 const HOT_TAIL_WIDTH = 33.75
 const HOT_TAIL_LENGTH = 100.0
 const WING_TAIL_TELE_DURATION = 0.5
+const ATONEMENT_DURATION = 100.0
+const VOW_DURATION = 34.0
 
 # Resource file paths
 static var nid_path := "res://scenes/enemies/p6/nid6.tscn"
 static var hra_path := "res://scenes/enemies/p6/hrae.tscn"
 static var vow_icon_path := "res://scenes/ui/debuff_icons/p6/mortal_vow.tscn"
+static var atonement_icon_path := "res://scenes/ui/debuff_icons/p6/mortal_atonement.tscn"
 
 # Controllers
 @onready var target_controller: TargetController = %TargetController
@@ -47,12 +50,15 @@ static var vow_icon_path := "res://scenes/ui/debuff_icons/p6/mortal_vow.tscn"
 @onready var enemies_layer: Node3D = %Enemies
 # Common NPC positions
 @onready var npc_positions := P6_NPC_Positions.npc_positions
+@onready var test_timer: Timer = %testTimer
 
 @onready var sequences := {"wyrm1" : %Wyrm1, "aa1" : %AA1, "wings1" : %Wings1,
 	"wroth": %Wroth, "aa2": %AA2, "wings2": %Wings2, "wyrm2": %Wyrm2}
 static var starting_points := ["wyrm1", "wings1", "wroth", "wings2" , "wyrm2"]
+static var atonement_time_remain := {"wroth": 99, "wings2": 53, "wyrm2": 31}
 static var starting_point_index: int
 static var vow_icon_scene: PackedScene
+static var atonement_icon_scene: PackedScene
 
 # Units
 static var party : Dictionary
@@ -70,6 +76,7 @@ func _ready() -> void:
 	ResourceLoader.load_threaded_request(nid_path, "PackedScene")
 	ResourceLoader.load_threaded_request(hra_path, "PackedScene")
 	ResourceLoader.load_threaded_request(vow_icon_path, "PackedScene")
+	atonement_icon_scene = ResourceLoader.load(atonement_icon_path, "PackedScene")
 	tether_controller.preload_resources()
 	ground_aoe_controller.preload_aoe(["line", "circle", "cone", "donut"])
 
@@ -83,7 +90,6 @@ func start_sequence(new_party: Dictionary) -> Signal:
 		"Error. Sequence key mismatch in P6Sequence.")
 	party = new_party
 	player = get_tree().get_first_node_in_group("player")
-	print(player)
 	# Assign shared assignments
 	assign_vow()
 	# Spawn in assets when loaded
@@ -106,15 +112,45 @@ func assign_vow() -> void:
 	# Determined vow target.
 	if first_vow != SavedVariables.first_vow.RANDOM:
 		vow_target = party_list[first_vow + 3]
-		return
 	# Random vow target.
-	var dps_party_list := party_list.slice(4, 8)
-	randomize()
-	vow_target = dps_party_list.pick_random()
+	else:
+		var dps_party_list := party_list.slice(4, 8)
+		randomize()
+		vow_target = dps_party_list.pick_random()
+	# If we're starting passed first vow or attonement, assign them.
+	if starting_point_index > 0:
+		spawn_vow()
+		if starting_point_index > 1:
+			spawn_atonement()
+
+
+func spawn_vow() -> void:
+	vow_icon_scene = ResourceLoader.load_threaded_get(vow_icon_path)
+	# Wings 1. Vow on first target. 10s delta.
+	if starting_point_index == 1:
+		vow_target.add_debuff(vow_icon_scene, VOW_DURATION - 10)
+	# Wroth. Vow on T1.
+	elif starting_point_index == 2:
+		party["t1"].add_debuff(vow_icon_scene, VOW_DURATION)
+	# Wings2. Vow on T2. 15s delta.
+	elif starting_point_index == 3:
+		party["t2"].add_debuff(vow_icon_scene, VOW_DURATION - 12)
+	# Wyrm 2. Vow on Melee.
+	elif starting_point_index == 4:
+		if vow_target == party["m1"]:
+			party["m2"].add_debuff(vow_icon_scene, VOW_DURATION)
+		else:
+			party["m1"].add_debuff(vow_icon_scene, VOW_DURATION)
+
+
+func spawn_atonement() -> void:
+	vow_target.add_debuff(atonement_icon_scene,
+	atonement_time_remain[starting_points[starting_point_index]])
 
 
 func spawn_bosses() -> void:
-	vow_icon_scene = ResourceLoader.load_threaded_get(vow_icon_path)
+	if !vow_icon_scene:
+		vow_icon_scene = ResourceLoader.load_threaded_get(vow_icon_path)
 	var nid_scene: PackedScene = ResourceLoader.load_threaded_get(nid_path)
 	var hra_scene: PackedScene = ResourceLoader.load_threaded_get(hra_path)
 	nid = nid_scene.instantiate()

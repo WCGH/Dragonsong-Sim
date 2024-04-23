@@ -1003,6 +1003,11 @@ unique_name_in_owner = true
 [node name="P6Sequence" type="Node" parent="EncounterController"]
 script = ExtResource("13_1hls7")
 
+[node name="testTimer" type="Timer" parent="EncounterController/P6Sequence"]
+unique_name_in_owner = true
+wait_time = 1000.0
+one_shot = true
+
 [node name="Wyrm1" type="Node" parent="EncounterController/P6Sequence"]
 unique_name_in_owner = true
 script = ExtResource("14_5a5ql")

@@ -10,6 +10,7 @@ class_name EncounterController
 
 @onready var sequences := get_children()
 
+var am_index := 0
 
 func start_encounter(party: Dictionary) -> void:
 	#var selected_sequence := Global.selected_sequence_index

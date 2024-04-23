@@ -119,6 +119,7 @@ func start_sub_sequence() -> void:
 	party_list = party.values()
 	assign_debuffs()
 	wroth_anim.play("wroth")
+	print("Start of Wroth: ", test_timer.time_left)
 
 
 func assign_debuffs() -> void:
@@ -368,6 +369,7 @@ func vow_hit_3() -> void:
 	for pc: PlayableCharacter in targets_hit:
 		if pc != party["t1"]:
 			pc.add_debuff(vow_icon_scene, 34.0)
+	party["t1"].add_debuff(atonement_icon_scene, ATONEMENT_DURATION)
 
 # 34 - End of sequence
 func end_of_sub_sequence() -> void:

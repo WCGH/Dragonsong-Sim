@@ -10,7 +10,7 @@ extends P6Sequence
 @onready var pc_positions := {
 	"wings1": {
 		"ne": {
-			"t_near" : {"t2": Vector2(40, -40), "t1": Vector2(40, -3), "pt": Vector2(10, -20)},
+			"t_near" : {"t2": Vector2(40, -35), "t1": Vector2(40, -3), "pt": Vector2(10, -20)},
 			"t_far" : {"t2": Vector2(5, -40), "t1": Vector2(5, -5), "pt": Vector2(40, -5)}
 		},
 		"nw": {
@@ -18,7 +18,7 @@ extends P6Sequence
 			"t_far" : {"t2": Vector2(-40, -5), "t1": Vector2(-40, -40), "pt": Vector2(-5, -5)}
 		},
 		"se": {
-			"t_near" : {"t1": Vector2(40, 3), "t2": Vector2(40, 40), "pt": Vector2(10, 20)},
+			"t_near" : {"t1": Vector2(40, 3), "t2": Vector2(40, 35), "pt": Vector2(10, 20)},
 			"t_far" : {"t1": Vector2(5, 5), "t2": Vector2(5, 40), "pt": Vector2(40, 5)},
 		},
 		"sw": {
@@ -181,7 +181,9 @@ func vow_hit_2() -> void:
 	var targets_hit: Array = await vow_hit.get_collisions()
 	for pc: PlayableCharacter in targets_hit:
 		if pc != vow_target:
-			pc.add_debuff(vow_icon_scene, 34.0)
+			pc.add_debuff(vow_icon_scene, VOW_DURATION)
+	vow_target.add_debuff(atonement_icon_scene, ATONEMENT_DURATION)
+	test_timer.start()
 
 
 func end_of_sub_sequence() -> void:

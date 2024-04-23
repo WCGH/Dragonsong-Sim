@@ -55,6 +55,7 @@ func _ready() -> void:
 
 
 func start_sub_sequence() -> void:
+	print("Start of Wings2: ", test_timer.time_left)
 	wings_2_anim.play("wings2")
 
 
@@ -167,6 +168,7 @@ func vow_hit_4() -> void:
 	for pc: PlayableCharacter in targets_hit:
 		if pc != party["t2"]:
 			pc.add_debuff(vow_icon_scene, 34.0)
+	party["t2"].add_debuff(atonement_icon_scene, ATONEMENT_DURATION)
 
 
 # 22.0

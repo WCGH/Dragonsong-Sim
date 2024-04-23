@@ -62,12 +62,13 @@ func clear_party() -> void:
 		pc.queue_free()
 
 
-func instantiate_player(role_key : String) -> void:
+func instantiate_player(role_key : String) -> Dictionary:
 	#print("Spawning player with role: ", Global.ROLE_NAMES[role_key])
 	var player : Node3D = player_scene.instantiate()
 	player.set_parameters(role_key, models[role_key], SPAWN_POSITIONS[role_key])
 	characters_spawn_node.add_child(player)
 	party[role_key] = player
+	return {role_key: player}
 
 
 func instantiate_bot(role_key : String) -> void:
