@@ -1,8 +1,8 @@
 # Dragonsong-Sim
 
-Dragonsong Sim is an FFXIV Sim made in the Godot engine. It's designed to be a solo/offline alternative to XIVsim for DSR Ultimate. Currently it has modules for P3 (Limit Cut), P5 (Wrath/Death of the Heavens) and all of P6. It supports standard PF strats for NA/EU (APD and LPDU), which can be changed in the options menu.
+Dragonsong Sim is an FFXIV Sim made in the Godot engine. It's designed to be a solo/offline alternative to XIVsim for DSR Ultimate. Currently it has modules for P3 (Limit Cut), P5 (Wrath/Death of the Heavens), all of P6, and P7 exaflares. It supports standard PF strats for NA/EU (APD and LPDU), which can be changed in the options menu.
 
-If you have any questions, feel free to join us on [Discord](https://discord.gg/P9adFHADrX).
+If you have any questions, feel free to ask on [Discord](https://discord.gg/P9adFHADrX).
 
 
 ## Instructions
