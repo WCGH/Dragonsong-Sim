@@ -53,6 +53,8 @@ var lash_first := false
 var hide_lc_markers := true
 var strat : int
 
+var lc_setup_type : String
+
 
 func start_sequence(new_party: Dictionary) -> void:
 	load_settings()
@@ -68,6 +70,12 @@ func start_sequence(new_party: Dictionary) -> void:
 
 
 func load_settings() -> void:
+	#mana unique pre-pos lineup
+	if SavedVariables.save_data["settings"]["strat"] == SavedVariables.strats.MANA:
+		lc_setup_type = "lc_setup_mana"
+	else:
+		lc_setup_type = "lc_setup"
+	
 	# East/Westhogg
 	strat = SavedVariables.get_data("p3", "nidhogg")
 	match strat:
@@ -154,7 +162,7 @@ func assign_lc() -> void:
 ## 0:07
 # Move party to nearest LC positions, adjust assignments
 func lc_pre_pos() -> void:
-	var valid_positions: Dictionary = positions["lc_setup"].duplicate(true)
+	var valid_positions: Dictionary = positions[lc_setup_type].duplicate(true)
 	var unassigned_party := party.duplicate(true)
 	# Each loop assigns the one nearest player to a valid position from each LC#.
 	for i in 3:
@@ -167,7 +175,7 @@ func lc_pre_pos() -> void:
 			unassigned_party[lc_key].erase(nearest_data["pt_key"])
 			valid_positions[lc_key].erase(nearest_data["pos_key"])
 			party[lc_key][nearest_data["pt_key"]] = nearest_char
-	move_bots("lc_setup")
+	move_bots(lc_setup_type)
 
 ## 11.40
 # Randomly assign arrows to LC groups, shuffles the arrow groups and send debuffs

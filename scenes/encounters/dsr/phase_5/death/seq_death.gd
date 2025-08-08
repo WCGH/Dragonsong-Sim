@@ -47,7 +47,7 @@ const TETHER_BREAK_DIST := 70.0
 @onready var lockon_controller: LockonController = %LockonController
 @onready var death_anim_seq: AnimationPlayer = %DeathSeq
 @onready var npc_positions: Dictionary = P5_Seq2_NPC_Positions.positions_db
-@onready var pc_positions: Dictionary = P5_Seq2_PC_Positions.positions_db
+@onready var pc_positions: Dictionary = {"default": P5_Seq2_PC_Positions.positions_db, "south": P5_Seq2_South_PC_Positions.positions_db}
 @onready var cast_bar : CastBar = get_tree().get_first_node_in_group("cast_bar")
 @onready var enemy_cast_bar : EnemyCastBar = get_tree().get_first_node_in_group("enemy_cast_bar")
 @onready var fail_list : FailList = get_tree().get_first_node_in_group("fail_list")
@@ -74,10 +74,18 @@ var doom_anchor : bool
 var tri_sqr_dooms : Array
 var no_dooms: Array
 
-
 func start_sequence(new_party: Dictionary) -> void:
 	assert(new_party != null, "Error. Where the party at?")
 	initialize_party(new_party)
+	
+	#determine if doing dooms south
+	if SavedVariables.save_data["settings"]["strat"] == SavedVariables.strats.MANA:
+		print("using mana strat")
+		pc_positions = pc_positions["south"]
+	else:
+		pc_positions = pc_positions["default"]
+		print("No swap. Not MANA strat.")
+		
 	# Pre-load resources.
 	lockon_controller.pre_load([LockonController.PS_SQUARE, LockonController.PS_CIRCLE,
 		LockonController.PS_CROSS, LockonController.PS_TRIANGLE, LockonController.DOOM])
@@ -318,6 +326,7 @@ func impact_2() -> void:
 		SIDE_DIVEBOMB_LENGTH, Vector2(0, 0), 0.3, Color.ORANGE_RED, [0, 0, "Twisting Dive (Line)"])
 	ground_aoe_controller.spawn_line(v2(npcs["dark"]["node"].global_position), CENTER_DIVEBOMB_WIDTH,
 		CENTER_DIVEBOMB_LENGTH, Vector2(0, 0), 0.3, Color.REBECCA_PURPLE, [0, 0, "Cauterize (Line)"])
+		
 	# Spawn lightnings and cleanse puddles
 	for key: String in party_doom:
 		var pc: PlayableCharacter = party_doom[key]
@@ -327,6 +336,7 @@ func impact_2() -> void:
 			var puddle := ground_aoe_controller.spawn_circle(v2(pc.global_position), CLEANSE_PUDDLE_GROW_RADIUS,
 			CLEANSE_PUDDLE_DURATION, Color.LIGHT_BLUE, [0, 99, "[Debug]Cleanse Puddle"])
 			cleanse_puddles.append(puddle)
+			
 	# Show eye
 	npcs["eye"]["node"].visible = true
 	# 2nd Impact
@@ -628,4 +638,3 @@ func rotate_pos(pos : Vector2) -> Vector2:
 # Converts Vector3(x,z) -> Vectors2
 func v2(v3: Vector3) -> Vector2:
 	return Vector2(v3.x, v3.z)
-

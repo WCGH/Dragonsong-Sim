@@ -33,8 +33,11 @@ func _on_default_button_pressed() -> void:
 	order_containers()
 	save_lineup()
 
+func _on_mana_button_pressed() -> void:
+	lineup_keys = Global.mana_lineup.duplicate()
+	order_containers()
+	save_lineup()
 
 func _on_back_button_pressed() -> void:
 	self.hide()
 	options_menu_container.show()
-

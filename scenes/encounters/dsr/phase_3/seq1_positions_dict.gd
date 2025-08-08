@@ -41,7 +41,7 @@ static var positions_db := {
 			"down": Vector2(3, -11)
 		}
 	},
-	# LC stage positions
+	## LC stage positions
 	"lc_setup": {
 		"lc1": {
 			"up": Vector2(-15, 0),
@@ -56,6 +56,22 @@ static var positions_db := {
 			"up": Vector2(-9, 0),
 			"circle": Vector2(0, -9),
 			"down": Vector2(9, 0)
+		}
+	},
+	"lc_setup_mana": {
+		"lc1": {
+			"up": Vector2(-15, 0),
+			"circle": Vector2(0, -15),
+			"down": Vector2(15, 0)
+		},
+		"lc2": {
+			"up": Vector2(-3, 23),
+			"down": Vector2(3, 23)
+		},
+		"lc3": {
+			"up": Vector2(-5, 18),
+			"circle": Vector2(0, 18),
+			"down": Vector2(5, 18)
 		}
 	},
 	# Tower 1 Drop Positions

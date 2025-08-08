@@ -10,8 +10,8 @@ signal keybind_changed(keybinds: Dictionary)
 const CONFIG_FILE_PATH = "user://config.cfg"
 
 # General
-enum strats {APD, LPDU, TWIN}
-enum markers {APD, LPDU}
+enum strats {APD, LPDU, TWIN, MANA}
+enum markers {APD, LPDU, MANA}
 # P3
 enum nidhogg {WEST, EAST, DEFAULT = -1}
 enum in_line {RANDOM, ONE, TWO, THREE, DEFAULT = -1}
@@ -91,6 +91,15 @@ var defaults := {
 		"p6": { 
 			"first_vow": first_vow.RANDOM, "wroth": wroth.J_RELATIVE,
 			"wb_1": wb_1.G1, "wb_2": wb_2.FNOS, "t_markers": t_markers.MANUAL}
+	},
+	strats.MANA: {
+		"p3": { 
+			"nidhogg": nidhogg.WEST, "in_line": in_line.RANDOM, "arrow": arrow.RANDOM },
+		"p5": { 
+			"dooms": dooms.STATIC },
+		"p6": { 
+			"first_vow": first_vow.RANDOM, "wroth": wroth.STATIC,
+			"wb_1": wb_1.G1, "wb_2": wb_2.STATIC, "t_markers": t_markers.NONE}
 	}
 }
 
@@ -186,5 +195,3 @@ func get_screen_res() -> Vector2i:
 func get_default(category: String, key: String) -> int:
 	#var a = defaults[strats.APD][category][key]
 	return defaults[save_data["settings"]["strat"]][category][key]
-
-

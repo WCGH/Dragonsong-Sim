@@ -1,0 +1,502 @@
+[gd_scene load_steps=36 format=3 uid="uid://bkgo13atg2abi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noq1t"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.952941, 0.0862745, 0, 0.258824)
+heightmap_enabled = true
+grow_amount = 1.882
+proximity_fade_distance = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_djcij"]
+material = SubResource("StandardMaterial3D_noq1t")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.282
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdx8t"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.952941, 0.0862745, 0, 0.0784314)
+heightmap_enabled = true
+grow_amount = 1.882
+proximity_fade_distance = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j3nko"]
+material = SubResource("StandardMaterial3D_hdx8t")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 8.375
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2y44"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gkywl"]
+material = SubResource("StandardMaterial3D_d2y44")
+size = Vector2(2.5, 2.5)
+orientation = 2
+
+[sub_resource type="Animation" id="Animation_tnyxi"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_tybyf"]
+resource_name = "bounce"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3yjmn"]
+_data = {
+&"RESET": SubResource("Animation_tnyxi"),
+&"bounce": SubResource("Animation_tybyf")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yc4uv"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.941176, 0.882353, 0, 0.305882)
+heightmap_enabled = true
+grow_amount = 1.882
+proximity_fade_distance = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_b7eo8"]
+material = SubResource("StandardMaterial3D_yc4uv")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.282
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ops7w"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.952941, 0.976471, 0, 0.0784314)
+heightmap_enabled = true
+grow_amount = 1.882
+proximity_fade_distance = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_33hxy"]
+material = SubResource("StandardMaterial3D_ops7w")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 8.375
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nvdn"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_47m5u"]
+material = SubResource("StandardMaterial3D_2nvdn")
+size = Vector2(2.5, 3.5)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_espyy"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0.6, 0.913725, 0.305882)
+heightmap_enabled = true
+grow_amount = 1.882
+proximity_fade_distance = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eoiot"]
+material = SubResource("StandardMaterial3D_espyy")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.282
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aekil"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.580392, 0.690196, 1, 0.0784314)
+heightmap_enabled = true
+grow_amount = 1.882
+proximity_fade_distance = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_udaq6"]
+material = SubResource("StandardMaterial3D_aekil")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 8.375
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bri7u"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0u7wr"]
+material = SubResource("StandardMaterial3D_bri7u")
+size = Vector2(2.3, 3)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qtpm"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.705882, 0.364706, 1, 0.305882)
+heightmap_enabled = true
+grow_amount = 1.882
+proximity_fade_distance = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5nj2w"]
+material = SubResource("StandardMaterial3D_2qtpm")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.282
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4twki"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.756863, 0.619608, 1, 0.0784314)
+heightmap_enabled = true
+grow_amount = 1.882
+proximity_fade_distance = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uylvy"]
+material = SubResource("StandardMaterial3D_4twki")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 8.375
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lyex"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_18el8"]
+material = SubResource("StandardMaterial3D_3lyex")
+size = Vector2(2.5, 3.5)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q48nw"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nlg7y"]
+material = SubResource("StandardMaterial3D_q48nw")
+size = Vector2(0.986, 3.305)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dlj1"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oyefj"]
+material = SubResource("StandardMaterial3D_4dlj1")
+size = Vector2(2.5, 3.5)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw1ou"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fobpu"]
+material = SubResource("StandardMaterial3D_uw1ou")
+size = Vector2(2.453, 3.5)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtly4"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y7det"]
+material = SubResource("StandardMaterial3D_xtly4")
+size = Vector2(2.439, 3.5)
+orientation = 2
+
+[node name="WaymarksLPDU" type="Node3D"]
+
+[node name="WM_A" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.6678, -9.53674e-07, -2.10011)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WM_A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6654, -4.76837e-07, 20.1545)
+layers = 7
+mesh = SubResource("CylinderMesh_djcij")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WM_A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6655, 4.107, 20.1549)
+layers = 7
+mesh = SubResource("CylinderMesh_j3nko")
+metadata/_edit_group_ = true
+
+[node name="Label3D" type="Label3D" parent="WM_A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24027, 9.29403, 2.11513)
+visible = false
+billboard = 1
+modulate = Color(1, 0.286275, 0.25098, 0.866667)
+outline_modulate = Color(0.796078, 0.803922, 0.831373, 0.756863)
+text = "A"
+font_size = 639
+outline_size = 84
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WM_A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5942, 8.77971, 20.2554)
+mesh = SubResource("PlaneMesh_gkywl")
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WM_A"]
+libraries = {
+&"": SubResource("AnimationLibrary_3yjmn")
+}
+autoplay = "bounce"
+
+[node name="WM_B" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0153, -2.86102e-06, 25.9196)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WM_B"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1413, -4.76837e-07, -7.79846)
+layers = 7
+mesh = SubResource("CylinderMesh_b7eo8")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WM_B"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1413, 4.107, -7.79806)
+layers = 7
+mesh = SubResource("CylinderMesh_33hxy")
+metadata/_edit_group_ = true
+
+[node name="Label3D" type="Label3D" parent="WM_B"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24027, 9.29403, 2.11513)
+visible = false
+billboard = 1
+modulate = Color(0.827451, 1, 0, 0.866667)
+outline_modulate = Color(0.796078, 0.803922, 0.831373, 0.756863)
+text = "B"
+font_size = 639
+outline_size = 84
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WM_B"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.07, 8.77971, -7.69756)
+mesh = SubResource("PlaneMesh_47m5u")
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WM_B"]
+libraries = {
+&"": SubResource("AnimationLibrary_3yjmn")
+}
+autoplay = "bounce"
+
+[node name="WM_C" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8573, -2.86102e-06, -2.2663)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WM_C"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.9319, -4.76837e-07, -15.8327)
+layers = 7
+mesh = SubResource("CylinderMesh_eoiot")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WM_C"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.932, 4.107, -15.8323)
+layers = 7
+mesh = SubResource("CylinderMesh_udaq6")
+
+[node name="Label3D" type="Label3D" parent="WM_C"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24027, 9.29403, 2.11513)
+visible = false
+billboard = 1
+modulate = Color(0, 0.513726, 0.65098, 0.866667)
+outline_modulate = Color(0.796078, 0.803922, 0.831373, 0.756863)
+text = "C"
+font_size = 639
+outline_size = 84
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WM_C"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.8606, 8.77971, -15.7318)
+mesh = SubResource("PlaneMesh_0u7wr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WM_C"]
+libraries = {
+&"": SubResource("AnimationLibrary_3yjmn")
+}
+autoplay = "bounce"
+
+[node name="WM_D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6285, -0.211143, 25.9847)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WM_D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.7534, -4.76837e-07, -44.1347)
+layers = 7
+mesh = SubResource("CylinderMesh_5nj2w")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WM_D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.7533, 4.107, -44.1343)
+layers = 7
+mesh = SubResource("CylinderMesh_uylvy")
+metadata/_edit_group_ = true
+
+[node name="Label3D" type="Label3D" parent="WM_D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24027, 9.29403, 2.11513)
+visible = false
+billboard = 1
+modulate = Color(0.576471, 0.156863, 1, 0.866667)
+outline_modulate = Color(0.796078, 0.803922, 0.831373, 0.756863)
+text = "D"
+font_size = 639
+outline_size = 84
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WM_D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8246, 8.77971, -44.0338)
+mesh = SubResource("PlaneMesh_18el8")
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WM_D"]
+libraries = {
+&"": SubResource("AnimationLibrary_3yjmn")
+}
+autoplay = "bounce"
+
+[node name="WM_1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.0034, -2.86102e-06, -2.16498)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WM_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.0384, -4.76837e-07, 2.11463)
+layers = 7
+mesh = SubResource("CylinderMesh_djcij")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WM_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.0383, 4.107, 2.115)
+layers = 7
+mesh = SubResource("CylinderMesh_j3nko")
+metadata/_edit_group_ = true
+
+[node name="Label3D" type="Label3D" parent="WM_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24027, 9.29403, 2.11513)
+visible = false
+billboard = 1
+modulate = Color(1, 0.286275, 0.25098, 0.866667)
+outline_modulate = Color(0.796078, 0.803922, 0.831373, 0.756863)
+text = "1"
+font_size = 639
+outline_size = 84
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WM_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.1096, 8.77971, 2.21548)
+mesh = SubResource("PlaneMesh_nlg7y")
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WM_1"]
+libraries = {
+&"": SubResource("AnimationLibrary_3yjmn")
+}
+autoplay = "bounce"
+
+[node name="WM_2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5886, -3.8147e-06, -30.5781)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WM_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.489, -4.76837e-07, 54.4608)
+layers = 7
+mesh = SubResource("CylinderMesh_b7eo8")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WM_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4889, 4.107, 54.4611)
+layers = 7
+mesh = SubResource("CylinderMesh_33hxy")
+metadata/_edit_group_ = true
+
+[node name="Label3D" type="Label3D" parent="WM_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24027, 9.29403, 2.11513)
+visible = false
+billboard = 1
+modulate = Color(0.827451, 1, 0, 0.866667)
+outline_modulate = Color(0.796078, 0.803922, 0.831373, 0.756863)
+text = "2"
+font_size = 639
+outline_size = 84
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WM_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5602, 8.77971, 54.5616)
+mesh = SubResource("PlaneMesh_oyefj")
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WM_2"]
+libraries = {
+&"": SubResource("AnimationLibrary_3yjmn")
+}
+autoplay = "bounce"
+
+[node name="WM_3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33815, -2.86102e-06, -41.864)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WM_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.798, -4.76837e-07, 41.9052)
+layers = 7
+mesh = SubResource("CylinderMesh_eoiot")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WM_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7981, 4.107, 41.9056)
+layers = 7
+mesh = SubResource("CylinderMesh_udaq6")
+metadata/_edit_group_ = true
+
+[node name="Label3D" type="Label3D" parent="WM_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24027, 9.29403, 2.11513)
+visible = false
+billboard = 1
+modulate = Color(0, 0.513726, 0.65098, 0.866667)
+outline_modulate = Color(0.796078, 0.803922, 0.831373, 0.756863)
+text = "3"
+font_size = 639
+outline_size = 84
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WM_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7268, 8.77971, 42.0061)
+mesh = SubResource("PlaneMesh_fobpu")
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WM_3"]
+libraries = {
+&"": SubResource("AnimationLibrary_3yjmn")
+}
+autoplay = "bounce"
+
+[node name="WM_4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.9742, -0.211143, -30.425)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WM_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8379, -4.76837e-07, 6.37095)
+layers = 7
+mesh = SubResource("CylinderMesh_5nj2w")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WM_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8379, 4.107, 6.37135)
+layers = 7
+mesh = SubResource("CylinderMesh_uylvy")
+metadata/_edit_group_ = true
+
+[node name="Label3D" type="Label3D" parent="WM_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24027, 9.29403, 2.11513)
+visible = false
+billboard = 1
+modulate = Color(0.576471, 0.156863, 1, 0.866667)
+outline_modulate = Color(0.796078, 0.803922, 0.831373, 0.756863)
+text = "4"
+font_size = 639
+outline_size = 84
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WM_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7666, 8.77971, 6.47185)
+mesh = SubResource("PlaneMesh_y7det")
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WM_4"]
+libraries = {
+&"": SubResource("AnimationLibrary_3yjmn")
+}
+autoplay = "bounce"

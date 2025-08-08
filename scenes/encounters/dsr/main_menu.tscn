@@ -1,25 +1,13 @@
-[gd_scene load_steps=31 format=3 uid="uid://bnvls8fdb3rlx"]
+[gd_scene load_steps=20 format=3 uid="uid://bnvls8fdb3rlx"]
 
-[ext_resource type="Script" path="res://scenes/encounters/dsr/main_menu.gd" id="1_ufvqy"]
-[ext_resource type="Texture2D" uid="uid://cr6osefluwjvl" path="res://assets/png/ui_logos/dsr_frames/DSR_Frameless.png" id="2_lutkx"]
-[ext_resource type="FontFile" uid="uid://d3ioxbdorwora" path="res://assets/fonts/MYRIADPRO-SEMIBOLDIT.OTF" id="3_ux44j"]
-[ext_resource type="Texture2D" uid="uid://cy020iu8c6q32" path="res://assets/png/ui_logos/button_icons/update_button.png" id="4_oofjv"]
-[ext_resource type="Texture2D" uid="uid://obclwxalg35a" path="res://assets/png/ui_logos/button_icons/ff_x_highlight.png" id="4_ryvbj"]
-[ext_resource type="Texture2D" uid="uid://k17ge7imr1fk" path="res://assets/png/ui_logos/button_icons/ff_x_icon.png" id="5_oy8ks"]
-[ext_resource type="FontFile" uid="uid://dflgosesmjvf" path="res://assets/fonts/MYRIADPRO-BOLD.OTF" id="6_rh6qn"]
-[ext_resource type="FontFile" uid="uid://b87hanxewtnrb" path="res://assets/fonts/MYRIADPRO-BOLDCOND.OTF" id="8_juo8j"]
-[ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="9_03l4y"]
-[ext_resource type="Texture2D" uid="uid://gntk4dnhyncg" path="res://assets/png/ui_logos/button_icons/discord-white-icon.webp" id="9_6fh71"]
-[ext_resource type="Texture2D" uid="uid://kbdyhqmdcqnw" path="res://assets/png/ui_logos/time_clock_bg.png" id="9_ccvfl"]
-[ext_resource type="Script" path="res://scenes/encounters/dsr/options_menu.gd" id="10_eb04o"]
-[ext_resource type="FontFile" uid="uid://djss5nme5fyi8" path="res://assets/fonts/MYRIADPRO-BOLDCONDIT.OTF" id="10_fu25c"]
-[ext_resource type="Script" path="res://scenes/encounters/dsr/keybinds_menu_container.gd" id="12_gcodo"]
-[ext_resource type="Script" path="res://scenes/encounters/dsr/lineup_menu_container.gd" id="13_ge3m7"]
-[ext_resource type="Script" path="res://scenes/encounters/dsr/lineup_menu/lineup_role_container.gd" id="14_q1vi6"]
-[ext_resource type="Texture2D" uid="uid://dg3morh5arxui" path="res://assets/png/ui_logos/button_icons/white_arrow.png" id="14_rstfj"]
+[ext_resource type="Script" uid="uid://b0vemhadaniv7" path="res://scenes/encounters/dsr/main_menu.gd" id="1_ufvqy"]
+[ext_resource type="Script" uid="uid://by08emunodd62" path="res://scenes/ui/role_select_button.gd" id="9_03l4y"]
+[ext_resource type="Script" uid="uid://dsarosf46iteg" path="res://scenes/encounters/dsr/options_menu.gd" id="10_eb04o"]
+[ext_resource type="Script" uid="uid://cpi31sfq0lmda" path="res://scenes/encounters/dsr/keybinds_menu_container.gd" id="12_gcodo"]
+[ext_resource type="Script" uid="uid://4xpslvyk5f1v" path="res://scenes/encounters/dsr/lineup_menu_container.gd" id="13_ge3m7"]
+[ext_resource type="Script" uid="uid://byfksebqpvo52" path="res://scenes/encounters/dsr/lineup_menu/lineup_role_container.gd" id="14_q1vi6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fsohq"]
-font = ExtResource("3_ux44j")
 font_size = 84
 outline_size = 5
 outline_color = Color(0.92549, 0.466667, 0, 1)
@@ -27,34 +15,28 @@ shadow_size = 15
 shadow_color = Color(0, 0, 0, 0.556863)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tecbv"]
-font = ExtResource("6_rh6qn")
 font_color = Color(0.313726, 0.752941, 0.443137, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0q2l"]
 bg_color = Color(0, 0.780392, 0.168627, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_odj15"]
-font = ExtResource("6_rh6qn")
 font_size = 50
 outline_size = 4
 outline_color = Color(1, 0.603922, 0.176471, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8x8sj"]
-font = ExtResource("6_rh6qn")
 font_size = 25
 
 [sub_resource type="LabelSettings" id="LabelSettings_kjl38"]
-font = ExtResource("6_rh6qn")
 font_size = 45
 outline_size = 4
 outline_color = Color(1, 0.603922, 0.176471, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ukey4"]
-font = ExtResource("6_rh6qn")
 font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_vkj6m"]
-font = ExtResource("6_rh6qn")
 font_size = 37
 outline_size = 4
 outline_color = Color(1, 0.603922, 0.176471, 1)
@@ -122,8 +104,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lf4qh"]
 _data = {
-"RESET": SubResource("Animation_48al6"),
-"fade_in": SubResource("Animation_masqt")
+&"RESET": SubResource("Animation_48al6"),
+&"fade_in": SubResource("Animation_masqt")
 }
 
 [node name="MainMenu" type="CanvasLayer"]
@@ -138,7 +120,6 @@ grow_vertical = 2
 
 [node name="BackgroundTexture" type="TextureRect" parent="MenuContainer"]
 layout_mode = 2
-texture = ExtResource("2_lutkx")
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuContainer"]
 layout_mode = 2
@@ -170,8 +151,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 focus_mode = 0
-texture_normal = ExtResource("5_oy8ks")
-texture_hover = ExtResource("4_ryvbj")
 stretch_mode = 0
 
 [node name="MainMenuContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
@@ -204,7 +183,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 73.763)
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 30
 text = "Phase 3 : Limit Cut"
 
@@ -213,7 +191,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 73.763)
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 30
 text = "Phase 5 : Wrath of the Heavens"
 
@@ -222,7 +199,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 73.763)
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 30
 text = "Phase 5 : Death of the Heavens"
 
@@ -231,7 +207,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 73.763)
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 30
 text = "Phase 6 : Double Dragons"
 
@@ -240,7 +215,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 73.763)
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 30
 text = "Phase 7 : Exaflares"
 
@@ -268,10 +242,8 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
-theme_override_fonts/font = ExtResource("6_rh6qn")
 theme_override_font_sizes/font_size = 20
 text = "Download Update"
-icon = ExtResource("4_oofjv")
 expand_icon = true
 
 [node name="LauncherDownloadProgress" type="ProgressBar" parent="MenuContainer/MarginContainer/VBoxContainer/MainMenuContainer/MarginContainer/LeftButtonsVBox/UpdateHBoxContainer/VBoxContainer"]
@@ -292,7 +264,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("8_juo8j")
 theme_override_font_sizes/font_size = 42
 text = "Options"
 
@@ -302,9 +273,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("8_juo8j")
 theme_override_font_sizes/font_size = 42
-icon = ExtResource("9_6fh71")
 icon_alignment = 1
 expand_icon = true
 
@@ -314,7 +283,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("8_juo8j")
 theme_override_font_sizes/font_size = 42
 text = "Exit"
 
@@ -396,20 +364,28 @@ LPDU:
 - WB2 5N1S
 
 Twintails:
-- LPDU w/ Doth Static"
+- LPDU w/ Doth Static
+
+Mana:
+- Westhogg
+- Doth Dooms start South & Anchor
+- WB1 G1 Anchor
+- WB2 Static"
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
 action_mode = 1
 alignment = 1
-item_count = 3
 selected = 0
 fit_to_longest_item = false
+item_count = 4
 popup/item_0/text = "APD"
 popup/item_0/id = 0
 popup/item_1/text = "LPDU"
 popup/item_1/id = 1
 popup/item_2/text = "Twintails"
 popup/item_2/id = 2
+popup/item_3/text = "MANA"
+popup/item_3/id = 3
 
 [node name="MarkersContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
 layout_mode = 2
@@ -432,13 +408,15 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 24
 action_mode = 1
 alignment = 1
-item_count = 2
 selected = 0
 fit_to_longest_item = false
+item_count = 3
 popup/item_0/text = "APD"
 popup/item_0/id = 0
 popup/item_1/text = "LPDU"
 popup/item_1/id = 1
+popup/item_2/text = "MANA"
+popup/item_2/id = 2
 
 [node name="DefaultRoleContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/OptionsMenuContainer/MarginContainer/LeftButtonsVBox"]
 layout_mode = 2
@@ -459,9 +437,9 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 24
 action_mode = 1
 alignment = 1
-item_count = 8
 selected = 1
 fit_to_longest_item = false
+item_count = 8
 popup/item_0/text = "Tank 1"
 popup/item_0/id = 0
 popup/item_1/text = "Tank 2"
@@ -555,7 +533,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("8_juo8j")
 theme_override_font_sizes/font_size = 42
 text = "Back"
 
@@ -746,7 +723,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("8_juo8j")
 theme_override_font_sizes/font_size = 42
 text = "Back"
 
@@ -784,15 +760,26 @@ text = "DotH Lineup (Left to Right)"
 label_settings = SubResource("LabelSettings_vkj6m")
 horizontal_alignment = 1
 
-[node name="DefaultButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
+layout_mode = 2
+
+[node name="DefaultButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer"]
 custom_minimum_size = Vector2(125.22, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("8_juo8j")
 theme_override_font_sizes/font_size = 35
 text = "Default"
+
+[node name="ManaButton" type="Button" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer"]
+custom_minimum_size = Vector2(125.22, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+text = "Mana"
 
 [node name="T1Container" type="HBoxContainer" parent="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox"]
 unique_name_in_owner = true
@@ -813,7 +800,6 @@ custom_minimum_size = Vector2(27, 14.8)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 flip_v = true
@@ -823,7 +809,6 @@ custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -846,7 +831,6 @@ custom_minimum_size = Vector2(27, 14.8)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 flip_v = true
@@ -856,7 +840,6 @@ custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -879,7 +862,6 @@ custom_minimum_size = Vector2(27, 14.8)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 flip_v = true
@@ -889,7 +871,6 @@ custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -912,7 +893,6 @@ custom_minimum_size = Vector2(27, 14.8)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 flip_v = true
@@ -922,7 +902,6 @@ custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -945,7 +924,6 @@ custom_minimum_size = Vector2(27, 14.8)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 flip_v = true
@@ -955,7 +933,6 @@ custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -978,7 +955,6 @@ custom_minimum_size = Vector2(27, 14.8)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 flip_v = true
@@ -988,7 +964,6 @@ custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -1011,7 +986,6 @@ custom_minimum_size = Vector2(27, 14.8)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 flip_v = true
@@ -1021,7 +995,6 @@ custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -1044,7 +1017,6 @@ custom_minimum_size = Vector2(27, 14.8)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 flip_v = true
@@ -1054,7 +1026,6 @@ custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-texture_normal = ExtResource("14_rstfj")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -1069,7 +1040,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("8_juo8j")
 theme_override_font_sizes/font_size = 42
 text = "Back"
 
@@ -1085,7 +1055,6 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="LoadScreenContainer"]
 layout_mode = 2
-texture = ExtResource("9_ccvfl")
 expand_mode = 2
 
 [node name="LoadingProgressBar" type="ProgressBar" parent="LoadScreenContainer/TextureRect"]
@@ -1108,7 +1077,6 @@ offset_right = 532.0
 offset_bottom = 29.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("10_fu25c")
 theme_override_font_sizes/font_size = 26
 text = "Loading"
 horizontal_alignment = 1
@@ -1117,7 +1085,7 @@ vertical_alignment = 1
 [node name="TransitionAnimationPlayer" type="AnimationPlayer" parent="LoadScreenContainer"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_lf4qh")
+&"": SubResource("AnimationLibrary_lf4qh")
 }
 
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/HBoxContainer/XButton" to="." method="_on_exit_button_pressed"]
@@ -1144,7 +1112,8 @@ libraries = {
 [connection signal="drag_ended" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/YSensContainer2/YSensHSlider" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_y_sens_h_slider_drag_ended"]
 [connection signal="toggled" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/InvertYContainer/InvertYCheckButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_invert_y_check_button_toggled"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer/MarginContainer/LeftButtonsVBox/BottomHBoxContainer/BackButton" to="MenuContainer/MarginContainer/VBoxContainer/KeybindsMenuContainer" method="_on_back_button_pressed"]
-[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/DefaultButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer" method="_on_default_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer/DefaultButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer" method="_on_default_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/HBoxContainer/ManaButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer" method="_on_mana_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container" method="_on_up_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container/DownButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T1Container" method="_on_down_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T2Container/UpButton" to="MenuContainer/MarginContainer/VBoxContainer/LineupMenuContainer/MarginContainer/LeftButtonsVBox/T2Container" method="_on_up_button_pressed"]

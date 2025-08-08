@@ -19,9 +19,46 @@ const AM_RADIUS = 12.0
 var pc_positions := {
 	"ne": {"a1": Vector2(40, -24), "a2": Vector2(21.5, -24), "a3": Vector2(0, -24)},
 	"nw": {"a1": Vector2(-40, -24), "a2": Vector2(-21.5, -24), "a3": Vector2(0, -24)},
-	"n_mid" : Vector2(0, -1),
 	"se": {"a1": Vector2(40, 24), "a2": Vector2(21.5, 24), "a3": Vector2(0, 24)},
 	"sw": {"a1": Vector2(-40, 24), "a2": Vector2(-21.5, 24), "a3": Vector2(0, 24)},
+	
+	#mana wroth - not perfect but its pretty close to what they do
+	"mana_ne": {"a1": Vector2(42, -42), "a2": Vector2(20, -42), "a3": Vector2(-4, -38)},
+	"mana_nw": {"a1": Vector2(-42, -42), "a2": Vector2(-20, -42), "a3": Vector2(4, -38)},
+	"mana_se": {"a1": Vector2(42, 42), "a2": Vector2(20, 42), "a3": Vector2(-4, 38)},
+	"mana_sw": {"a1": Vector2(-42, 42), "a2": Vector2(-20, 42), "a3": Vector2(4, 38)},
+	
+	#nid is West(-42,0), hraes is East (42,0)
+	"mana_n_spread": {
+		"wing": {
+			"sp4": Vector2(43, 0), "sp3": Vector2(28.6, 0),
+			"sp2": Vector2(14.3, 0), "sp1": Vector2(0, 0),
+			"st1": Vector2(-40, 0), "st2": Vector2(-20, 0),
+			"fr1": Vector2(-39, 1), "fr2": Vector2(-19, 1),
+			},
+		"tail": {
+			"sp4": Vector2(43, 28), "sp3": Vector2(28.6, 28),
+			"sp2": Vector2(14.3, 28), "sp1": Vector2(0, 28),
+			"st1": Vector2(-40, 28), "st2": Vector2(-20, 28),
+			"fr1": Vector2(-39, 29), "fr2": Vector2(-19, 27),
+		}
+	},
+	"mana_s_spread": {
+		"wing": {
+			"sp4": Vector2(43, 0), "sp3": Vector2(28.6, 0),
+			"sp2": Vector2(14.3, 0), "sp1": Vector2(0, 0),
+			"st1": Vector2(-40, 0), "st2": Vector2(-20, 0),
+			"fr1": Vector2(-39, 0), "fr2": Vector2(-19, 0),
+		},
+		"tail": {
+			"sp4": Vector2(43, -28), "sp3": Vector2(28.6, -28),
+			"sp2": Vector2(14.3, -28), "sp1": Vector2(0, -28),
+			"st1": Vector2(-40, -28), "st2": Vector2(-20, -28),
+			"fr1": Vector2(-39, -28), "fr2": Vector2(-19, -28),
+		}
+	},
+	
+	"n_mid" : Vector2(0, -1),
 	"s_mid": Vector2(0, 1),
 	"n_spread": {
 		"wing": {
@@ -79,7 +116,6 @@ var pc_positions := {
 			"fr1": Vector2(39, -29), "fr2": Vector2(19, -27),
 		}
 	},
-	
 }
 
 var am_dict := {
@@ -114,19 +150,58 @@ var am_snapshot: Vector2
 func _ready() -> void:
 	pass
 
-
 func start_sub_sequence() -> void:
 	party_list = party.values()
 	assign_debuffs()
 	wroth_anim.play("wroth")
 	print("Start of Wroth: ", test_timer.time_left)
 
+func _priority_assign(priority_order: Array = []) -> Dictionary:
+	if priority_order.is_empty():
+		#this is mana priority
+		priority_order = ["t1", "t2", "m1", "m2", "r1", "r2", "h1", "h2"]
 
+	var debuff_types := ["st", "st", "fr", "fr", "sp", "sp", "sp", "sp"]
+	debuff_types.shuffle()
+
+	# Assign debuffs by zipping priority roles with shuffled debuffs
+	var role_debuffs := {}
+	for i in priority_order.size():
+		role_debuffs[priority_order[i]] = debuff_types[i]
+
+	# Group roles by debuff type
+	var debuff_groups := {
+		"st": [],
+		"fr": [],
+		"sp": []
+	}
+	for role in role_debuffs:
+		debuff_groups[role_debuffs[role]].append(role)
+	
+	party_wroth.clear()
+	# Assign debuff keys based on priority within each group
+	for debuff_type in debuff_groups:
+		var group: Array = debuff_groups[debuff_type]
+		group.sort_custom(func(a, b): priority_order.find(a) < priority_order.find(b))
+		for i in group.size():
+			party_wroth["%s%d" % [debuff_type, i + 1]] = party[group[i]]
+
+	# Debug print
+	#print("Debuff groups (sorted):", debuff_groups)
+	#print("Final party_wroth:", party_wroth)
+	
+	return party_wroth
+	
 func assign_debuffs() -> void:
-	var wroth_list := party.values()
-	wroth_list.shuffle()
-	for i in wroth_list.size():
-		party_wroth[wroth_keys[i]] = wroth_list[i]
+	if SavedVariables.save_data["settings"]["strat"] == SavedVariables.strats.MANA:
+		party_wroth = _priority_assign()
+		quadrants = quadrants.map(func(item): return "mana_" + item)
+	else:
+		var wroth_list := party.values()
+		wroth_list.shuffle()
+		for i in wroth_list.size():
+			party_wroth[wroth_keys[i]] = wroth_list[i]
+	
 	# Randomize Divebomb and Orb pattern
 	south_orb = randi() % 2 == 0
 	hot_wing = randi() % 2 == 0
@@ -165,6 +240,7 @@ func add_debuffs() -> void:
 		db_target = npc_positions["db"][divebomb_keys[divebomb_index + 1]]
 	else:
 		db_target = npc_positions["db"][divebomb_keys[divebomb_index - 1]]
+		
 	hra.move_to(npc_positions["db"][divebomb_keys[divebomb_index]])
 	look_at_v2(hra, db_target)
 
@@ -277,6 +353,7 @@ func am_4_hit() -> void:
 	am_puddles[2].circle_body_entered.connect(on_am_entered)
 	am_puddles.append(ground_aoe_controller.spawn_circle(
 		am_snapshot, AM_RADIUS, 14.5, Color.RED))
+		
 	# Hrae warps in
 	hra.move_to(npc_positions["hra_spawn"])
 	look_at_v2(hra, Vector2.ZERO)
@@ -287,12 +364,12 @@ func am_4_hit() -> void:
 # 22.1 - Third orb tele, start Hot Wing/Tail cast (6.1s)
 func orb_3_tele() -> void:
 	am_puddles[3].circle_body_entered.connect(on_am_entered)
-	wroth_flame_controller.spawn_orb_telegraph(2)
+	#wroth_flame_controller.spawn_orb_telegraph(2) return #TODO: remove coimment
 	if hot_wing:
 		target_cast_bar.cast("Hot Wing", 6.1, nid)
 		enemy_cast_bar.start_cast_bar_1("Hot Wing", 6.1)
 	else:
-		nid.start_up_cast()
+		#nid.start_up_cast() return #TODO: remove comment
 		target_cast_bar.cast("Hot Tail", 6.1, nid)
 		enemy_cast_bar.start_cast_bar_1("Hot Tail", 6.1)
 
@@ -306,7 +383,9 @@ func orb_3_hit() -> void:
 func move_to_spread() -> void:
 	var wing_tail := "wing" if hot_wing else "tail"
 	var north_south: String
-	if SavedVariables.get_data("p6", "wroth") == SavedVariables.wroth.J_RELATIVE:
+	if SavedVariables.save_data["settings"]["strat"] == SavedVariables.strats.MANA:
+		north_south = "mana_n_spread" if south_orb else "mana_s_spread"
+	elif SavedVariables.get_data("p6", "wroth") == SavedVariables.wroth.J_RELATIVE:
 		north_south = "n_spread" if south_orb else "s_spread"
 	else:
 		north_south = "sn_spread" if south_orb else "ss_spread"

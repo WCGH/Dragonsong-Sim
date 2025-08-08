@@ -33,6 +33,7 @@ var main_menu_path := "res://scenes/encounters/dsr/main_menu.tscn"
 var player_puddles := false
 var rare_death_pattern := false
 var default_lineup := ["r1", "t1", "r2", "m1", "h2", "t2", "m2", "h1"]
+var mana_lineup := ["t1","t2","m1","m2","r1","r2","h1","h2"]
 # P6
 var hide_bots := false
 var vow_target_key := ""

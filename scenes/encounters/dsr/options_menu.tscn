@@ -1,15 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dit04nhrsu4r8"]
+[gd_scene load_steps=5 format=3 uid="uid://dit04nhrsu4r8"]
 
-[ext_resource type="Texture2D" uid="uid://cr6osefluwjvl" path="res://assets/png/ui_logos/dsr_frames/DSR_Frameless.png" id="2_c652e"]
-[ext_resource type="FontFile" uid="uid://d3ioxbdorwora" path="res://assets/fonts/MYRIADPRO-SEMIBOLDIT.OTF" id="3_by1eu"]
-[ext_resource type="Texture2D" uid="uid://k17ge7imr1fk" path="res://assets/png/ui_logos/button_icons/ff_x_icon.png" id="4_qd3q0"]
-[ext_resource type="Texture2D" uid="uid://obclwxalg35a" path="res://assets/png/ui_logos/button_icons/ff_x_highlight.png" id="5_jaf0p"]
-[ext_resource type="Script" path="res://scenes/ui/role_select_button.gd" id="6_ohgsg"]
-[ext_resource type="FontFile" uid="uid://dflgosesmjvf" path="res://assets/fonts/MYRIADPRO-BOLD.OTF" id="6_sbxno"]
-[ext_resource type="FontFile" uid="uid://b87hanxewtnrb" path="res://assets/fonts/MYRIADPRO-BOLDCOND.OTF" id="8_wyq6u"]
+[ext_resource type="Script" uid="uid://cyij4ppwmwdee" path="res://scenes/ui/role_select_button.gd" id="6_ohgsg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fsohq"]
-font = ExtResource("3_by1eu")
 font_size = 84
 outline_size = 5
 outline_color = Color(0.92549, 0.466667, 0, 1)
@@ -17,13 +10,11 @@ shadow_size = 15
 shadow_color = Color(0, 0, 0, 0.556863)
 
 [sub_resource type="LabelSettings" id="LabelSettings_420yd"]
-font = ExtResource("6_sbxno")
 font_size = 50
 outline_size = 4
 outline_color = Color(1, 0.603922, 0.176471, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2rdw2"]
-font = ExtResource("6_sbxno")
 font_size = 28
 
 [node name="OptionsMenu" type="CanvasLayer"]
@@ -37,7 +28,6 @@ grow_vertical = 2
 
 [node name="BackgroundTexture" type="TextureRect" parent="MenuContainer"]
 layout_mode = 2
-texture = ExtResource("2_c652e")
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuContainer"]
 layout_mode = 2
@@ -69,8 +59,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 focus_mode = 0
-texture_normal = ExtResource("4_qd3q0")
-texture_hover = ExtResource("5_jaf0p")
 stretch_mode = 0
 
 [node name="OptionsMenuContainer" type="MarginContainer" parent="MenuContainer/MarginContainer/VBoxContainer"]
@@ -123,9 +111,9 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 24
 action_mode = 1
 alignment = 1
-item_count = 1
 selected = 0
 fit_to_longest_item = false
+item_count = 1
 popup/item_0/text = "APD"
 popup/item_0/id = 0
 script = ExtResource("6_ohgsg")
@@ -149,9 +137,9 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 24
 action_mode = 1
 alignment = 1
-item_count = 8
 selected = 1
 fit_to_longest_item = false
+item_count = 8
 popup/item_0/text = "Tank 1"
 popup/item_0/id = 0
 popup/item_1/text = "Tank 2"
@@ -238,7 +226,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("8_wyq6u")
 theme_override_font_sizes/font_size = 42
 text = "Keybinds"
 
@@ -248,7 +235,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("8_wyq6u")
 theme_override_font_sizes/font_size = 42
 text = "Back"
 
